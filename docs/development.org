@@ -1,0 +1,27 @@
+#+TITLE Development Requirements
+
+* Backend
+Backend is done with python Django. This doc shows how many classes are needed
+and how many basic APIs should be provided.
+
+For the sake of further development, Auto0 is gonna be used.
+
+** Basic Classes
+|---------+---------------------------------------------------------------------------------------+------------|
+| Class   | Description                                                                           | Additional |
+|---------+---------------------------------------------------------------------------------------+------------|
+| User    | Basic user class, should use built-in class.                                          |            |
+| Profile | User profiles, containing basic information about the user, including profile images. |            |
+|         |                                                                                       |            |
+|---------+---------------------------------------------------------------------------------------+------------|
+
+
+** Basic APIs
+|--------+--------------------------+---------|
+| Role   | Description              | Status  |
+|--------+--------------------------+---------|
+| Login  | Login CRUD, with allauth | Pending |
+| Logout | Same with login          | Pending |
+|        |                          |         |
+|--------+--------------------------+---------|
+

@@ -1,0 +1,142 @@
+### OSX ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# workspace files are user-specific
+*.sublime-workspace
+
+# emacs
+*~
+
+# virtualenv
+venv/
+env/
+.env/
+
+# project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using SublimeText
+*.sublime-project
+
+# sftp configuration file
+sftp-config.json
+
+# Basics
+*.py[cod]
+*.pyc
+__pycache__
+
+# Logs
+*.log
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+*.pot
+
+# Pycharm
+.idea
+
+# Vim
+
+*~
+*.swp
+*.swo
+
+# npm
+node_modules/
+bolt/node_modules/
+homepage/node_modules/
+
+# Compass
+.sass-cache
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+*.pyo
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+*.ftppass
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Secret keys
+credentials.json
+
+# Xcode
+iOS/BoltMedia.xcodeproj/project.xcworkspace/xcuserdata
+iOS/BoltMedia.xcodeproj/xcuserdata
+iOS/BoltMedia.xcworkspace/xcuserdata
+
+# Cocoapods
+Podfile.lock
+iOS/Pods/*
+
+# Exclude !iOS/Pods/Target Support Files/Pods-BoltMedia/Pods-BoltMedia-resources.sh since it contains local modification to pods projects
+!iOS/Pods/WordPress-iOS-Editor/
+!iOS/Pods/Target Support Files/
+iOS/Pods/Target Support Files/*
+!iOS/Pods/Target Support Files/Pods-BoltMedia/
+iOS/Pods/Target Support Files/Pods-BoltMedia/*
+!iOS/Pods/Target Support Files/Pods-BoltMedia/Pods-BoltMedia-resources.sh
+
+# Media folder
+bolt/bolt/media/*
+
+# Exclude mock files
+# !bolt/bolt/media/user_images
+# bolt/bolt/media/user_images/*
+# !bolt/bolt/media/user_images/ken.jpg
+# !bolt/bolt/media/user_images/tim.jpeg
+# !bolt/bolt/media/user_images/yiwen.jpeg
+
+# Grunt generated folder
+robo/angular/build
+robo/angular/vendor
+robo/angular/bin
+
+# Django production staticfiles
+robo/staticfiles
+
+# Elastic beanstalk
+# .elasticbeanstalk
+
+# Eb environment variables
+robo/.ebextensions/02_env.config
