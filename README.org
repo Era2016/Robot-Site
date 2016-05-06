@@ -9,4 +9,21 @@
 I'll come back and manage the doc later.
 *** Development
 
-** Contains
+** Settings
+This site relies extensively on environment settings which will not work with
+ Apache/mod_wsgi setups. It should be deployed successfully with both 
+Gunicorn/Nginx and even uWSGI/Nginx.
+
+For configuration purposes, the following table maps the 'robo' environment
+ variables to their Django setting(It should be added to cloud in the future):
+
+** TODO Tools to be Added
+|--------+-------------------------------------------------+----------------|
+| Tools  | Description                                     | Status         |
+|--------+-------------------------------------------------+----------------|
+| Sentry | For logging                                     | Not configured |
+| Travis | Continuous Integration                          | Not Configured |
+| Auth0  | For auth, should check if still works under GFW | Not Configured |
+| NGINX  | For distribution and stuff                      | Not Configured |
+|--------+-------------------------------------------------+----------------|
+
