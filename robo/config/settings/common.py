@@ -10,10 +10,25 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+from __future__ import absolute_import, unicode_literals
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
+import environ
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
+APPS_DIR = ROOT_DIR.path('robotics')
+ANGULAR_DIR = ROOT_DIR.path('angular')
+
+env = environ.Env()
+
+# Add our project to our pythonpath, this way we don't need to type our project
+# name in our dotted import paths:
+sys.path.append(str(APPS_DIR.path('apps')))
+
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,8 +44,12 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+LOCAL_APPS = (
+    'core',
+    'users',
+)
 
-INSTALLED_APPS = (
+DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +57,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 )
+
+THIRD_PARTY_APPS = (
+)
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -50,7 +74,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'robo.urls'
+
+
+
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -68,18 +95,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'robo.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Internationalization
