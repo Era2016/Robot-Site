@@ -1,12 +1,13 @@
-#+TITLE Development Requirements
 
-* Backend
+
+* BackEnd
 Backend is done with python Django. This doc shows how many classes are needed
 and how many basic APIs should be provided.
 
 For the sake of further development, Auto0 is gonna be used.
 
 ** Basic Classes
+
 |---------+---------------------------------------------------------------------------------------+------------|
 | Class   | Description                                                                           | Additional |
 |---------+---------------------------------------------------------------------------------------+------------|
@@ -17,6 +18,7 @@ For the sake of further development, Auto0 is gonna be used.
 
 
 ** Basic APIs
+
 |--------+--------------------------+---------|
 | Role   | Description              | Status  |
 |--------+--------------------------+---------|
@@ -24,4 +26,7 @@ For the sake of further development, Auto0 is gonna be used.
 | Logout | Same with login          | Pending |
 |        |                          |         |
 |--------+--------------------------+---------|
+
+* FrontEnd
+
 
