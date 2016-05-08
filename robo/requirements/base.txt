@@ -1,0 +1,64 @@
+# Bleeding edge Django
+django==1.8.4
+
+# Configuration
+django-environ==0.3.0
+django-secure==1.0.1
+whitenoise==2.0.3
+
+# Forms
+django-braces==1.8.1
+django-crispy-forms==1.5.1
+django-floppyforms==1.5.2
+
+# Models
+django-model-utils==2.3.1
+
+# Images
+Pillow==2.9.0
+
+# REST framework
+djangorestframework==3.2.3
+drf-nested-routers==0.10.0
+
+# For user registration, either via email or social
+# Well-built with regular release cycles!
+django-allauth==0.23.0
+rest-condition==1.0.1
+
+# For the persistence stores
+psycopg2==2.6.1
+
+# Unicode slugification
+unicode-slugify==0.1.3
+django-autoslug==1.8.0
+
+# Time zones support
+pytz==2015.4
+
+# Redis support
+django-redis==4.2.0
+redis>=2.10.0
+
+# Newspaper depencency
+beautifulsoup4==4.3.2
+PyYAML==3.11
+cssselect==0.9.1
+lxml==3.3.5
+nltk==3.0.1
+requests==2.3.0
+six==1.7.3
+feedparser==5.1.3
+tldextract==1.5.1
+feedfinder2==0.0.1
+jieba3k==0.35.1
+python-dateutil==2.4.0
+
+# Others
+django-widget-tweaks==1.4.1
+django-filter==0.11.0
+django-dirtyfields==0.7
+django-enumfield==1.2.1
+django-notifications-hq==0.7.0
+django-invitations==1.2
+django-paypal == 0.2.7

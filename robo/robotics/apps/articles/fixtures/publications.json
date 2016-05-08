@@ -1,0 +1,330 @@
+[
+  {
+    "model": "articles.Publication",
+    "pk": 1,
+    "fields": {
+      "name": "The Straits Times",
+      "url": "straitstimes.com",
+      "image": "publication_images/straitstimes.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 2,
+    "fields": {
+      "name": "TechCrunch",
+      "url": "techcrunch.com",
+      "image": "publication_images/techcrunch.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 3,
+    "fields": {
+      "name": "Forbes",
+      "url": "forbes.com",
+      "image": "publication_images/forbes.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 4,
+    "fields": {
+      "name": "e27",
+      "url": "e27.co",
+      "image": "publication_images/e27.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 5,
+    "fields": {
+      "name": "TODAY",
+      "url": "todayonline.com",
+      "image": "publication_images/todayonline.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 6,
+    "fields": {
+      "name": "Vulcan Post",
+      "url": "vulcanpost.com",
+      "image": "publication_images/vulcanpost.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 7,
+    "fields": {
+      "name": "Reuters",
+      "url": "reuters.com",
+      "image": "publication_images/reuters.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 8,
+    "fields": {
+      "name": "Straits Times Classified",
+      "url": "sphclass.com.sg",
+      "image": "publication_images/sphclass.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 9,
+    "fields": {
+      "name": "The New York Times",
+      "url": "nytimes.com",
+      "image": "publication_images/nytimes.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 10,
+    "fields": {
+      "name": "The Guardian",
+      "url": "theguardian.com",
+      "image": "publication_images/theguardian.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 11,
+    "fields": {
+      "name": "The New Paper",
+      "url": "tnp.sg",
+      "image": "publication_images/tnp.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 12,
+    "fields": {
+      "name": "My Paper",
+      "url": "mypaper.sg",
+      "image": "publication_images/mypaper.png"
+    }
+  },  
+  {
+    "model": "articles.Publication",
+    "pk": 13,
+    "fields": {
+      "name": "The Business Times",
+      "url": "businesstimes.com.sg",
+      "image": "publication_images/businesstimes.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 14,
+    "fields": {
+      "name": "The Washington Post",
+      "url": "washingtonpost.com",
+      "image": "publication_images/washingtonpost.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 15,
+    "fields": {
+      "name": "The Atlantic",
+      "url": "theatlantic.com",
+      "image": "publication_images/theatlantic.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 16,
+    "fields": {
+      "name": "AsiaOne",
+      "url": "asiaone.com",
+      "image": "publication_images/asiaone.png"
+    }
+  },
+
+
+
+
+  {
+    "model": "articles.Publication",
+    "pk": 17,
+    "fields": {
+      "name": "The Telegraph",
+      "url": "telegraph.co.uk",
+      "image": "publication_images/telegraph.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 18,
+    "fields": {
+      "name": "CNN",
+      "url": "cnn.com",
+      "image": "publication_images/cnn.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 19,
+    "fields": {
+      "name": "Yahoo News",
+      "url": "sg.news.yahoo.com",
+      "image": "publication_images/sg.news.yahoo.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 20,
+    "fields": {
+      "name": "Huffington Post",
+      "url": "huffingtonpost.com",
+      "image": "publication_images/huffingtonpost.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 21,
+    "fields": {
+      "name": "Bloomberg",
+      "url": "bloomberg.com",
+      "image": "publication_images/bloomberg.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 22,
+    "fields": {
+      "name": "Associated Press",
+      "url": "ap.org",
+      "image": "publication_images/ap.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 23,
+    "fields": {
+      "name": "Mashable",
+      "url": "mashable.com",
+      "image": "publication_images/mashable.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 24,
+    "fields": {
+      "name": "VentureBeat",
+      "url": "venturebeat.com",
+      "image": "publication_images/venturebeat.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 25,
+    "fields": {
+      "name": "Tech In Asia",
+      "url": "techinasia.com",
+      "image": "publication_images/techinasia.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 26,
+    "fields": {
+      "name": "Financial Times",
+      "url": "ft.com",
+      "image": "publication_images/ft.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 27,
+    "fields": {
+      "name": "The Edge Markets",
+      "url": "theedgemarkets.com",
+      "image": "publication_images/theedgemarkets.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 28,
+    "fields": {
+      "name": "CNBC",
+      "url": "cnbc.com",
+      "image": "publication_images/cnbc.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 29,
+    "fields": {
+      "name": "AFP",
+      "url": "afp.com",
+      "image": "publication_images/afp.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 30,
+    "fields": {
+      "name": "CNET",
+      "url": "cnet.com",
+      "image": "publication_images/cnet.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 31,
+    "fields": {
+      "name": "Singapore Tatler",
+      "url": "sg.asiatatler.com",
+      "image": "publication_images/sg.asiatatler.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 32,
+    "fields": {
+      "name": "Singapore Business Review",
+      "url": "sbr.com.sg",
+      "image": "publication_images/sbr.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 33,
+    "fields": {
+      "name": "SilverKris",
+      "url": "silverkris.com",
+      "image": "publication_images/silverkris.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 34,
+    "fields": {
+      "name": "Wired",
+      "url": "wired.com",
+      "image": "publication_images/wired.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 35,
+    "fields": {
+      "name": "Fast Company",
+      "url": "fastcompany.com",
+      "image": "publication_images/fastcompany.png"
+    }
+  },
+  {
+    "model": "articles.Publication",
+    "pk": 36,
+    "fields": {
+      "name": "AsiaOne",
+      "url": "travel.asiaone.com",
+      "image": "publication_images/asiaone.png"
+    }
+  }
+]

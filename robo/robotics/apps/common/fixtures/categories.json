@@ -1,0 +1,72 @@
+[
+  {
+    "model": "common.Category",
+    "pk": 1,
+    "fields": {
+      "name": "Art & Design"
+    }
+  },
+  {
+    "model": "common.Category",
+    "pk": 2,
+    "fields": {
+      "name": "Business"
+    }
+  },
+  {
+    "model": "common.Category",
+    "pk": 3,
+    "fields": {
+      "name": "Education"
+    }
+  },
+  {
+    "model": "common.Category",
+    "pk": 4,
+    "fields": {
+      "name": "Entertainment"
+    }
+  },
+  {
+    "model": "common.Category",
+    "pk": 5,
+    "fields": {
+      "name": "Food & Beverage"
+    }
+  },
+  {
+    "model": "common.Category",
+    "pk": 6,
+    "fields": {
+      "name": "Healthcare & Sciences"
+    }
+  },
+  {
+    "model": "common.Category",
+    "pk": 7,
+    "fields": {
+      "name": "Lifestyle & Travel"
+    }
+  },
+  {
+    "model": "common.Category",
+    "pk": 8,
+    "fields": {
+      "name": "Publishing & Journalism"
+    }
+  },
+  {
+    "model": "common.Category",
+    "pk": 9,
+    "fields": {
+      "name": "Software & Technology"
+    }
+  },
+  {
+    "model": "common.Category",
+    "pk": 10,
+    "fields": {
+      "name": "Sport & Fitness"
+    }
+  }
+]
