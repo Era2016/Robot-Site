@@ -1,0 +1,86 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Log In" %}{% endblock %}
+{% block breadcrumb %}{% trans "Log In" %}{% endblock %}
+
+{% block content %}
+
+<!-- login snippet -->
+<section class="app-login page-wrap">
+    <div class="container">
+        <div class="columns six offset-by-three ">
+            <div class="panel-form">
+                <div class="container">
+                <h3>{% trans "Log In" %}</h3>
+
+                  {% get_providers as socialaccount_providers %}
+
+                  {% if socialaccount_providers %}
+
+                      <p class="caption-c">{% blocktrans with site.name as site_name %}Please sign in with one
+                      of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+                      for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
+                      <div class="socialaccount_ballot">
+
+                        <ul class="socialaccount_providers">
+                          {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                        </ul>
+
+                        <div class="login-or">{% trans 'or' %}</div>
+
+                      </div>
+                      {% include "socialaccount/snippets/login_extra.html" %}
+
+                  {% else %}
+                  <p class="caption-c">{% blocktrans %}If you have not created an account yet, then please
+                  <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+                  {% endif %}
+            </div>
+                 <!--<div class="warning">
+                    <a class="" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                  </div>-->
+
+            <form class="login" method="POST" action="{% url 'account_login' %}">
+              {% csrf_token %}
+              <!-- errors-->
+              {% for field in form %}
+                  <div class="error">
+                      {% for error in field.errors %}
+                       {{ field.label }}: {{error}}
+                      {% endfor %}
+                  </div>
+
+              {% endfor %}
+
+              <!-- errors -->
+
+              {% for field in form %}
+                {% if forloop.counter == 1 %}
+                    {{ field|append_attr:"class:top" }}
+                {% elif forloop.counter == 2 %}
+                    {{ field|append_attr:"class:bottom" }}
+                {% else %}
+                    {{ field|append_attr:"class:checkbox" }}
+                {% endif %}
+              {% endfor %}
+
+              <!--{{ form.as_p }}-->
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <br><br>
+              <input class="primaryAction" type="submit" value="Login"/>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- login snippet -->
+
+
+{% endblock %}

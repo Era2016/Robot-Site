@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+</head>
+<body>
+<!-- Container for FORM ELEMENTS AND BUTTONS-->
+<div class="container">
+    <div class="row">
+        <div class="columns twelve">
+            <h1> Bolt FORM ELEMENTS AND BUTTONS</h1>
+        </div>
+    </div>
+<!-- INPUT -->
+    <div class="row">
+        <div class="column one"> Inactive </div>
+        <div class="columns four">
+            <input type = "text" value="Please enter your name"></input>
+        </div>
+        <div class="columns four">
+            <input type = "text" class="success" value="Please enter your name"></input>
+        </div>
+        <div class="column one"> Success </div>
+    </div>
+
+    <div class="row">
+        <div class="column one"> Active </div>
+        <div class="columns four">
+            <input type = "text" value="Please enter your name"></input>
+        </div>
+        <div class="columns four">
+            <input type = "text" class="error" value="Please enter your name"></input>
+        </div>
+        <div class="column one"> Error </div>
+    </div>
+<!-- DROPDOWN -->
+    <div class="row">
+        <div class="column one"> Default </div>
+        <div class="columns four">
+            <select class = "select2">
+              <option value="Category1" >Category1</option>
+              <option value="Category2" >Category2</option>
+              <option value="Category3" >Category3</option>
+              <option value="Category4" >Category4</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column one"> Default </div>
+        <div class="columns four">
+            <select class = "select1" size = "3">
+              <option value="Category1" >Category1</option>
+              <option value="Category2" >Category2</option>
+              <option value="Category3" >Category3</option>
+              <option value="Category4" >Category4</option>
+            </select>
+        </div>
+        <div class="columns four">
+            <select class ="select1" size = "3">
+              <option value="Category1" >Category1</option>
+              <option value="Category2" >Category2</option>
+              <option value="Category3" >Category3</option>
+              <option value="Category4" >Category4</option>
+              <option value="Category5" >Category5</option>
+              <option value="Category6" >Category6</option>
+              <option value="Category7" >Category7</option>
+              <option value="Category8" >Category8</option>
+              <option value="Category9" >Category9</option>
+              <option value="Category10" >Category10</option>
+            </select>
+        </div>
+        <div class="column one"> Error </div>
+    </div>
+</div>
+<!-- Container for TYPOGRAPHY-->
+<div class="container">
+    <div class="row">
+        <div class="columns twelve">
+            <h1> Bolt CSS Guidelines </h1>
+            <p> Bolt is designed to be a feature rich web application and since there are many people working on the design at the same time, I thought it would be important to put together this guide.</p>
+            <p class=""> In retrospect it was probably a better idea to start with <a href="http://getbootstrap.com/">bootstrap</a> but me being me, I don't like my work looking like bootstrap. Or <a href="http://foundation.zurb.com/">foundation</a>. Yes, it would have been much easier to implement, so sorry (but not really).</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns twelve">
+            <h2><strong>Basics &amp; Grid</strong></h2>
+            <hr>
+            <p>This semi-responsive grid system follows a similar convention to most other layouts. It's designed for 1280px screens, which should be sufficient for almost every computer. This grid is semi-responsive, as it adjusts its layout for screens/windows less than 767 pixels. <b> Feel free to expand the CSS to accomodate for more screen sizes!</b></p>
+
+            <h5>Container</h5>
+            <p>The outermost wrapper is typically the  <code>&lt;div class="container"&gt; ... &lt;/div&gt; </code>. This wrapper provides a 1180 total width for the outermost box and contains a 20 pixel padding on the left and the right side. If you skip the container, the columns will fit to the entire width of the window. This should not be common, except for the navigation menu (and this may change in the near future).</p>
+            <h5>Row</h5>
+            <p> Rows encapsulate the child columns to prevent any unexpected wrapping when screens get too tiny to render each column. This setup is typically needed if there are many stages between desktop and mobile, but in our case (for the moment), we only have the two. Rows are called using <code>&lt;div class="row"&gt; ... &lt;/div&gt; </code>
+            </p>
+            <h5>Column</h5>
+            <p> Columns are sized by width percentage and spaced using a left margin. The exact size of the column is dependent on it's parent width. If you're not sure, just wrap the columns in a new container. Containers are called using <code>&lt;div class="columns #"&gt; ... &lt;/div&gt; </code> and I will get into them further in the next paragraphs.
+            </p>
+
+            <p> To recap here is a typical setup:
+            </p>
+            <pre><code>        &lt;div class="container"&gt;
+            &lt;div class="row"&gt;
+                &lt;div class="columns six"&gt;
+                    &lt;p>This is a column of text&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class="columns six"&gt;
+                    &lt;p>This is a column text too!&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div>
+        &lt;/div></pre></code>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns twelve">
+            <h5> Grid </h5>
+            <p> This grid system consists off a 12 column layout.</p>
+            <div class="row row-demo">
+                <div class="columns one"><div class="panel-demo">&nbsp;</div>
+                </div>
+                <div class="columns ten"><div class="panel-demo-white">columns one</div>
+                </div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns two"><div class="panel panel-demo">columns two</div></div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns three"><div class="panel panel-demo">columns three</div></div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns four"><div class="panel panel-demo">columns four</div></div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns five"><div class="panel panel-demo">columns five</div></div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns six"><div class="panel panel-demo">columns six</div></div>
+                </div>
+            <div class="row row-demo">
+                <div class="columns seven"><div class="panel panel-demo">columns seven</div></div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns eight"><div class="panel panel-demo">columns eight</div></div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns nine"><div class="panel panel-demo">columns nine</div></div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns ten"><div class="panel panel-demo">columns ten</div></div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns eleven"><div class="panel panel-demo">columns eleven</div></div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns twelve"><div class="panel panel-demo">columns twelve</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns twelve">
+            <h5>Nested Columns</h5>
+            <p> Nested columns is not recommended, but can be accomplished by wrapping the columns in a row class.</p>
+            <div class="row row-demo">
+                <div class="columns six">
+                    <div class="panel-demo">columns six</div>
+                        <div class="row row-demo">
+                            <div class="columns six">
+                                <div class="panel panel-demo">columns six</div>
+                            </div>
+                            <div class="columns six">
+                                <div class="panel panel-demo">columns six</div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns twelve">
+            <h5> Offset </h5>
+            <p> Offsets work in a similar fashion to grids.</p>
+           <div class="row row-demo">
+                <div class="columns two offset-by-three"><div class="panel panel-demo">offset-by-three</div>
+                </div>
+            </div>            <div class="row row-demo">
+                <div class="columns two offset-by-four"><div class="panel panel-demo">offset-by-four</div>
+                </div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns two offset-by-five"><div class="panel panel-demo">offset-by-five</div>
+                </div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns two offset-by-six"><div class="panel panel-demo">offset-by-six</div>
+                </div>
+            </div>
+            <div class="row row-demo">
+                <div class="columns two offset-by-seven"><div class="panel panel-demo">offset-by-seven</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns twelve">
+            <h2><strong>Typography</strong></h2>
+            <hr>
+            <p>This style's HTML is rendered at a font-size of 62.5%, which allows us to use <strong>1em</strong> = <strong>10px</strong>. The recommendation is to use em for fonts, as they take the parent font-size as the basis for its size and rem for padding and emergency cases, because they take the root (html) font-size as the basis for its size.</p>
+
+            <h5>Headlines</h5>
+            <p>All headlines use Gotham for its font, at a font weight of 300. Font weights and styles can be specified specifically or through using the <code>&lt;strong&gt;</code> or <code>&lt;em&gt;</code> </p>
+            <h1>Headline 1</h1>
+            <h2>Headline 2</h2>
+            <h3>Headline 3</h3>
+            <h4>Headline 4</h4>
+            <h5>Headline 5</h5>
+            <h6>Headline 6</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns twelve">
+            <h5>Type</h5>
+            <p>We use three fonts in our application and each of them serve different purposes. All headlines and captions use the Gotham font family. All body font use the Whitney font family. Text in editors use the Merriweather font family. Examples of these fonts are shown below:</p>
+            <div class="row">
+            <div class="columns four" style="font-family:Gotham"><h6><strong>Gotham</strong></h6>Being the savage's bowsman, that is, the person who pulled the bow-oar in his boat (the second one from forward), it was my cheerful duty to attend upon him while taking that hard-scrabble scramble upon the dead whale's back. </div>
+            <div class="columns four" style="font-family:Whitney"><h6><strong>Whitney</strong></h6>Being the savage's bowsman, that is, the person who pulled the bow-oar in his boat (the second one from forward), it was my cheerful duty to attend upon him while taking that hard-scrabble scramble upon the dead whale's back. </div>
+            <div class="columns four" style="font-family:Merriweather"><h6><strong>Merriweather</strong></h6>Being the savage's bowsman, that is, the person who pulled the bow-oar in his boat (the second one from forward), it was my cheerful duty to attend upon him while taking that hard-scrabble scramble upon the dead whale's back. </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

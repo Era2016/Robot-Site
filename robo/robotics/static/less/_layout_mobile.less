@@ -1,0 +1,216 @@
+//
+// Mobile Site Layout
+// --------------------------------------------------
+
+// Overrides
+// -------------------
+
+section.hero,section.why,section.features,section.vp {
+    padding-top:80px;
+    padding-bottom:80px;
+    padding-left: 30px;
+    padding-right: 30px;
+    min-height:0;
+    height:auto;
+}
+
+img.img-bolt-stand2 {display:none;}
+
+a.text {display: none !important;}
+
+.button-login {
+  display: none !important;
+}
+
+section.vp {
+  img{
+      padding-bottom:0;
+    }
+
+}
+
+section.features {
+
+  h5{
+    margin-top:10px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  h6 {
+    margin-bottom: 0px;
+  }
+  p {
+    margin-bottom: 10px;
+  }
+
+
+  .img-container:before{
+    padding-top:0;
+  }
+  .img-container{
+    border-right: 0;
+
+    & img{
+      width:100%;
+    }
+  }
+}
+
+ul[class*="app-nav"] {
+  height:35px;
+}
+// section.features {
+//  /* .columns.one-half {
+//     border-bottom: 1px solid @palette-Grey-400;
+//   }*/
+
+//   .bg-box{
+//       margin:40px;
+//   }
+
+//   .row {
+//     display:flex;
+//     flex-wrap: wrap;
+//   }
+
+//   .feature{
+//     padding-top:30px;
+
+//   }
+
+//   .columns.story{
+//     order:1;
+//     padding:0;
+//   }
+//   .columns.phone{
+//     order:2;
+//   }
+
+
+// }
+
+section.footer {
+  li {
+    float:left;
+    padding:10px;
+  }
+}
+
+section.support{
+  padding-bottom:15px;
+}
+
+.side-margin{
+  display:none;
+}
+
+// Base Styles
+// -------------------
+
+.row {
+  padding:20px;
+  margin:10px;
+
+  & .row{
+    padding:0;
+    margin:0;
+    //padding-top:10px;
+
+    & .columns{
+      padding-top:10px;
+    }
+
+  }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto !important;
+  padding: 0;
+  box-sizing: border-box; }
+
+.column,
+.columns {
+  width: 100% !important;
+  //padding:0 30px;
+  //padding-bottom:10px;
+  margin:0 !important;
+  float: left;
+  box-sizing: border-box; 
+}
+
+// Spacing
+// -------------------
+
+button,
+.button {
+  margin-bottom: 1rem; }
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem; }
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 2.5rem; }
+
+// Utilities
+// -------------------
+
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+.u-pull-right {
+  float: right; }
+.u-pull-left {
+  float: left; }
+
+// Forms
+.signup-form  {
+    overflow: hidden;
+    display: block;
+    //padding: 0;
+
+    input[type="text"] {
+      height:40px;
+      //padding: 0;
+      width:100%;
+      font-size: 16pt;
+      //padding-bottom: 0;
+      //margin-bottom:0;
+    }
+}
+
+.signup-form input[type="submit"] {
+  //height: 30px;
+  width: 100%;
+  //padding: 15px;
+  font-size: 12pt;
+  }
+
+// Clearing
+// -------------------
+
+.container:after,
+.row:after,
+.u-cf {
+  content: "";
+  display: table;
+  clear: both; }
+
+
+
+

@@ -1,0 +1,37 @@
+
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account %}
+{% load widget_tweaks %}
+
+
+{% block head_title %}{% trans "Confirm E-mail Address" %}{% endblock %}
+{% block breadcrumb %}{% trans "Confirm E-mail Address" %}{% endblock %}
+
+
+{% block content %}
+
+<!-- login snippet -->
+<section class="app-login page-wrap">
+    <div class="container">
+        <div class="columns six offset-by-three ">
+            <div class="panel-form">
+              <div class="container">
+                <h3>{% trans "Confirm E-mail Address" %}</h3>
+
+                {% user_display confirmation.email_address.user as user_display %}
+                        
+                <p class="caption-c">{% blocktrans with confirmation.email_address.email as email %}You have confirmed that <a href="mailto:{{email}}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</p>
+
+              </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- login snippet -->
+
+{% endblock %}
+

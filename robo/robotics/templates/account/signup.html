@@ -1,0 +1,68 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block head_title %}{% trans "Sign Up" %}{% endblock %}
+{% block breadcrumb %}{% trans "Sign Up" %}{% endblock %}
+
+{% block content %}
+
+<!-- login snippet -->
+<section class="app-login page-wrap">
+    <div class="container">
+        <div class="columns six offset-by-three ">
+            <div class="panel-form">
+              <div class="container">
+                <h3>{% trans "Sign Up" %}</h3>
+                <p class="caption-c">{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">log in</a>.{% endblocktrans %}</p>
+              </div>
+                <!--<div class="warning">
+                    <a class="" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                  </div>-->
+            <form class="signup" id="signup_form" method="POST" action="{% url 'account_signup' %}">
+              {% csrf_token %}
+              <!-- errors-->
+              {% for field in form %}
+                  <div class="error">
+                      {% for error in field.errors %}
+                       {{ field.label }}: {{error}}
+                      {% endfor %}
+                  </div>
+
+              {% endfor %}
+              <!-- errors -->
+              {% for field in form %}
+                {% if forloop.first %}
+                    {{ field|append_attr:"class:top" }}
+                {% elif forloop.counter == 2 %}
+                    {{ field|append_attr:"class:left middle" }}
+                {% elif forloop.counter == 3 %}
+                    {{ field|append_attr:"class:right middle" }}
+                {% elif forloop.counter == 4 %}
+                    {{ field|append_attr:"class:left middle" }}
+                {% elif forloop.counter == 5 %}
+                    {{ field|append_attr:"class:right middle" }}
+                {% elif forloop.counter == 6 %}
+                    {{ field|append_attr:"class:left bottom" }}
+                {% elif forloop.counter == 7 %}
+                    {{ field|append_attr:"class:right bottom" }}
+                {% else %}
+                    {{ field|append_attr:"class:middle" }}
+                {% endif %}
+              {% endfor %}
+
+              <!--{{ form.as_p }}-->
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <br><br>
+              <input class="primaryAction" type="submit" value="Sign Up"/>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- login snippet -->
+
+{% endblock %}

@@ -1,0 +1,639 @@
+//
+// Site Layout
+// --------------------------------------------------
+
+// Base Styles
+// -------------------
+
+body{
+    &::-webkit-scrollbar { width: 0 !important }
+}
+
+.page-wrap{
+  padding-top:10vh;
+  //min-height: 100%;
+}
+
+.container { 
+  position: relative;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.row {
+  padding:20px 0;
+
+  &.row-demo{
+    padding:5px 0;
+  }
+
+  &.sub-nav{
+    padding: 0;
+  }
+
+}
+
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+
+  .stretch{
+    align-items: stretch;
+  }
+}
+
+
+.column,
+.columns {
+  float:left;
+  margin-left: 4% ; 
+} 
+.column:first-child,
+.columns:first-child {
+  margin-left: 0; 
+}
+
+
+
+.one.column,
+.one.columns                    { width: 6.66666666667%; }
+.two.columns,.two.column        { width: 13.3333333333%; }
+.three.columns,.three.column    { width: 22%;            }
+.four.columns,.four.column      { width: 30.6666666667%; }
+.five.columns,.five.column      { width: 39.3333333333%; }
+.six.columns,.six.column        { width: 48%;            }
+.seven.columns,.seven.column    { width: 56.6666666667%; }
+.eight.columns,.eight.column    { width: 65.3333333333%; }
+.nine.columns,.nine.column      { width: 74.0%;          }
+.ten.columns,.ten.column        { width: 82.6666666667%; }
+.eleven.columns,.eleven.column  { width: 91.3333333333%; }
+.twelve.columns,.twelve.column  { width: 100%; margin-left: 0; }
+
+.one-third.column               { width: 30.6666666667%; }
+.two-thirds.column              { width: 65.3333333333%; }
+
+.one-half.column, .one-half.columns { 
+  width: 50%; 
+  padding-left: 0% !important;
+  margin-left: 0 !important;
+}
+
+.feat-icon{
+  img{
+    max-height:50px;
+  } 
+  &.column,
+  &.columns {
+    float:left;
+    margin-left: 4% ; 
+  } 
+  &.column:first-child,
+  &.columns:first-child {
+    margin-left: 0; 
+  }
+}
+
+/* Offsets */
+.offset-by-one.column,
+.offset-by-one.columns          { margin-left: 8.66666666667%; }
+.offset-by-two.column,
+.offset-by-two.columns          { margin-left: 17.3333333333%; }
+.offset-by-three.column,
+.offset-by-three.columns        { margin-left: 26%;            }
+.offset-by-four.column,
+.offset-by-four.columns         { margin-left: 34.6666666667%; }
+.offset-by-five.column,
+.offset-by-five.columns         { margin-left: 43.3333333333%; }
+.offset-by-six.column,
+.offset-by-six.columns          { margin-left: 52%;            }
+.offset-by-seven.column,
+.offset-by-seven.columns        { margin-left: 60.6666666667%; }
+.offset-by-eight.column,
+.offset-by-eight.columns        { margin-left: 69.3333333333%; }
+.offset-by-nine.column,
+.offset-by-nine.columns         { margin-left: 78.0%;          }
+.offset-by-ten.column,
+.offset-by-ten.columns          { margin-left: 86.6666666667%; }
+.offset-by-eleven.column,
+.offset-by-eleven.columns       { margin-left: 95.3333333333%; }
+
+.offset-by-one-third.column,
+.offset-by-one-third.columns    { margin-left: 34.6666666667%; }
+.offset-by-two-thirds.column,
+.offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
+
+.offset-by-one-half.column,
+.offset-by-one-half.columns     { margin-left: 52%; }
+
+
+// Spacing
+// -------------------
+
+button,
+.button {
+  margin-bottom: 1rem; }
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem; }
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 2.5rem; }
+
+// Panels
+// -------------------
+
+.panel{
+  
+  &-form{
+    //& > * {margin:0 30px;}
+    background-color: #fff;
+    border-radius:5px;
+    padding-top:20px;
+    margin:20px 0;
+
+    h3{padding-bottom:1em;}
+
+    &.left{
+
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &.right{
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
+    }
+    &.no-radius{
+      border-radius:0 !important;
+    }
+
+  }
+
+.panel-form-padding {
+  padding:20px 40px;
+}
+ 
+
+  &-white{
+    background-color: #fff;
+    border-radius:5px;
+    padding:20px;
+  }
+
+  &-demo{
+    background-color: @boltGrey-20;
+    border-radius:3px;
+    padding:10px;
+  }
+
+  &-demo-white{
+    background-color: #fff;
+    border-radius:3px;
+    padding:10px;
+  }
+
+}
+
+
+// Dividers / Horizontal Rules
+// -------------------
+
+hr {
+  margin-top: 3rem;
+  margin-bottom: 3.5rem;
+  border-width: 0;
+  border-top: 1px solid @boltGrey-40; 
+  
+  &.dark{
+  border-color: @boltGrey-60; 
+  }
+
+  &.small{
+  margin:0 40px;
+  }
+
+  &.line {
+  height: 6px;
+  background: url(../img/hr-11.png) repeat-x 0 0;
+  border: 0;
+  }
+
+  &.line-white {
+  height: 6px;
+  background: url(../img/hr-12.png) repeat-x 0 0;
+  border: 0;
+  }
+}
+
+// Utilities
+// -------------------
+
+.u-pad-left {padding-left:20px;}
+.u-pad-right {padding-right:20px;}
+.u-full-width {width: 100%;box-sizing: border-box;}
+.u-max-full-width {max-width: 100%;box-sizing: border-box;}
+.u-pull-right {float: right;}
+.u-pull-left {float: left;}
+.u-pull-center {display: block; margin-left:auto; margin-right:auto; text-align: center;}
+
+.u-vert-center {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+// Clearing
+// -------------------
+
+.container:after,
+.row:after,
+.u-cf,
+.u-pull-center:after {
+  content: "";
+  display: table;
+  clear: both; 
+}
+
+// Hero
+// -------------------
+
+section.hero {
+  background: url(../img/bg/bolt-hero-image.jpg) no-repeat;
+  background-size:cover;
+  background-color:@boltBlack;
+  height:100vh;
+  min-height: 800px;
+  color:@textAltColor;
+
+
+  .columns {
+    margin-top:calc(~"20vh + 120px");
+
+  }
+
+}
+
+// Why Bolt
+// -------------------
+
+section.why {
+  height:100vh;
+  min-height: 800px;
+  color:@textColor;
+
+  .columns {
+    margin-top:calc(~"20vh + 120px");
+  }
+
+  img{
+    height:70px;
+    padding-bottom:30px;
+  }
+
+  &-company {
+    background-color:#F5BA4E; // This is a special one..
+    color:@textAltColor;
+  }
+
+  &-writer {
+    background-color:@boltBlue-100;
+    color:@textAltColor;
+  }
+}
+
+// Value Prop
+// -------------------
+
+section.vp {
+  padding:100px 0 20px 0;
+
+  .columns {
+    margin-bottom:80px;
+    //margin-top:calc(~"20vh + 120px");
+  }
+
+  img{
+    height:100px;
+    padding-bottom:30px;
+  }
+
+  &-company {
+    background-color:@boltGrey-5;
+    color:@textColor;
+  }
+
+  &-writer {
+    background-color:@boltGrey-5;
+    color:@textColor;
+  }
+}
+
+// Features
+// -------------------
+
+section.features {
+  padding:100px 0 20px 0;
+  background-color:#fff;
+
+  .img-container{
+    overflow: hidden;
+    width:100%;
+    border-right: 1px solid @boltGrey-20;
+
+    &:before {
+      content: ' ';
+      display: block;
+      vertical-align:middle;
+      padding-top:40px;
+    }
+
+    & img{
+      vertical-align: middle;
+      display: inline-block;
+      width:500px;
+      z-index: -1;
+    }
+  }
+}
+
+// Signup
+// -------------------
+
+section.signup {
+  background-color:@boltBlue-100;
+  padding:60px;
+  color:@textAltColor;
+  z-index: 10;
+}
+
+// Support
+// -------------------
+
+section.support {
+  background-color:@boltGreyAlt;
+  padding:20px 0 0 0;
+  color:@textAltColor;
+  img {
+    vertical-align: middle;
+    height:100px;
+  }
+  p {
+    font-weight: 700;
+    margin-bottom:-10px;
+    vertical-align: text-bottom;
+  }
+  & > *{
+    display:inline;
+  }
+
+}
+
+// Footer
+// -------------------
+
+section.footer {
+  background-color:@boltBlack;
+  padding:60px 0 20px 0;
+  color:@textAltColor;
+
+  .footer-logo  {
+    width:10vh;
+    padding:10px;
+    float:left;
+  }
+
+  .footer-text  {
+    margin-left:15vh;
+  }
+
+  ul li {
+    list-style: none;
+    color:@boltGrey-20;
+    text-align: right;
+    margin-bottom: 0;
+
+    a {
+      text-decoration: none;
+      color:@boltGrey-20;
+    }
+  }
+
+  a.badge {
+    display: block;
+    text-decoration: none;
+    padding:10px;
+    margin:5px;
+    border-radius: 30px;
+    text-align: center;
+    background-color: @boltGreyAlt;
+    color:@textAltColor;
+    transition: background-color 0.5s ease;
+  }
+
+  a.twitter-button:hover {
+    background-color: @socialTwitter;
+  }
+
+  a.facebook-button:hover {
+    background-color: @socialFacebook;
+  }
+
+}
+
+// Copyright
+// -------------------
+
+section.copyright{
+  background-color:#121212;
+  color:@boltGrey-40;
+  padding:10px 0;
+  text-align:center;
+}
+
+/////////////////////////////////////////////////////////////////////////
+// APPLICATION ----------------------------------------------------------
+/////////////////////////////////////////////////////////////////////////
+
+.pad-left{
+  padding-left:20px;
+}
+.pad-right{
+  padding-right:20px;
+}
+
+section.app-login{
+  min-height:400px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+
+  form{
+    margin:0;
+    div{
+      margin:0 30px;
+    }
+  }
+  input,select{
+    width:90%;
+    margin:5px 5%;
+  }
+  input.top,select.top{
+    margin: 0 5%;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom:1px @boltGrey-5 solid;
+    //border-bottom: 0;
+  }
+
+  input.left{
+    display: inline;
+    float:left;
+    width: 45%;
+    margin-right:-1px!important;
+    border-bottom-right-radius: 0;
+    border-right:1px @boltGrey-5 solid;
+  }
+  input.right{
+    margin-left:-1px!important;
+    display: inline;
+    float:right;
+    width: 45%;
+    border-bottom-left-radius: 0;
+    border-left:1px @boltGrey-5 solid;
+
+  }
+
+
+
+  input.middle{
+    margin: -1px 5% -1px 5%;
+
+    border-top:1px @boltGrey-5 solid;
+    border-bottom:1px @boltGrey-5 solid;
+    border-radius:0;
+  }
+  input.bottom{
+    margin: 0 5%;
+    margin-bottom:40px;
+    border-top:1px @boltGrey-5 solid;
+    //border-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+
+  }
+
+  .checkbox{
+    &:after {
+      content: "Remember Me";
+      padding-left:25px;
+    }
+  }
+
+  input[type="submit"]{
+    padding:0;
+    margin:0;
+    font-family: @headingFont;
+    background-color: @boltBlue-100;
+    width:100%;
+    height:50px;
+    border:0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+}
+
+
+
+section.app-main {
+  min-height:400px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+
+  .headline{
+    width:100%;
+    border-radius: 0;
+    border:0;
+    border-bottom:1px solid @boltGrey-80;
+    font-size:30px;
+    font-weight: 400;
+    height:auto;
+    padding:10px 10px;
+    &:focus {
+      border-top: 0 !important;
+      border-left:0!important;
+      border-right:0!important;
+
+    }
+
+  }
+
+  .compose-box{
+    margin: 25px 0;
+    padding:80px;
+    /*border-radius:5px; */
+    background-color: #fff;
+  }
+
+}
+
+
+section.app-footer {
+  background-color:@boltBlack;
+  padding:20px 0 20px 0;
+
+  color:@textAltColor;
+  .footer-logo  {
+    width:10vh;
+    padding:10px;
+    float:left;
+  }
+  .footer-text  {
+    margin-left:15vh;
+  }
+  ul li {
+    list-style: none;
+    color:@boltGrey-20;
+    text-align: right;
+    margin-bottom: 0;
+    a {
+      text-decoration: none;
+      color:@boltGrey-20;
+    }
+  }
+
+  a.badge {
+    display: block;
+    text-decoration: none;
+    padding:10px;
+    margin:5px;
+    border-radius: 30px;
+    text-align: center;
+    background-color: @boltGreyAlt;
+    color:@textAltColor;
+    transition: background-color 0.5s ease;
+  }
+  a.twitter-button:hover {
+    background-color: @socialTwitter;
+  }
+  a.facebook-button:hover {
+    background-color: @socialFacebook;
+  }
+
+}

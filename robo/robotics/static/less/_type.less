@@ -1,0 +1,252 @@
+//
+// Typography
+// --------------------------------------------------
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.9em;
+  font-weight: 400;
+  font-family: @paragraphFont;
+	-webkit-font-smoothing: antialiased;
+	color: @textColor;
+} 
+
+
+.app-body{
+  background-color: @boltGrey-20;
+
+}
+
+.alt{
+  font-family:@altParagraphFont;
+  font-size: 1.3em;
+}
+
+
+// Heading
+// -------------------
+
+h1,h2, h3, h4, h5, h6 {
+  font-family:@headingFont;
+  -webkit-font-smoothing: antialiased;
+  margin-top: 0;
+  margin-bottom: 1rem;
+   }
+
+h1 { font-weight: 300; font-size: 4.4rem; line-height: 1.2;  }
+h2 { font-weight: 300; font-size: 3.6rem; line-height: 1.25; }
+h3 { font-weight: 300; font-size: 3.0rem; line-height: 1.3;  }
+h4 { font-weight: 300; font-size: 2.4rem; line-height: 1.35; }
+h5 { font-weight: 300; font-size: 1.8rem; line-height: 1.5;  }
+h6 { font-weight: 300; font-size: 1.5rem; line-height: 1.6;  }
+
+/* Larger than tablet */
+@media (min-width: 768px) {
+  h1 { font-size: 5.0rem; }
+  h2 { font-size: 4.2rem; }
+  h3 { font-size: 3.6rem; }
+  h4 { font-size: 3.0rem; }
+  h5 { font-size: 2.4rem; }
+  h6 { font-size: 2.0rem; }
+}
+
+// Paragraph
+// -------------------
+
+p { margin-top: 0; font-size: 1.5rem;}
+a {color: @boltBlue-100;}
+a:hover {color:@boltBlue-80;}
+a:active {color:@boltBlue-40;}
+
+// Basic Elements
+// -------------------
+
+abbr,
+acronym {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+address {
+	font-size: 1em;
+	font-style: italic;
+}
+
+blockquote {
+	margin: 1em 0;
+	padding: 0 0 0 2em;
+}
+
+cite {
+	font-style: italic;
+}
+
+em,
+i {
+	font-style: italic;
+}
+
+strong,
+b {
+	font-weight: bold;
+}
+
+.caption-a{
+font-family: @headingFont;
+font-size: 1.3rem;
+font-weight: 700;
+font-color:@boltGrey-80;
+}
+
+
+.caption-b{
+font-family: @headingFont;
+font-size: 1.3rem;
+font-weight: 700;
+font-color:@boltGrey-40;
+}
+
+
+.caption-c{
+font-family: @headingFont;
+font-size: 1.3rem;
+font-color:@boltGrey-40;
+}
+
+// Alerts
+// -------------------
+
+.alert{
+  text-align: center;
+  //padding:5px 25px;
+  //border-radius:5px;
+  background-color:@boltBlue-80;
+  color:#fff;
+
+  &.error{
+    background-color:@boltRed;
+    color:#fff;
+  }
+
+  &.warning{
+    background-color:@boltOrange;
+    color:@boltBlack;
+  }
+
+  &.success{
+    background-color:@boltGreen;
+    color:#fff;
+  }
+
+}
+
+.error {
+  color:@boltRedAlt;
+}
+
+.warning {
+  color:@boltOrangeAlt;
+}
+
+.success {
+  color:@boltGreenAlt;
+}
+
+
+
+
+// Code
+// -------------------
+
+
+code {
+  font-family: Monaco,Courier,"Courier New";
+  padding: .2rem .5rem;
+  margin: 0 .2rem;
+  font-size: 90%;
+  white-space: nowrap;
+  background: #F1F1F1;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px; }
+pre > code {
+  display: block;
+  padding: 1rem 1.5rem;
+  white-space: pre; }
+
+// Lists
+// -------------------
+
+ul {
+  list-style: circle inside; }
+ol {
+  list-style: decimal inside; }
+ol, ul {
+  padding-left: 0;
+  margin-top: 0; }
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 1.5rem 0 1.5rem 3rem;
+  font-size: 90%; }
+li {
+  margin-bottom: 1rem; }
+
+// Form
+// -------------------
+
+form {
+	margin: 1em 0;
+}
+
+// Descriptions
+// -------------------
+
+dl {
+	margin: 1em 0;
+	dt {
+		font-weight: bold;
+	}
+	dd {
+		margin: 0 0 0.5em;
+	}
+}
+
+// Tables
+// -------------------
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid @boltGrey-5; }
+th:first-child,
+td:first-child {
+  padding-left: 0; }
+th:last-child,
+td:last-child {
+  padding-right: 0; }
+
+// Quick Color References
+// -------------------
+
+.boltYellow{ color:@boltYellow-100;}
+.boltTeal{color:@boltTeal-100;}
+.boltBlue{color:@boltBlue-100;}
+.boltGrey{color:@boltGrey-100;}
+.boltGreen{color:@boltGreen;}
+.boltRed{color:@boltRed;}
+.boltOrange{color:@boltOrange;}
+.boltLightGrey{color:@boltLightGrey;}
+
+.bgBoltYellow{ background-color:@boltYellow-100;}
+.bgBoltTeal{background-color:@boltTeal-100;}
+.bgBoltBlue{background-color:@boltBlue-100;}
+.bgBoltGrey{background-color:@boltGrey-100;}
+.bgBoltGreen{background-color:@boltGreen;}
+.bgBoltRed{background-color:@boltRed;}
+.bgBoltOrange{background-color:@boltOrange;}
+.bgBoltLightGrey{background-color:@boltLightGrey;}
