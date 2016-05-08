@@ -1,0 +1,92 @@
+<md-content flex layout-fill layout="row" layout-sm="column" class="bgBoltGrey-20" layout-wrap>
+    <div flex="15" flex-md="100" flex-sm="100" layout="column">
+    </div>
+    <div flex="70" flex-md="100" flex-sm="100" layout="column" layout-fill class="bgBoltGrey-20">
+        <!-- Initial Assignment -->
+        <div class="section-heading" layout="column">
+            <!-- Title & Organization-->
+            <div class="assignment-title" layout="row" layout-align="space-between center">
+                <input class="title boltTeal" placeholder="Add a Job Title" ng-model="currentJob.title" flex><span class="error">{[{ errors.title | errorFormatter }]}</span></input>
+                <div class="title">{[{currentOrg.name}]}</div>
+            </div>
+            <!-- Details Bar-->
+            <div class="detail-section detail-bar">
+                <!-- First Row -->
+                <div layout="row" layout-fill layout-align="space-between center">
+                    <!-- Type of Writing -->
+                    <md-input-container class="no-padding" flex>
+                        <md-select name="contentType" ng-model="currentJob.contentType" placeholder="Writing Type">
+                            <md-option ng-repeat="contentType in Enum.WritingContentType.values" ng-value="contentType">{[{contentType.label}]}</md-option>
+                        </md-select>
+                        <span class="error">{[{ errors.contentType | errorFormatter }]}</span>
+                    </md-input-container>
+                    <!-- Goal -->
+                    <md-input-container class="no-padding" flex>
+                        <span class="error">{[{ errors.goal | errorFormatter }]}</span>
+                        <md-select name="goal" ng-model="currentJob.goal" placeholder="Goal">
+                            <md-option ng-repeat="goal in Enum.WritingGoal.values" ng-value="goal">{[{goal.label}]}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <!-- Categories -->
+                    <md-input-container ng-show="categories.length" class="no-padding" style="margin-left:5px; margin-right:5px;" flex>
+                        <span class="error">{[{errors.categories | errorFormatter}]}</span>
+                        <md-select name="category" class="brief-categories" ng-model="currentJob.category" placeholder="Industry">
+                            <md-option ng-repeat="category in categories" ng-value="category">{[{category.label}]}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <!-- Style -->
+                    <md-input-container class="no-padding" flex>
+                        <span class="error">{[{ errors.style | errorFormatter }]}</span>
+                        <md-select name="style" ng-model="currentJob.style" placeholder="Style">
+                            <md-option ng-repeat="style in Enum.WritingStyle.values" ng-value="style">{[{style.label}]}</md-option>
+                        </md-select>
+                    </md-input-container>
+                     <!-- Internal/External -->
+                    <md-input-container class="no-padding" flex>
+                        <span class="error">{[{ errors.canView | errorFormatter }]}</span>
+                        <md-select name="canView" ng-model="currentJob.canView" placeholder="Can View">
+                            <md-option ng-repeat="canView in Enum.CanView.values" ng-value="canView">{[{canView.label}]}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+                <!-- Second Row -->
+                <div layout="row" layout-fill layout-align="space-between center">
+                    <!-- Brief Closing Date -->
+                    <span class="error">{[{ errors.closingDate | errorFormatter }]}</span>
+                    <md-datepicker ng-model="currentJob.closingDate" md-placeholder="Closing Date" class="frame" style="margin-left:5px; margin-right:5px" flex></md-datepicker>
+                    <!-- Due Date -->
+                    <span class="error">{[{ errors.deadline | errorFormatter }]}</span>
+                    <md-datepicker ng-model="currentJob.deadline" md-placeholder="Due Date" class="frame" style="margin-left:5px; margin-right:5px" flex></md-datepicker>
+                    <!-- Point of View -->
+                    <md-input-container class="no-padding">
+                        <span class="error">{[{ errors.pointOfView | errorFormatter }]}</span>
+                        <md-select name="pointOfView" ng-model="currentJob.pointOfView" placeholder="Narrative">
+                            <md-option ng-repeat="pointOfView in Enum.WritingPointOfView.values" ng-value="pointOfView">{[{pointOfView.label}]}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <!-- Word Count -->
+                    <span class="error">{[{ errors.wordCount | errorFormatter }]}</span>
+                    <input class="no-padding" type="text" name="topic" ng-model="currentJob.wordCount" flex placeholder="Word Count"/>
+                    <!-- Price -->
+                    <span class="error">{[{ errors.price | errorFormatter }]}</span>
+                    <input type="text" name="price" ng-model="currentJob.price" placeholder="Price" flex="initial" ui-money-mask=0 />
+                </div>
+            </div>
+            <div class="keyword-section" layout="row" layout-fill layout-align="start center">
+                <p class="caption-b" style="padding-right:10px;">KEYWORDS</p>
+                <md-chips ng-model="currentJob.keywords" readonly="" placeholder="Enter a keyword" delete-button-label="Remove Keyword" delete-hint="Press delete to remove keyword" secondary-placeholder="+Keyword"></md-chips>
+            </div>
+            <div class="instruction-section" layout="column">
+                <p class="caption-a">JOB DETAILS</p>
+                <textarea class="section" type="text" name="message" ng-model="currentJob.description" placeholder="Share specific details about the job." ng-auto-expand>
+                </textarea>
+            </div>
+        </div>
+        <a class="section-button bgBoltTeal" layout="row" layout-align="center center" ng-click="saveJob()">
+            <p>Post Job</p>
+        </a>
+        <!-- END Initial Assignment -->
+    </div>
+    <div flex="15" flex-md="100" flex-sm="100" layout="column">
+    </div>
+</md-content>

@@ -1,0 +1,36 @@
+<md-content layout="row" class="bgBoltGrey-20" layout-wrap>
+    <div flex="5" flex-lg="100" flex-md="100" flex-sm="100"></div>
+    <div flex="90" flex-lg="100" flex-md="100" flex-sm="100" layout="row" class="bgBoltGrey-20" layout-wrap>
+        <div layout="row" layout-wrap layout-align="start center" style="align-items:stretch;">
+            <div flex="33" flex-md="50" flex-sm="100" layout-padding layout="column" ng-repeat="org in orgs" ng-if="org.id !=currentOrg.id" >
+                <div layout="row" flex>
+                    <div class="org-card" layout="column" flex>
+                        <!-- Organisation Img -->
+                         <img class="org-img" style="margin:10px;" ng-src="{[{ org.picture || '/static/assets/img/logo-transparent.png' }]}">
+                        <div class="org-top bgBoltBlue " layout="row" layout-align="start center">
+                        <span class="org-span"  ng-click="viewOrg(org)">{[{org.name}]}</span>
+                        </div>
+                        <!-- Keywords -->
+                        <div layout="row" layout-padding layout-wrap layout-align="end center">
+                            <div class="chip" style="margin-bottom:5px;" >{[{org.industry}]}</div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <div layout="column" layout-align="center center" flex>
+                            <p class="caption-a" style="padding:10px; margin:0 20px;text-align: justify;">{[{org.description | limitTo:300}]}{[{org.description.length > 200 ? '...' : ''}]} <i ng-click="viewOrg(org)" class="fa fa-external-link-square"></i></p>
+                        </div>
+                        
+                        <!-- Buttons -->
+                        <div class="" layout="row">
+                            <a class="section-button bgBoltBlue" layout="row" layout-align="center center" flex ng-click="viewJobs(org)">
+                             View Jobs
+                        </a>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div flex="5" flex-lg="100" flex-md="100" flex-sm="100"></div>
+</md-content>

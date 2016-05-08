@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="columns twelve">
+            <h5>Notes</h5>
+            <div class="row">
+                <div class="columns eight">
+                    <div ng-controller="NoteController" class="md-padding" id="popupContainer">
+                        <md-content layout-padding>
+                            <!-- <input type="text" class="form-control" placeholder="Note Search" ng-model="searchNote"> -->
+                            <md-button class="md-primary md-raised" ng-click="newNoteMaterial($event)" flex flex-md="100">
+                                NEW NOTE
+                            </md-button>
+                            <!-- <button ng-click="newNoteMaterial($event)">New Note</button> -->
+                            <!-- <button ng-click="resetNotes()">Reset</button> -->
+                            <!-- <form ng-show="editing" ng-submit="editing=false">
+                                <label>Title:</label>
+                                <input type="text" ng-model="currentNote.title" placeholder="Title" ng-required/>
+                                <textarea ng-model="currentNote.content" placeholder="Contents" ng-required></textarea>
+                                <button type="submit" ng-click="saveNote()">Save</button>
+                           </form> -->
+                        </md-content>
+                    </div>
+                </div>
+                <div class="columns four">
+                    <div class="panel panel-white" ng-repeat="note in $storage.notes | filter:searchNote" style="margin-bottom:10px;">
+                        {[{note}]}
+                        <button ng-click="deleteNote(note.id)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

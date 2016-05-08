@@ -17,13 +17,17 @@ Gunicorn/Nginx and even uWSGI/Nginx.
 For configuration purposes, the following table maps the 'robo' environment
  variables to their Django setting(It should be added to cloud in the future):
 
+
+
+   
 ** TODO Tools to be Added
-|--------+-------------------------------------------------+----------------|
-| Tools  | Description                                     | Status         |
-|--------+-------------------------------------------------+----------------|
-| Sentry | For logging                                     | Not configured |
-| Travis | Continuous Integration                          | Not Configured |
-| Auth0  | For auth, should check if still works under GFW | Not Configured |
-| NGINX  | For distribution and stuff                      | Not Configured |
-|--------+-------------------------------------------------+----------------|
+|---------+-------------------------------------------------+----------------|
+| Tools   | Description                                     | Status         |
+|---------+-------------------------------------------------+----------------|
+| Sentry  | For logging                                     | Not configured |
+| Travis  | Continuous Integration                          | Not Configured |
+| Auth0   | For auth, should check if still works under GFW | Not Configured |
+| NGINX   | For distribution and stuff                      | Not Configured |
+| allauth | Basic authentication framework                  |                |
+|---------+-------------------------------------------------+----------------|
 

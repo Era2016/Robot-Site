@@ -118,7 +118,7 @@ iOS/Pods/Target Support Files/Pods-BoltMedia/*
 !iOS/Pods/Target Support Files/Pods-BoltMedia/Pods-BoltMedia-resources.sh
 
 # Media folder
-bolt/bolt/media/*
+robo/robotics/media/*
 
 # Exclude mock files
 # !bolt/bolt/media/user_images

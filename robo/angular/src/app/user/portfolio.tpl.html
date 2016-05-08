@@ -1,0 +1,33 @@
+<md-content layout="column" layout-padding class="bgBoltGrey-20">
+    <md-card>
+        <div flex layout-padding layout-margin layout="column" layout-sm="column">
+            <div layout="row">
+                <h1>Portfolio</h1>
+            </div>
+            <div>
+                <md-input-container>
+                    <label>URL:</label>
+                    <input type="text" name="url" required=required ng-model="userPortfolio.url" />
+                </md-input-container>
+                <button ng-click="addArticle()">Add</button>
+            </div>
+        </div>
+    </md-card>
+    <div ng-repeat="userPortfolio in userPortfolios">
+        <md-card>
+            <md-card-content>
+                <h6><strong>{[{userPortfolio.title}]}</strong></h6>
+                <p class="caption-a">{[{userPortfolio.author}]}</p>
+                <!-- <p class="caption-c">February 2, 2012 2:00 am </p> -->
+                <p class="">{[{userPortfolio.content}]}</p>
+                <p class="">Published at URL: <a>{[{userPortfolio.url}]}</a></p>
+            </md-card-content>
+            <div class="md-actions" layout="row" layout-align="end center">
+                <div class="bgBoltBlue" flex>
+                    <md-button ng-show="userPortfolio.user == currentUser.id" ng-click="delUserPortfolio(userPortfolio,$index)">Delete</md-button>
+                    <md-button ng-click="editUrlPortfolio($event,userPortfolio)">Edit</md-button>
+                </div>
+            </div>
+        </md-card>
+    </div>
+</md-content>

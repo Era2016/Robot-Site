@@ -1,0 +1,116 @@
+<md-content flex layout="row" layout-sm="column" class="bgBoltGrey-20">
+    <div flex="15" flex-sm="100" layout="column"></div>
+    <div flex="70" flex-sm="100" layout="column" class="bgBoltGrey-20">
+        <div layout="column" class="section-heading bgWhite">
+            <div class="" layout="row" layout-align="space-between center">
+                <div class="title">
+                    <span class="boltBlue">Job</span> <span class="boltLightGrey">{[{currentJob.task.taskBrief.title}]}</span>
+                </div>
+                <div class="adjust-padding" ng-if="userApplicationLoaded && userApplication">
+                    <div class="chip bgBoltTeal">Status: {[{userApplication.status.label}]}</div>
+                </div>
+            </div>
+        </div>
+        <div layout="column" class="section-item bgWhite">
+            <!-- Brief Section -->
+            <div class="brief-company-section section-span" layout="row" layout-align="space-between center" style="margin-top:-20px;" layout-wrap>
+                <!-- Brief Section One -->
+                <div class="brief-body" flex="60">
+                    <p class="caption-a">At a Glance</p>
+                    <p class="" ng-if="currentJob.task">
+                        The goal of the <strong>{[{currentJob.task.contentType.label|lowercase}]}</strong> is to <strong>{[{currentJob.task.goal.label|lowercase}]}</strong> with a <strong>{[{currentJob.task.style.label|lowercase}]}</strong> and <strong>{[{currentJob.task.pointOfView.label|lowercase}]}</strong> perspective. This {[{currentJob.task.contentType.label|lowercase}]} is about the
+                        <strong ng-repeat="category in currentJob.task.taskBrief.categories">{[{category|lowercase}]} </strong> {[{ categories.length > 1 ? 'industries' :'industry' }]}.
+                    </p>
+                </div>
+                <!-- Brief Section Two -->
+                <div class="bgBoltGrey-40" layout="column" flex="40" flex-sm- "100" style="margin-right:-20px;">
+                    <div class="company-info bgBoltBlueAlt" layout="row">
+                        <div class="" layout="column" flex>
+                            <div class="title ">{[{currentJob.task.taskBrief.organization.name}]}</div>
+                            <p class="caption-white">{[{jobCreator.firstName}]} {[{jobCreator.lastName}]}</p>
+                        </div>
+                        <div class="">
+                            <img class="icon" ng-src="{[{jobCreator.picture}]}">
+                        </div>
+                    </div>
+                    <div class="company-profile bgBoltLightBlue" layout="row" layout-align="space-around center" flex>
+                        <div class="" layout="column" layout-align="center center" flex>
+                            <div class="chip bgBoltGrey-5 boltLightGrey" style="margin:0;">14</div>
+                            <p class="caption-white">JOBS</p>
+                        </div>
+                        <div class="" layout="column" layout-align="center center" flex>
+                            <div class="chip bgBoltGrey-5 boltLightGrey" style="margin:0;">2</div>
+                            <p class="caption-white">REVIEWS</p>
+                        </div>
+                        <div class="" layout="column" layout-align="center center" flex>
+                            <div class="chip bgBoltGrey-5 boltLightGrey" style="margin:0;">
+                                <div hide-gt-lg>4</div>
+                                <div hide show-gt-lg>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i> </div>
+                            </div>
+                            <p class="caption-white">RATING</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Brief Section Two -->
+            </div>
+            <!-- End Brief -->
+            <!-- Keyword Section -->
+            <div class="keyword-section" layout="row" layout-al>
+                <div ng-repeat="keyword in currentJob.task.taskBrief.keywords">
+                    <div class="chip bgBoltTeal">{[{keyword}]}</div>
+                </div>
+            </div>
+            <!-- Information Section -->
+            <div class="" style="padding:20px;" layout="row" layout-align="space-between center">
+                <div class="" layout="column" layout-align="center center">
+                    <div class="title">{[{currentJob.closingDate | dateFormatter}]}</div>
+                    <p class="caption-a">Brief Close</p>
+                </div>
+                <div class="" layout="column" layout-align="center center">
+                    <div class="title">{[{currentJob.task.deadline | dateFormatter}]}</div>
+                    <p class="caption-a">Due Date</p>
+                </div>
+                <div class="" layout="column" layout-align="center center">
+                    <div class="title">{[{currentJob.task.wordCount}]}</div>
+                    <p class="caption-a">Word Count</p>
+                </div>
+                <div class="" layout="column" layout-align="center center">
+                    <div class="title">{[{currentJob.price | currency: "SG$" :0}]}</div>
+                    <p class="caption-a">Price</p>
+                </div>
+            </div>
+            <hr class="">
+            <!-- Instruction Section -->
+            <div class="brief-notes-section" class="column">
+                <p class="caption-a">INSTRUCTIONS</p>
+                {[{currentJob.description}]}
+            </div>
+            <!-- Attachment Section -->
+            <div class="attachment-section">
+                <div ng-repeat="attachment in assignment.attachments"><a href="{[{attachment.url}]}" class="chip bgBoltTeal">[attachments]</a></div>
+            </div>
+            <!-- Proposal Section -->
+            <div class="instruction-section" class="column" flex ng-show="!currentJobOwner && !(userApplicationLoaded && userApplication ) && !isOrg ">
+                <span class="error">{[{ errors.message | errorFormatter }]}</span>
+                <p class="caption-a">PROPOSAL</p>
+                <textarea class="section" type="text" name="message" ng-model="currentApp.message" ng-auto-expand placeholder="Please enter your proposal here. Feel free to enquire about any uncertainties you may have.">
+                </textarea>
+            </div>
+            <!--             <div class="instruction-section adjust-padding" class="column" ng-if="userApplicationLoaded && !userApplication">
+                <p class="caption-a">QUESTIONS</p>
+            </div> -->
+        </div>
+        <div class="" layout="row" layout-align="center center" ng-show="!currentJobOwner && !(userApplicationLoaded && userApplication ) && !isOrg ">
+            <div class="section-button bgBoltTeal" ng-hide="userApplication.created || currentUser.role == 'org'" layout="row" layout-align="center center" flex ng-click="loadApply(currentJob)">Apply</div>
+            <div class="section-button bgBoltTeal" ng-show="userApplication.created" layout="row" layout-align="center center" flex>Applied &nbsp;
+                <div am-time-ago="userApplication.created"></div>
+            </div>
+        </div>
+    </div>
+    <div flex="15" flex-sm="100" layout="column">
+    </div>
+</md-content>

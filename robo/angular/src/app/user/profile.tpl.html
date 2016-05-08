@@ -1,0 +1,136 @@
+<md-content layout="row" class="bgBoltGrey-20" layout-wrap>
+    <div flex="10" flex-lg="100" flex-md="100" flex-sm="100"></div>
+    <div flex="80" flex-lg="100" flex-md="100" flex-sm="100" layout="column" class="bgBoltGrey-20" layout-wrap>
+        <div style="padding-left:24px;padding-top:0;padding-right:24px;">
+<!--             <div class="bgBoltTeal section-heading" ng-show="userArticles.length <= 0 && userProfile.id == currentUser.id" ng-cloak>
+            <p class="caption-white">Hey your profile is looking a bit empty! Add more items to your profile to help you get noticed by businesses!</p>
+            </div> -->
+            <div class="section-heading" layout="row">
+                <div class="user-info" layout="row" layout-sm="column" layout-align="center center" flex>
+                    <!-- Profile Picture -->
+                    <div class="profile-picture" ng-show="userProfile.id == currentUser.id">
+                        <div class="text-overlay">
+                            <form name="userProfileForm">
+                                <img class="icon-large" ng-src="{[{ userProfile.picture || '//:0' }]}" ngf-drop=setUserPicture(userProfilePicture) ngf-select=setUserPicture(userProfilePicture) ng-model="userProfilePicture" name="userProfilePicture" accept="image/*" ngf-max-size="1MB" />
+                                <img class="icon-large" ng-src="{[{ userProfile.picture || '//:0'}]}" alt="Profile Image" style="display:none;" />
+                                <img class="icon-large" ngf-src="!userProfilePicture.$error && userProfilePicture" style="display:none;">
+                                <input type="hidden" ngf-select ng-model="userProfilePicture" name="userProfilePicture" accept="image/*" ngf-max-size="1MB" />
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Profile Picture If Not User -->
+                    <div class="profile-picture" ng-show="userProfile.id != currentUser.id">
+                        <div class="text-overlay">
+                            <div class="text-picture" layout-align="center center">
+                                <img class="icon-large" src="{[{ userProfile.picture || '//:0' }]}" align="middle" />
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Profile Text -->
+                    <div class="profile-text" layout="row" layout-align="space-between start" >
+                        <div class="" layout="column" flex>
+                            <!-- Person Name-->
+                            <h5 type="text" name="firstName" ng-model="userProfile.firstName">{[{userProfile.firstName}]} {[{userProfile.lastName}]} </h5>
+                            <!-- Person Rating-->
+                            <span class="rating boltYellow" ng-show="userProfile.publications.length > 3">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </span>
+                            <!-- Description-->
+                            <p ng-if="!editMode" name="description" ng-model="userProfile.description" flex> {[{userProfile.description}]}</p>
+                            <div class="profile" layout="column">
+                                <textarea ng-if="editMode" type="text" name="description" ng-model="userProfile.description" flex style="margin-bottom:10px; border-radius:5px;border-color:#ccc"><span class="error" flex>{[{ errors.description | errorFormatter }]}</span></textarea>
+                            </div>
+                            <!-- Categories-->
+                            <div ng-if="!editMode" flex>
+                                <div class="chip bgBoltBlue" ng-hide="!facebookCount"><i class="fa fa-facebook social">&nbsp;{[{facebookCount}]}</i></div>
+                                <div class="chip bgBoltBlue" ng-hide="!twitterCount"><i class="fa fa-twitter social">&nbsp;{[{twitterCount}]}</i></div>
+                            </div>
+                            <!-- Keywords -->
+                        </div>
+                    </div>
+                    <!-- Profile Second Column -->
+                    <md-content class="profile-text" layout="row" layout-align="space-between start" flex>
+                        <div class="" layout="column" flex>
+                            <!-- Publications-->
+                            <p class="caption-a" ng-show="userProfile.publications.length > 0">Publications</p>
+                            <div layout="row" layout-align="start center" layout-wrap>
+                                <div ng-repeat="publication in userProfile.publications">
+                                    <img class="" style="height:50px; padding:10px;" ng-src="{[{publication.image || '://0'}]}" ng-alt="{[{publication.name}]}">
+                                </div>
+                            </div>
+                            <!-- Keywords -->
+                            <p class="caption-a" ng-show="userProfile.keywords.length > 0">Keywords</p>
+                            <div flex>
+                                <div class="chip bgBoltBlue" style="margin-bottom:5px;" ng-repeat="keyword in userProfile.keywords | limitTo: 4">{[{keyword}]}</div>
+                            </div>
+                        </div>
+                    </md-content>
+                </div>
+            </div>
+                    <!-- Start Profile Editing -->
+            <!-- Edit Buttons -->
+            <div class="" layout="row" ng-if="userProfile.id == currentUser.id">
+                <a class="section-button bgBoltBlue" layout="row" layout-align="center center" ng-hide="editMode" ng-click="enableEdit()">
+                Edit Profile</a>
+                <a class="section-button bgBoltBlue" layout="row" layout-align="center center" ng-show="editMode" ng-click="saveUser()">Save Profile
+                </a>
+                <a class="section-button bgBoltBlue" layout="row" layout-align="center center" ng-show="editMode" ng-click="cancelEdit()">Cancel Edit
+                </a>
+                
+                <div class="section-button bgBoltLightBlue" layout="row" layout-align="center center" style="cursor:default;" flex>
+                    <form ng-submit="importUserArticle()" style="margin:0" flex>
+                    <input class="profile-url-input" type="text" ng-model="userInputs.articleUrl" placeholder="Paste a link to your article" style="border:0;min-width:100%;" flex="grow" /></form>
+                    <span class="error">{[{ errors.url | errorFormatter}]}</span>
+                </div>
+                
+                <a class="section-button bgBoltBlueAlt" layout="row" layout-align="center center" ng-click="importUserArticle()">Import Link</a>
+            </div>
+            <!-- End Buttons -->
+
+            </div>
+        <!-- end Profile Heading -->
+
+        <!-- Portfolio Section -->
+        <div layout="row" layout-wrap layout-align="center center" style="align-items:stretch;" infinite-scroll='loadMoreUserArticles(userArticles.$metadata.next)' infinite-scroll-disabled="scroll.busy" infinite-scroll-distance='1'>
+            <div flex="33" flex-md="50" flex-sm="100" layout="column" layout-padding ng-repeat="userArticle in userArticles">
+                <div layout="row" flex>
+                    <div class="portfolio-article" layout="column">
+                        <!-- Portfolio Img -->
+                        <div class="portfolio-img">
+                            <img class="portfolio-publication" ng-src="{[{userArticle.publication.image || '//:0'}]}">
+                            <a class="portfolio-title" ng-href="{[{userArticle.url}]}"><span>{[{userArticle.title}]} </span></a>
+                            <img class="" ng-src="{[{ userArticle.image || '/static/assets/img/portfolio-blank.png'}]}" width="100%" alt="Article Image" />
+                        </div>
+                        <!-- Portfolio Keywords -->
+                        <div class="" layout="row" layout-padding layout-wrap>
+                            <div class="chip bgBoltBlue" style="margin-bottom:5px;" ng-repeat="keyword in userArticle.keywords | limitTo:4">{[{keyword}]}</div>
+                        </div>
+                        <!-- Portfolio Text -->
+                        <div class="portfolio-text" layout="column" flex>
+                            <p ng-hide="!userArticle.content">{[{userArticle.content | limitTo: 200}]}{[{userArticle.content.length > 20 ? '...' : ''}]} <a ng-href="{[{userArticle.url}]}"><i class="fa fa-external-link-square"></i></a></p>
+                        </div>
+                        <!-- Portfolio Buttons -->
+                        <div class="" layout="row">
+                            <div class="section-button bgBoltBlue" layout="row" layout-align="center center" flex><i class="fa fa-facebook social"></i>{[{userArticle.facebookCount}]}
+                            </div>
+                            <div class="section-button bgBoltBlue" layout="row" layout-align="center center" flex><i class="fa fa-twitter social"></i>{[{userArticle.twitterCount}]}
+                            </div>
+                            <a class="section-button bgBoltBlue" layout="row" layout-align="center center" flex ng-show="userArticle.user == currentUser.id" ng-click="deleteUserArticle(userArticle,$index)">
+                            Delete</a>
+                            <a class="section-button bgBoltBlue" layout="row" layout-align="center center" flex ng-show="userArticle.user == currentUser.id" ng-click="editUserArticle($event,userArticle)">
+                            Edit
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Portfolio Section -->
+        <div class="section-button bgBoltLightBlue" layout="row" layout-align="center center" flex style="margin-top:10px;" ng-show="scroll.busy">Loading...</div>
+    </div>
+    <div flex="10" flex-lg="100" flex-md="100" flex-sm="100"></div>
+</md-content>

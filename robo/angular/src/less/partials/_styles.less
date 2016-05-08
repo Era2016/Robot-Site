@@ -1,0 +1,1063 @@
+// Overrides
+// -------------------
+
+
+// Addes the ng-cloak style manually
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+// Overrides the default text selection color
+::-moz-selection {
+    /* Code for Firefox */
+    background: @boltBlue-20;
+}
+
+::selection {
+    background: @boltBlue-20;
+}
+
+// Overrides the default click icon for angular
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
+
+// Removes Scrollbar from Chrome/webkit
+body {
+    &::-webkit-scrollbar {
+        width: 0 !important;
+    }
+}
+
+// Modifies the Loading Bar color and thickness
+#loading-bar * {
+    background: @boltTeal-100 !important;
+    height: 5px;
+}
+
+textarea {
+    font-family: @paragraphFont;
+    line-height: 1.8em;
+    overflow: hidden;
+    resize: none;
+    padding: 4px;
+    &.section {
+        width: 99%;
+        border: 0;
+        background-color: @boltGrey-5;
+    }
+}
+
+// pushes font-awesome icons on the baseline
+i {
+    vertical-align: baseline;
+}
+
+// Image Icons
+// -------------------
+img.icon {
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: @boltBlue-40;
+}
+
+img.icon-square {
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    background-color: @boltBlue-40;
+}
+
+img.icon-mini {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: @boltBlue-40;
+}
+
+img.icon-mini-square {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    background-color: @boltBlue-40;
+}
+
+img.icon-large {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    overlow: hidden;
+    background-color: @boltBlue-40;
+}
+
+// Assignments Writing and Editing
+// -------------------
+.task-list-parent {
+    padding: 10px;
+    .icon-task {
+        position: relative;
+        &:before {
+            left: 23px;
+            top: -13px;
+            z-index: -1;
+            width: 4px;
+            position: absolute;
+            background: @boltGrey-100;
+            content: "";
+            height: 76px;
+        }
+        &:after {
+            position: absolute;
+            background-color: @boltGreen;
+            top: 0;
+            left: 0;
+            color: #fff;
+            font-family: FontAwesome;
+            content: "\f00c";
+            text-align: center;
+            font-size: 4rem;
+            line-height: 5rem;
+            width: 50px;
+            height: 50px;
+            z-index: 10;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity .5s ease-in-out;
+            -moz-transition: opacity .5s ease-in-out;
+            -webkit-transition: opacity .5s ease-in-out;
+        }
+    }
+    &:last-of-type .icon-task:before {
+        left: 23px;
+        top: -13px;
+        z-index: -1;
+        width: 4px;
+        position: absolute;
+        background: @boltGrey-100;
+        content: "";
+        height: 33px;
+    }
+    &:first-of-type .icon-task:before {
+        left: 23px;
+        top: 30px;
+        z-index: -1;
+        width: 4px;
+        position: absolute;
+        background: @boltGrey-100;
+        content: "";
+        height: 33px;
+    }
+    &.Finished {
+        .icon-task {
+            &:after {
+                opacity: 1;
+                transition: opacity .5s ease-in-out;
+                -moz-transition: opacity .5s ease-in-out;
+                -webkit-transition: opacity .5s ease-in-out;
+            }
+        }
+    }
+    &.Active {
+        z-index: -1;
+        background-color: @boltBlue-20;
+        .icon-task {
+            &:before {
+                z-index: -1;
+                background: @boltBlue-100;
+            }
+        }
+        &:first-of-type .icon-task:before {
+            background: @boltBlue-100;
+            height: 33px;
+        }
+        &:last-of-type .icon-task:before {
+            background: @boltBlue-100;
+            height: 33px;
+        }
+    }
+}
+
+.task-list-parent-horizontal {
+    width:150px;
+    padding: 10px;
+    .icon-task {
+        position: relative;
+        &:before {
+            left: -50px;
+            top: 23px;
+            z-index: -1;
+            width: 150px;
+            position: absolute;
+            background: @boltGrey-100;
+            content: "";
+            height: 6px;
+        }
+        &:after {
+            position: absolute;
+            background-color: @boltGreen;
+            top: 0;
+            left: 0;
+            color: #fff;
+            font-family: FontAwesome;
+            content: "\f00c";
+            text-align: center;
+            font-size: 4rem;
+            line-height: 5rem;
+            width: 50px;
+            height: 50px;
+            z-index: 10;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity .5s ease-in-out;
+            -moz-transition: opacity .5s ease-in-out;
+            -webkit-transition: opacity .5s ease-in-out;
+        }
+    }
+    &:last-of-type .icon-task:before {
+            left: -50px;
+            top: 23px;
+            z-index: -1;
+            width: 60px;
+            position: absolute;
+            background: @boltGrey-100;
+            content: "";
+            height: 6px;
+    }
+    &:first-of-type .icon-task:before {
+        left: 40px;
+        top: 23px;
+        z-index: -1;
+        width: 60px;
+        position: absolute;
+        background: @boltGrey-100;
+        content: "";
+        height: 6px;
+    }
+    &.Finished {
+        .icon-task {
+            &:after {
+                opacity: 1;
+                transition: opacity .5s ease-in-out;
+                -moz-transition: opacity .5s ease-in-out;
+                -webkit-transition: opacity .5s ease-in-out;
+            }
+        }
+    }
+    &.Active {
+        z-index: -1;
+        background-color: @boltBlue-20;
+        .icon-task {
+            &:before {
+                z-index: -1;
+                background: @boltBlue-100;
+            }
+        }
+        &:first-of-type .icon-task:before {
+            background: @boltBlue-100;
+            width: 60px;
+        }
+        &:last-of-type .icon-task:before {
+            background: @boltBlue-100;
+            width: 60px;
+        }
+    }
+}
+
+
+
+
+
+
+// Hacks for Material Design
+// -------------------
+// modifies chips to be what i want them to be.
+md-chip-template,
+.md-chip-content {
+    font-family: @headingFont;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+// helps with aligning datepicker with the rest of the form
+.md-calendar-scroll-mask {
+    background-color: #fff !important;
+}
+
+.md-calendar-month-label {
+    padding-left: 10px;
+}
+
+md-datepicker {
+    left: 0;
+    margin: 0 10px;
+    &.frame {
+        border: 1px solid @boltGrey-40;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        &:focus {
+            border: 1px solid @boltGrey-40;
+        }
+    }
+    &.line {
+        & .md-datepicker-input-container {
+            border-bottom-width: 1px!important;
+            border-bottom-style: solid!important;
+            border-color: @boltGrey-40;
+        }
+    }
+    .md-datepicker-button {
+        float: right;
+        //padding-bottom:10px;
+    }
+    .md-datepicker-input-container {
+        //margin: 6px 6px 0px 12px;
+        padding: 0;
+        border-bottom: 0;
+        input {
+            //min-width: 80px;
+        }
+        button {
+            display: none;
+        }
+    }
+    .md-datepicker-calendar-pane {}
+    md-icon {
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+    }
+    .md-datepicker-button.md-icon-button {
+        //background-color: @boltGrey-20;
+        height: 28px;
+        min-height: 28px;
+        width: 28px;
+        line-height: 28px;
+        margin: 0;
+        //margin-right: 0;
+    }
+    .md-datepicker-input {
+        height: 16px !important;
+    }
+}
+
+.md-calendar-day-header {
+    thead > tr > th {
+        //height:0;
+        padding-top: 10px;
+        background-color: @boltBlue-100;
+        color: #fff;
+    }
+}
+
+.md-datepicker-input-mask {
+    height: 0;
+}
+
+// datepicker button not round, was oval. fixed it with setting the px height and width
+.md-datepicker-triangle-button.md-button.md-icon-button {
+    height: 36px;
+    width: 36px;
+}
+
+//1px overflow causing scrollbar to show up on the navigation
+md-content.navigation {
+    overflow: hidden !important;
+    display: inline;
+}
+
+md-select {
+    background-color: #fff;
+    font-family: @headingFont;
+    font-size: 14px ;
+    margin: 0 5px !important;
+    border-radius: 5px;
+
+    border: 1px solid #fff;
+    &:focus {
+        border: 1px solid @boltGrey-40;
+    }
+    md-select-value {
+        font-family: @headingFont ;
+        border-bottom-width: 0 !important;
+        //padding: 2px 10px 1px !important;
+        padding: 0 0 0 10px!important;
+        span {
+            padding: 0;
+            //height:16px;
+        }
+    }
+    &.brief-categories {
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+}
+
+.md-chips {
+    font-family: @headingFont !important;
+    padding: 0 0 0 0;
+    .md-chip {
+        font-size: 14px;
+        font-weight: 700;
+        padding: 1px 12px 0 12px;
+        margin: 3px 8px 0 0;
+    }
+}
+
+//manual md-chip since the md-chips force the line
+.chip {
+    background: @boltGrey-40;
+    font-family: @headingFont;
+    font-weight: 700;
+    color: #fff;
+    cursor: default;
+    border-radius: 12.8px;
+    display: block;
+    height: 25.6px;
+    line-height: 2em;
+    margin: 0 10px 0 0;
+    padding: 0 15px;
+    float: left;
+    box-sizing: border-box;
+    max-width: 100%;
+    position: relative;
+}
+
+md-chips .md-chips {
+    box-shadow: none;
+}
+
+// chips within the assignment
+md-chips.brief-categories {
+    font-family: @headingFont;
+    .md-chip-input-container {
+        display: none;
+    }
+}
+
+// Profile & Portfolio
+////////////////////////////////////
+// User Profile Picture
+.profile-picture {
+    padding: 1.5em;
+    .text-overlay {
+        background-image: url(/static/assets/img/cloud-upload.svg);
+        background-size: contain;
+        background-color: @boltBlue-100;
+        border-radius: 50%;
+        height:10.0em;
+        width:10.0em;
+        z-index: 10;
+        &:hover img {
+            opacity: 0;
+        }
+    }
+    .text-picture {
+        background-size: contain;
+        height: 10.0em;
+        width: 10.0em;
+        border-radius: 50%;
+        z-index: 10;
+        &:hover img {
+            opacity: 100;
+        }
+    }
+}
+
+.profile-text {
+    background-color: transparent;
+    padding: 1.5em;
+    h5 {
+        margin-bottom: 0;
+    }
+}
+
+// URL Input 
+.profile-url-input {
+    border: 0px;
+    color: white;
+    font-weight: 500;
+    background-color: @boltBlue-60;
+    &::-webkit-input-placeholder {
+        color: @boltGrey-5;
+    }
+    &:-moz-placeholder {
+        color: @boltGrey-5;
+    }
+    &::-moz-placeholder {
+        color: @boltGrey-5;
+    }
+    &:-ms-input-placeholder {
+        color: @boltGrey-5;
+    }
+}
+//Organisation list
+.org-card{
+    background-color: #fff;
+    margin-top: 10px;
+    .org-top{
+    position: relative;
+    top: 0;
+    left: 0;
+    & .org-span{
+        font-family: @headingFont;
+        font-weight: 700;
+        height: 70px;
+        margin-left: 120px;
+        padding-top: 35px;
+        }
+        &:hover {
+        opacity: 0.7 !important;
+        }
+    
+    }
+    .org-img{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        background-color: #a5caf2;
+        position: absolute;
+        z-index: 3;
+        }
+}
+
+// Article 
+.portfolio-article {
+    background-color: #fff;
+    margin-top: 10px;
+    i.social {
+        padding-bottom: 3px;
+        padding-right: 10px;
+        line-height: 28px;
+    }
+    .portfolio-text {
+        font-family: "Merriweather";
+        font-size: 1.4rem;
+        line-height: 3.5rem;
+        padding: 10px 20px;
+    }
+    .portfolio-img {
+        position: relative;
+        top: 0;
+        left: 0;
+        & img {
+            top: 0;
+            left: 0;
+            height: 200px;
+            overflow: hidden;
+            object-fit: cover;
+        }
+        & .portfolio-publication {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 75px;
+        }
+        & .portfolio-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-decoration: none;
+            font-family: @headingFont;
+            font-size: 2.2rem;
+            line-height: 2.6rem;
+            padding: 0.8rem;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+        }
+        & img.portfolio-list {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 115px;
+            overflow: hidden;
+            object-fit: cover;
+        }
+        & img.portfolio-user{
+            z-index: 10;
+            height:150px;
+            width:150px;
+        }
+        & img.portfolio-org{
+            width:100%;
+            height:200px;
+            object-fit: cover;
+            position:relative;
+
+        }
+    }
+}
+
+// Assignment Styles
+////////////////////////////////////
+// Parent section-level
+.brief {
+    // for the job creation brief
+    background: @boltBlue-5;
+    padding: 20px;
+    // for the writing-section brief
+    &.title {
+        background: #fff;
+    }
+    .detail-bar {
+        background-color: @boltBlue-20;
+        border-top: 1px solid @boltBlue-40;
+        padding: 10px 15px;
+        margin: 10px 0;
+    }
+}
+
+.task,
+.assignment{
+    background: #fff;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.application,
+.job,
+{
+    background: #fff;
+    padding: 20px;
+    margin-top: 10px;
+    &:last-child {
+        margin-bottom: 10px;
+    }
+}
+
+// allows for layout-fill to the edge
+.portfolio-edit {
+    background: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+// compensation for the above style
+.adjust-padding {
+    padding: 0 20px;
+}
+
+// Style for Elements of Assignments/Tasks
+.title {
+    font-family: @headingFont;
+    font-weight: 400;
+    font-size: 2.0rem;
+}
+
+.detail-bar {
+    background-color: @boltGrey-5;
+    border-top: 1px solid @boltGrey-20;
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.keyword-section {
+    margin: 10px 0;
+    vertical-align: baseline;
+}
+
+.writing-title {
+    padding: 60px 60px 20px 60px;
+    font-family: @headingFont;
+    font-weight: 400;
+    font-size: 3.0rem;
+    line-height: 4rem;
+    font-style: normal;
+    &:after {
+        padding: 60px 60px 20px 60px;
+        font-family: @headingFont;
+        font-weight: 400;
+        font-size: 3.0rem;
+        line-height: 4rem;
+        font-style: normal;
+        color: @boltGrey-40 !important;
+    }
+}
+
+.writing-section {
+    min-height: 80px;
+    padding: 20px 60px;
+    font-family: "Merriweather";
+    font-size: 16px;
+    line-height: 2.5;
+    p{
+        font-family: "Merriweather";
+        font-size: 16px;
+        line-height: 2.5;
+    }
+    &:after {
+        padding: 20px 60px;
+        font-family: "Merriweather";
+        font-size: 16px;
+        line-height: 2.5;
+        font-style: normal;
+    }
+
+    h3{
+        font-size:30px;
+        line-height: 2.5;
+        margin-bottom:5px;
+    }
+    h4{
+        font-size:20px;
+        line-height: 2.5;
+        margin-bottom:5px;
+    }
+    &.portfolio {
+        padding: 20px 60px;
+        font-family: "Merriweather";
+        font-size: 16px;
+        line-height: 2.0;
+        border-bottom: 0;
+    }
+}
+
+.instruction-section {
+    background-color: @boltGrey-5;
+    padding: 10px 15px;
+    margin: 10px 0;
+    &.adjust-padding {
+        margin: 10px 20px;
+    }
+}
+
+.brief-notes-section {
+    padding: 10px 35px;
+    margin: 10px 0;
+}
+
+.recommendation-section {
+    padding: 10px 15px;
+    margin: 10px 0;
+    .rec-title {
+        border-bottom: 1px solid @boltGrey-40;
+    }
+}
+
+// Company Information Sections
+.brief-company-section {
+    border-bottom: 1px solid @boltGrey-20;
+    border-top: 1px solid @boltGrey-20;
+    background-color: @boltGrey-5;
+}
+
+.company-info {
+    padding: 10px;
+}
+
+.company-profile {
+    padding: 10px;
+}
+
+// // Selection Buttons
+// .assignment-button,
+// .application-button {
+//     cursor: pointer;
+//     font-family: @headingFont;
+//     color: #fff;
+//     font-weight: 700;
+//     padding: 10px 14px;
+//     &:hover {
+//         opacity: 0.7 !important;
+//     }
+//     &:selected {
+//         opacity: 1 !important;
+//     }
+//     &.add-task {
+//         margin-top: 10px;
+//         margin-bottom: 10px;
+//         background-color: @boltBlue-100;
+//     }
+//     &.add-brief {
+//         background-color: @boltTeal-100;
+//     }
+//     &.add-assignee {
+//         background-color: @boltBlue-80;
+//     }
+//     &.publish {
+//         background-color: @boltBlue-100;
+//     }
+//     &.edit-assignment {
+//         background-color: @boltBlue-80;
+//     }
+//     &.edit-task {
+//         background-color: @boltBlue-80;
+//     }
+//     // fix this to remove the extra classes
+//     .completed {
+//         opacity: 0.5;
+//     }
+// }
+
+input {
+    font-family: @headingFont;
+}
+
+.fixedRows {
+    height: 250px;
+    overflow: hidden;
+}
+
+input[type="text"] {
+    border-radius: 5px;
+    height: 30px;
+    font-size: 14px !important;
+    line-height: 30px;
+    border: 1px solid #fff;
+    padding: 4px 5px 0px 5px;
+    margin: 0 5px;
+    min-width: 0;
+    width: 100px;
+    border: 1px solid #fff;
+    &:focus {
+        border: 1px solid @boltGrey-40;
+    }
+}
+
+input.title {
+    border: 0;
+    border-bottom: 1px solid @boltGrey-5;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-family: @headingFont;
+    font-size: 14px !important;
+    border-radius: 5px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    margin: 0 5px;
+    min-width: 0;
+    border: 1px solid #fff;
+    &:focus {
+        border: 1px solid @boltGrey-40;
+    }
+}
+
+.selected {
+    opacity: 0.5;
+}
+
+// Dividers / Horizontal Rules
+// -------------------
+hr {
+    margin: 10px 20px;
+    border-width: 0;
+    border-top: 1px solid @boltGrey-40;
+    &.dark {
+        border-color: @boltGrey-60;
+    }
+    &.small {
+        margin: 0 40px;
+    }
+    &.line {
+        height: 6px;
+        background: url(../img/hr-11.png) repeat-x 0 0;
+        border: 0;
+    }
+    &.line-white {
+        height: 6px;
+        background: url(../img/hr-12.png) repeat-x 0 0;
+        border: 0;
+    }
+    &.overdue {
+        border-top: 10px solid @boltRed;
+        margin: 0;
+        padding-bottom: 10px;
+    }
+    &.due-soon {
+        border-top: 10px solid @boltOrange;
+        margin: 0;
+        padding-bottom: 10px;
+    }
+    &.upcoming {
+        border-top: 10px solid @boltBlue-100;
+        margin: 0;
+        padding-bottom: 10px;
+    }
+    &.completed {
+        border-top: 10px solid @boltGreen;
+        margin: 0;
+        padding-bottom: 10px;
+    }
+}
+
+.brief-body {
+    margin: 10px 0;
+    p.brief-text {
+        font-family: @headingFont;
+        font-size: 1.3rem;
+        font-weight: 400;
+        font-color: @boltGrey-80;
+        margin-bottom: 0;
+    }
+}
+
+// Calendar UI Elements
+// -------------------
+// Most of these are overrides for the full calendar system
+.fc-head {
+    background-color: @boltGrey-80;
+    color: #fff;
+}
+
+.fc-body {
+    background-color: #fff;
+}
+.fc-other-month {
+    background-color: @boltGrey-5;
+}
+
+.fc-basic-view .fc-body .fc-row {
+    min-height:150px;
+}
+
+// day number fix
+.fc-day-number {
+    padding-right: 5px !important;
+}
+
+.fc-content {
+    white-space: normal !important;
+}
+
+.fc-event {
+    background-color: @boltBlue-20;
+    border: 0;
+    border-radius: 0;
+    padding-top: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    color: @boltGrey-100;
+}
+
+.fc-time {
+    font-weight: 400!important;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.fc-title {
+    font-weight: 600!important;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: block;
+    padding-bottom: 10px;
+}
+
+.fc-button-group>* {
+    margin: 0 0 0 5px !important;
+}
+
+.fc-state-default {
+    text-shadow: none;
+    box-shadow: none;
+    background-image: none;
+    border: 0;
+}
+
+.fc-state-hover,
+.fc-state-active {
+    color: #fff !important;
+}
+
+.progress-meter {
+    font-family: @headingFont;
+    color: #fff;
+    font-weight: 400;
+    background-color: @boltBlue-40;
+    width: 100%;
+}
+
+.progress-bar {
+    padding: 5px 5px 2px 5px;
+    background-color: @boltBlue-60;
+}
+
+.progress-indicator {
+    right: 5px;
+    bottom: 2px;
+    position: absolute;
+    text-align: right;
+    //float:right;
+}
+
+// Dashboard UI Elements
+// -------------------
+.dashboard-score,
+.profile-score {
+    background-color: #fff;
+    border-radius: 3px;
+    .score-number {
+        padding: 10px;
+        font-family: @headingFont;
+        color: @boltBlue-100;
+        font-weight: 400;
+        font-size: 3rem;
+    }
+    p {
+        text-align: center;
+        line-height: 1.4rem;
+    }
+}
+
+.dashboard-task {
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+    .dashboard-task-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        p {
+            text-overflow: ellipsis;
+        }
+    }
+    .dashboard-task-image {
+        padding-right: 10px;
+        border: 0;
+        img {
+            border: 0;
+            height: 50px;
+            width: 50px;
+        }
+    }
+}
+
+.dashboard-meter {
+    background-color: @boltGrey-5;
+    width: 100%;
+}
+
+.dashboard-meter-row {
+    width: 100%;
+    padding-bottom: 10px;
+    .dashboard-meter-label {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .dashboard-bar {
+        content: "&nbsp;";
+        //padding:5px 5px 2px 5px;
+        &.org {
+            background-color: @boltTeal-100;
+        }
+        &.individual {
+            background-color: @boltBlue-100;
+        }
+    }
+}

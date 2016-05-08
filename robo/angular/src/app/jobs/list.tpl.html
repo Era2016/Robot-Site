@@ -1,0 +1,91 @@
+<md-content flex layout-fill layout="row" layout-sm="column" class="bgBoltGrey-20" layout-wrap>
+    <div flex="15" flex-md="100" flex-sm="100" layout="column">
+    </div>
+    <div flex="70" flex-md="100" flex-sm="100" layout="column" layout-fill class="bgBoltGrey-20">
+        <div layout="column" layout-align="left center" class="section-heading">
+            <div ng-if="isOrg" class="boltBlue title">My Posted Jobs</div>
+            <div ng-if="!isOrg" class="boltBlue title">{[{jobs.$metadata.count}]} Open Jobs</div>
+        </div>
+        <!-- Start Job List -->
+        <div infinite-scroll='loadMoreJobs(jobs.$metadata.next)' infinite-scroll-disabled="scroll.busy" infinite-scroll-distance='1'>
+            <div ng-repeat="job in jobs">
+                <div class="section-item" layout="column" ng-click="viewJob(job)" flex>
+                    <!-- Job Title -->
+                    <div layout="row" layout-align="space-between center">
+                        <div class="title" layout-padding>{[{job.task.type.label}]}: {[{ job.task.taskBrief.title }]}</div>
+                        <!-- <div class="title" layout-padding>{[{ job.task.taskBrief.organization.name }]}</div> -->
+                        <!-- Job Brief & Keywords -->
+                        <div class="" layout="row" layout-wrap layout-align="end end">
+                            <div ng-repeat="keyword in job.task.taskBrief.keywords">
+                                <div class="chip bgBoltTeal" style="margin-bottom:5px;">{[{keyword}]}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Job Details -->
+                    <!--                     <div class="detail-section detail-bar" layout="row" layout-align="space-between center">
+
+                        <div layout="row">
+                            <p class="caption-b" style="padding-right:10px;">Task</p>
+                            <p class="caption-a">{[{job.task.type.label}]}</p>
+                        </div>
+                        <div layout="row">
+                            <p class="caption-b" style="padding-right:10px;">Word Count</p>
+                            <p class="caption-a">{[{ job.task.wordCount }]}</p>
+                        </div>
+                        <div layout="row">
+                            <p class="caption-b" style="padding-right:10px;">Price </p>
+                            <div class="caption-a">{[{ job.price | currency : "$" : 0 }]}</div>
+                        </div>
+                        <div layout="row">
+                            <p class="caption-b" style="padding-right:10px;">Due </p>
+                            <div class="caption-a">{[{ job.task.deadline | dateFormatter }]}</div>
+                        </div>
+                    </div>
+                     -->
+                    <!--                     <div class="section-paragraph" flex>
+                        <p class="">
+                              The goal of the <strong>{[{job.task.contentType.label|lowercase}]}</strong> is to <strong>{[{job.task.goal.label|lowercase}]}</strong> with a <strong>{[{job.task.style.label|lowercase}]}</strong> and <strong>{[{job.task.pointOfView.label|lowercase}]}</strong> perspective. This {[{job.task.contentType.label|lowercase}]} is about the
+                              <strong ng-repeat="category in job.task.taskBrief.categories">{[{category|lowercase}]} </strong>
+                              {[{ categories.length > 1 ? 'industries' :'industry' }]}.
+                        </p>
+                    </div> -->
+                </div>
+                <!-- Application Buttons -->
+                <div class="" layout="row">
+                    <div class="section-button bgBoltGrey-5" style="cursor:pointer" layout="row" flex layout-align="center center" ui-sref="org.profile({org:job.task.taskBrief.organization,id:job.task.taskBrief.organization.id})">
+                        <p class="">{[{ job.task.taskBrief.organization.name }]}</p>
+                    </div>
+                    <div class="section-indicator bgBoltGrey-5" layout="row" flex layout-align="center center">
+                        <p class="">{[{ job.task.wordCount }]} Words</p>
+                    </div>
+                    <div class="section-indicator bgBoltGrey-5" layout="row" flex layout-align="center center">
+                        <div class="">{[{ job.price | currency : "$" : 0 }]}</div>
+                    </div>
+                    <div class="section-indicator bgBoltGrey-5" layout="row" flex layout-align="center center" >
+                        <div class="">Due <span am-time-ago="job.task.deadline"></span></div>
+                    </div>
+
+                    <!--
+                    <a class="section-button bgBoltRed"
+                        layout="row"
+                        layout-align="center center"
+                        flex
+                        ng-show="job.creator == currentUser.id"
+                        ng-click="delJob(job,$index)">
+                        Delete
+                    </a> -->
+<!--                     <a class="section-button bgBoltGrey-5 boltBlue-80" layout="row" flex="initial" layout-align="center center" ng-click="viewJob(job)" style="opacity:0.7;">
+                        View Brief
+                    </a> -->
+                    <a class="section-button boltBlue-80 bgBoltGrey-5" ng-style="job.applicationCount == 0 ? 'opacity:1' : 'opacity:0.7'" layout="row" layout-align="center center" flex ng-if="job.creator == currentUser.id" ng-click="loadJobApplications(job)" style="opacity:0.7;">
+                        {[{job.applicationCount}]} Applicants
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="section-button bgBoltLightBlue" layout="row" layout-align="center center" flex style="margin-top:10px;" ng-show="scroll.busy">Loading...</div>
+        <!-- End Application -->
+    </div>
+    <div flex="15" flex-md="100" flex-sm="100" layout="column">
+    </div>
+</md-content>

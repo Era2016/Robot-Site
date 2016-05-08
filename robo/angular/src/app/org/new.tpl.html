@@ -1,0 +1,43 @@
+<md-content flex layout-fill layout="row" layout-sm="column" class="bgBoltGrey-20" layout-wrap>
+    <div flex="15" flex-md="100" flex-sm="100" layout="column">
+    </div>
+    <div flex="70" flex-md="100" flex-sm="100" layout="column" layout-fill class="bgBoltGrey-20">
+        <!-- Initial Assignment -->
+        <div class="section-heading" layout="column">
+            <div class="boltBlue title">Create an Organisation</div>
+
+        </div>
+        <div class="section-item" layout="column">
+            <div layout="column" layout-align="space-between start" flex>
+                <div class="instruction-section bgWhite" layout="column">
+                <p class="caption-a">ORGANISATION DETAILS</p>
+                <p class="caption-b">Before you can create any job briefs, please share some information about your organisation, to help interested content creators learn more about your company.</p>
+                </div>
+            </div>
+            <div layout="row" layout-align="space-between start" style="margin-bottom:10px" flex>
+                <input placeholder="Organization Name" type="text" name="name" ng-model="currentOrg.name" flex/><span class="error">{[{ errors.name | errorFormatter }]}</span>
+            </div>
+            <div layout="row" layout-align="space-between start" style="margin-bottom:10px" flex>
+                <input placeholder="Website" type="text" name="website" ng-model="currentOrg.website" flex/><span class="error">{[{ errors.website | errorFormatter }]}</span>
+            </div>
+            <div layout="row" layout-align="space-between start" style="margin-bottom:10px" flex>
+                <input placeholder="Industry Type" type="text" name="industry" ng-model="currentOrg.industry" flex/><span class="error">{[{ errors.industry | errorFormatter }]}</span>
+            </div>
+            <div layout="row" layout-align="space-between start" style="margin-bottom:10px" flex>
+                <input placeholder="When was this organisation founded?" type="text" name="yearFounded" ng-model="currentOrg.yearFounded" flex/>
+                <span class="error">{[{ errors.yearFounded | errorFormatter }]}</span>
+            </div>
+            <div layout="row" layout-align="space-between start" style="margin-bottom:10px" flex>
+                <input placeholder="What is the size of this organisation?" type="text" name="size" ng-model="currentOrg.size" flex/><span class="error">{[{ errors.size | errorFormatter }]}</span>
+            </div>
+            <div class="instruction-section" layout="column" style="margin-bottom:10px">
+                <p class="caption-a">ORGANISATION DESCRIPTION</p>
+                <textarea class="section" type="text" name="description" ng-model="currentOrg.description" placeholder="Share specific details about your company." ng-auto-expand>
+                </textarea>
+            </div>
+        </div>
+        <div class="section-button bgBoltblue" layout="row" layout-align="center center" ng-click="createOrg()">
+            <div>Create Your Organisation</div>
+        </div>
+    </div>
+</md-content>

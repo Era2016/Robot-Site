@@ -1,0 +1,133 @@
+// Navigation
+//////////////////////////////////////////
+
+// Primary Navigation for Application
+// -------------------
+.app-nav {
+    .logo {
+        display: none;
+    }
+    .login {
+        display: none;
+    }
+
+    // Adding Material Hack
+    span {
+        font-family: @headingFont;
+        vertical-align: middle;
+        margin-bottom: 0; //reset from normal reset
+        height: auto;
+        //& > * {margin:0!important}
+
+        .md-button{
+            min-width:60px;
+        }
+
+        .dashboard-icon,
+        .assignments-icon,
+        .profile-icon{
+            width: 25px;
+            //padding:5px 10px;
+            span{
+                display: none;
+            }
+        }
+        .dashboard-icon:after{
+            content:"\f073";
+            font-family: "FontAwesome";
+        }
+        .assignments-icon:after{
+            content:"\f1ea";
+            font-family: "FontAwesome";
+        }
+
+        .profile-icon:after{
+            content:"\f0c0";
+            font-family: "FontAwesome";
+        }
+        a {
+
+            text-decoration: none;
+            // fixing this stupid toolbar shit
+            &.md-button,
+            .md-ripple-container {
+                border-radius: 0 !important;
+                font-size: 1.5rem !important;
+                //display: inline;
+                & span {
+                    vertical-align: middle;
+                }
+            }
+        }
+        a:hover,
+        a.selected {
+            color: @boltBlack;
+            background-color: @boltBlue-40;
+        }
+        a:active,
+        a.active,
+        a.selected:hover {
+            color: @textAltColor;
+            background-color: @boltBlue-100;
+        }
+        &.right {
+            display: none;
+        }
+        &.messages{
+            i{}
+            
+        }
+    }
+}
+
+.nav-profile-img {
+    display: none;
+}
+
+.app-sub-nav {
+    //background-color: #fff;
+    background-color: @boltBlue-80;
+    border-top: 0;
+    // Adding Material Hack
+    min-height: 36px;
+    max-height: 36px;
+    span {
+        font-family: @headingFont;
+        //vertical-align: middle;
+        margin:0; //reset from normal reset
+        //padding-top:3px;
+        position: relative;
+        float:left;
+        a {
+            //vertical-align: middle;
+            margin: 0;
+            font-size: 1.2rem;
+            text-transform: none !important;
+            text-decoration: none;
+            padding: 1.0rem 2.0rem;
+            weight: 300;
+            line-height: 100%;
+            color: @textAltColor;
+            // fixing this stupid toolbar shit
+            &.md-button,
+            .md-ripple-container {
+                border-radius: 0 !important;
+                //display: inline;
+                & span {
+                    //vertical-align: middle;
+                }
+            }
+        }
+        a:hover,
+        a.selected {
+            color: @boltBlack;
+            background-color: @boltBlue-40;
+        }
+        a:active,
+        a.active,
+        a.selected:hover {
+            color: @textAltColor;
+            background-color: @boltBlue-100;
+        }
+    }
+}

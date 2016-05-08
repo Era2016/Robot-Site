@@ -1,0 +1,85 @@
+// Layout
+// -------------------
+
+// removes the extra padding between input containers
+.med-padding {
+    padding: 2px 2px 10px;
+}
+
+.small-padding {
+    padding: 2px 2px 5px;
+}
+
+.no-padding{
+    padding:5px 0;
+}
+
+.padding-a{
+    padding:5px;
+}
+
+.padding-b{
+}
+
+.padding-c{
+    padding:20px;
+}
+
+.no-side-padding{
+    left-padding:0;
+    right-padding:0;
+}
+
+.section-span{
+    margin-left:-20px;
+    margin-right:-20px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.section-heading{
+  background-color: #fff;
+  padding:20px;
+  margin-top:10px;
+}
+
+.section-item{
+  background-color: #fff;
+  padding:20px;
+  margin-top:10px;
+  &:last-child {margin-bottom:10px;}
+}
+
+.section-paragraph{
+    padding: 10px 15px;
+    margin: 10px 0;
+    &.light{
+      background-color: @boltGrey-5;
+    }
+}
+
+.section-button {
+    cursor: pointer;
+    font-family: @headingFont;
+    background-color: @boltBlue-80;
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 14px;
+    &:hover {
+        opacity: 0.7 !important;
+    }
+    &:selected {
+        opacity: 1 !important;
+    }
+    // fix this to remove the extra classes
+    .completed {
+        opacity: 0.5;
+    }
+}
+.section-indicator {
+    font-family: @headingFont;
+    color:@boltGrey-60;
+    font-weight: 700;
+    padding: 10px 14px;
+
+}

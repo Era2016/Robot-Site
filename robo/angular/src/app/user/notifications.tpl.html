@@ -1,0 +1,15 @@
+<md-content flex layout-fill layout="row" layout-sm="column" class="bgBoltGrey-20" layout-wrap>
+    <div flex="15" flex-md="100" flex-sm="100" layout="column">
+    </div>
+    <div flex="70" flex-md="100" flex-sm="100" layout="column" layout-fill class="bgBoltGrey-20">
+        <!-- remove this soon -->
+        <div layout="column" layout-align="left center" class="section-heading">
+            <div class="boltBlue title">My Notifications</div>
+        </div>
+        <div class="section-item" ng-repeat="notification in notifications">
+            <div ng-click="viewNotification(notification)"><img ng-src="{[{notification.actor.picture || '//:0'}]}" class="icon-mini" style="margin-right:10px">{[{notification.summary}]}</div>
+        </div>
+    </div>
+    <div flex="15" flex-md="100" flex-sm="100" layout="column">
+    </div>
+</md-content>

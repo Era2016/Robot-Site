@@ -1,0 +1,94 @@
+<md-content flex layout-fill layout="row" layout-sm="column" class="bgBoltGrey-20" layout-wrap>
+    <div flex="15" flex-md="100" flex-sm="100" layout="column">
+    </div>
+    <div flex="70" flex-md="100" flex-sm="100" layout="column" layout-fill class="bgBoltGrey-20">
+        <!-- Initial Assignment -->
+
+
+        <div layout="row" flex>
+            <div class="portfolio-article" layout="column" flex>
+                <!-- Portfolio Img -->
+                <div class="portfolio-img" layout="column" layout-align="start center">
+
+                    <img class="portfolio-org" ng-src="{[{ orgProfile.picture || '/static/assets/img/portfolio-blank.png' }]}" ngf-drop=setUserPicture(orgProfilePicture) ngf-select=setOrgPicture(OrgProfilePicture) ng-model="orgProfilePicture" name="orgProfilePicture" accept="image/*" ngf-max-size="5MB" />
+<!--                <img class="portfolio-org" ng-src="{[{ orgProfile.picture || '//:0'}]}" alt="Profile Image" style="display:none;" />
+ -->                <img class="portfolio-org" ngf-src="!orgProfilePicture.$error && orgProfilePicture" style="display:none;">
+                    <input type="hidden" ngf-select ng-model="orgProfilePicture" name="orgProfilePicture" accept="image/*" ngf-max-size="5MB" />
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section-heading" layout-align="space-between center" layout="row" style="margin-top:0">
+            <div ng-hide="editMode" class="title" flex="grow">{[{ orgProfile.name }]}</div>
+            <input ng-show="editMode" class="title boltBlue" placeholder="Organisation Name" ng-model="orgProfile.name" style="border-bottom:0;width:100%;text-align:left;padding:0;height:28px;"><span class="error">{[{ errors.name | errorFormatter }]}</span></input>
+
+
+            <div ng-hide="editMode" class="title">{[{ orgProfile.website }]}</div>
+            <input ng-show="editMode" class="title boltBlue" placeholder="http://" ng-model="orgProfile.website" style="border-bottom:0;width:100%;text-align:right;padding:0"><span class="error">{[{ errors.website | errorFormatter }]}</span></input>
+
+        </div>
+            <!-- Edit Buttons -->
+            <div class="" layout="row" ng-if="orgProfile.id == currentOrg.id">
+
+                <a class="section-button bgBoltBlue" layout="row" layout-align="center center" ng-hide="editMode" ng-click="enableEdit()">Edit Profile</a>
+                <!-- <a class="section-button bgBoltBlue" layout="row" layout-align="center center" ng-hide="editMode" ngf-select=setOrgPicture(OrgProfilePicture)>Set Picture</a> -->
+                <a class="section-button bgBoltBlue" layout="row" layout-align="center center" ng-show="editMode" ng-click="saveOrg()">Save Profile
+                </a>
+                <a class="section-button bgBoltBlue" layout="row" layout-align="center center" ng-show="editMode" ng-click="cancelEdit()">Cancel Edit
+                </a>
+                
+                <div class="section-button bgBoltLightBlue" layout="row" layout-align="center center" style="cursor:default;" flex>
+                    <form ng-submit="importUserArticle()" style="margin:0" flex>
+                    <input class="profile-url-input" type="text" ng-model="userInputs.articleUrl" placeholder="Paste a link to your article" style="border:0;min-width:100%;" flex="grow" /></form>
+                    <span class="error">{[{ errors.url | errorFormatter}]}</span>
+                </div>
+                
+                <a class="section-button bgBoltBlueAlt" layout="row" layout-align="center center" ng-click="importUserArticle()">Import Link</a>
+            </div>
+            <!-- End Buttons -->
+        <div class="section-item bgBoltGrey-5" layout="column">
+            <div layout="column" layout-align="space-between start" flex>
+                <p class="caption-a">ABOUT {[{orgProfile.name | uppercase}]}</p>
+                <p ng-hide="editMode">{[{ orgProfile.description }]}</p>
+
+                <textarea ng-show="editMode" class="section boltBlue" type="text" name="description" ng-model="orgProfile.description" placeholder="Share specific details about your company." style="padding:0;padding-bottom:8px;" ng-auto-expand><span class="error" flex>{[{ errors.description | errorFormatter }]}</span>
+                </textarea>
+
+            </div>
+        </div>
+
+        <div class="section-item" layout="column">
+            <div class="" style="padding:20px;" layout="row" layout-wrap layout-align="space-between center">
+                <div class="" layout="column" layout-align="center center" style="width:80px">
+                    <div class="title">{[{orgProfile.industry}]}</div>
+                    <p class="caption-a">Industry</p>
+                </div>
+                <div class="" layout="column" layout-align="center center" style="width:80px">
+                    <div class="title">1{[{orgProfile.task.wordCount}]}</div>
+                    <p class="caption-a">Jobs</p>
+                </div>
+                <div class="" layout="column" layout-align="center center" style="width:80px">
+                    <div class="title">1{[{orgProfile.price | currency: "SG$" :0}]}</div>
+                    <p class="caption-a">Rating</p>
+                </div>
+
+                <div class="" layout="column" layout-align="center center" style="width:80px">
+                    <div ng-hide="editMode" class="title">{[{ orgProfile.yearFounded }]}</div>
+                    <input ng-show="editMode" class="title boltBlue" placeholder="Year" ng-model="orgProfile.yearFounded" style="border-bottom:0;padding:4px;text-align:center;" flex><span class="error">{[{ errors.yearFounded | errorFormatter }]}</span></input>
+                    <p class="caption-a">Founded</p>
+                </div>
+                <div class="" layout="column" layout-align="center center" style="width:80px">
+                    <div ng-hide="editMode"class="title">{[{ orgProfile.size }]}</div>
+                    <input ng-show="editMode" class="title boltBlue" placeholder="1" ng-model="orgProfile.size" style="border-bottom:0;padding:4px;text-align:center;" flex><span class="error">{[{ errors.size | errorFormatter }]}</span></input>
+                    <p class="caption-a">Size</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</md-content>

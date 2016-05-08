@@ -1,0 +1,90 @@
+<md-content flex layout-fill layout="row" layout-sm="column" class="bgBoltGrey-20" layout-wrap>
+    <div flex="15" flex-md="100" flex-sm="100" layout="column">
+    </div>
+    <div flex="70" flex-md="100" flex-sm="100" layout="column" layout-fill class="bgBoltGrey-20">
+        <div layout="column" layout-align="left center" class="section-heading">
+            <div class="boltBlue title">My Applications</div>
+        </div>
+        <div ng-repeat="application in applications">
+            <!-- Start Application -->
+            <div class="section-item" layout="column" ng-click="viewBrief(application.job, application.job.id)" flex>
+                <!-- Application Title -->
+                <div layout="row" layout-align="space-between center">
+                    <div class="title" layout-padding>{[{application.job.task.type.label}]}: {[{application.job.task.taskBrief.title}]}</div>
+
+                    <div class="chip bgBoltTeal">Status: {[{application.status.label}]}</div>
+                </div>
+                <!-- Application Details -->
+<!--                 <div class="detail-section detail-bar" layout="row" layout-align="space-between center">
+                    <div layout="row">
+                        <p class="caption-b" style="padding-right:10px;">Status</p>
+                        <p class="caption-a">{[{application.status.label}]}</p>
+                    </div>
+                    <div layout="row">
+                        <p class="caption-b" style="padding-right:10px;">Task</p>
+                        <p class="caption-a">{[{application.job.task.type.label}]}</p>
+                    </div>
+                    <div layout="row">
+                        <p class="caption-b" style="padding-right:10px;">Price </p>
+                        <div class="caption-a">{[{application.job.price}]}</div>
+                    </div>
+                    <div layout="row">
+                        <p class="caption-b" style="padding-right:10px;">Due </p>
+                        <div class="caption-a">{[{application.job.task.deadline | dateFormatter}]}</div>
+                    </div>
+                </div> -->
+                <!-- Application Brief & Keywords -->
+                <div class="application-list" layout="row">
+                    <div class="">
+                        <div class="" layout="row" layout-align="start start">
+                            <div ng-repeat="keyword in application.job.task.taskBrief.keywords">
+                                <div class="chip" style="margin-bottom:5px;">{[{keyword}]}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="application-list" layout="column">
+                    <div class="recommendation-section" flex>
+                        <p class="caption-a">At a Glance</p>
+                        <p class="brief-text">
+                            The goal of the <strong>{[{application.job.task.contentType.label|lowercase}]}</strong> is to <strong>{[{application.job.task.goal.label|lowercase}]}</strong> with a <strong>{[{application.job.task.style.label|lowercase}]}</strong> and <strong>{[{application.job.task.pointOfView.label|lowercase}]}</strong> perspective. This {[{application.job.task.contentType.label|lowercase}]} is about the
+                            <strong ng-repeat="category in application.job.task.taskBrief.categories">{[{category|lowercase}]} </strong> {[{ application.job.taskBrief.categories.length > 1 ? 'industries' :'industry' }]}.
+                        </p>
+                    </div>
+                    <div class="instruction-section">
+                        <p class="caption-a">Your Proposal</p>
+                        {[{application.message}]}</div>
+                </div>
+            </div>
+            <!-- Application Buttons -->
+            <div class="" layout="row">
+                <div class="section-button bgBoltGrey-5" style="cursor:pointer" layout="row" flex layout-align="center center" ui-sref="org.profile({org:application.job.task.taskBrief.organization,id:application.job.task.taskBrief.organization.id})">
+                    <p class="">{[{ application.job.task.taskBrief.organization.name }]}</p>
+                </div>
+                <div class="section-indicator bgBoltGrey-5" layout="row" flex layout-align="center center">
+                    <p class="">{[{ application.job.task.wordCount }]} Words</p>
+                </div>
+                <div class="section-indicator bgBoltGrey-5" layout="row" flex layout-align="center center">
+                    <div class="">{[{ application.job.price | currency : "$" : 0 }]}</div>
+                </div>
+                <div class="section-indicator bgBoltGrey-5" layout="row" flex layout-align="center center" >
+                    <div class="">Due <span am-time-ago="application.job.task.deadline"></span></div>
+                </div>
+
+                <a class="section-button boltBlue-80 bgBoltGrey-5" style="cursor:pointer" layout="row" layout-align="center center" ng-click="viewAssignment(application.job.task.taskBrief, application.job.task.taskBrief.id)" ng-show="application.status == Enum.ApplicationStatus.ACCEPTED" flex>
+                        Go to Assignment
+                    </a>
+<!--                 <a class="section-button bgBoltGrey-5" layout="row" layout-align="center center" flex ng-click="viewBrief(application.job, application.job.id)">
+                        View Application
+                    </a> -->
+
+            </div>
+            <!-- End Application -->
+        </div>
+        <div class="section-item" ng-show="!applications.length" layout="column" layout-align="center center">
+            <p class="caption-a">There are no applications yet!</p>
+        </div>
+    </div>
+    <div flex="15" flex-md="100" flex-sm="100" layout="column">
+    </div>
+</md-content>

@@ -1,0 +1,51 @@
+<md-content layout="row" class="bgBoltGrey-20" layout-wrap>
+
+    <div flex="10" flex-lg="100" flex-md="100" flex-sm="100"></div>
+    <div flex="80" flex-lg="100" flex-md="100" flex-sm="100" layout="row" class="bgBoltGrey-20" layout-wrap>
+       <div flex="100" flex-md="100" flex-sm="100" layout="column" layout-align="center" class="section-heading">
+            <div class="boltBlue title">Please Select an Editor from your Organisation</div>
+        </div>
+
+        <div layout="row" layout-wrap layout-align="start center" style="align-items:stretch;">
+             
+            <div flex="33" flex-md="50" flex-sm="100" layout-padding layout="column" ng-repeat="user in users" >
+                <div layout="row" flex>
+
+                    <div class="portfolio-article" layout="column" flex>
+                        <!-- Portfolio Img -->
+                        <div class="portfolio-img" layout="column" layout-align="start center">
+                            <img class="portfolio-list" ng-src="{[{ userArticle.image || '/static/assets/img/portfolio-blank.png'}]}" width="100%" alt="Article Image" />
+                            <img class="portfolio-user icon-large" style="margin-top:40px;" ng-src="{[{ user.picture || '//:0' }]}">
+                        </div>
+                        <!-- Profile Text -->
+                        <div class="" layout="column" layout-align="start center">
+                            <div class="title">{[{user.firstName}]} {[{user.lastName}]}</div>
+                            <span class="rating boltYellow">
+                             <i class="fa fa-star"></i>
+                             <i class="fa fa-star"></i>
+                             <i class="fa fa-star"></i>
+                             <i class="fa fa-star-half-o"></i>
+                             <i class="fa fa-star-o"></i>
+                        </span>
+                        </div>
+                        <!-- Description -->
+                        <div layout="column" layout-align="center center" flex>
+                            <p style="padding:10px; margin:0 20px;">{[{user.description}]}</p>
+                        </div>
+                        <!-- Keywords -->
+                        <div layout="row" layout-padding layout-wrap layout-align="center center">
+                            <div class="chip bgBoltBlue" style="margin-bottom:5px;" ng-repeat="keyword in user.keywords | limitTo:5">{[{keyword}]}</div>
+                        </div>
+                        <!-- Portfolio Buttons -->
+                        <div class="" layout="row">
+                            <a class="section-button bgBoltBlue" layout="row" layout-align="center center" flex ng-click="SelectUser(user)">
+                         Select
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div flex="10" flex-lg="100" flex-md="100" flex-sm="100"></div>
+</md-content>

@@ -1,0 +1,36 @@
+<md-dialog aria-label="Edit Portfolio" ng-cloak>
+    <div layout="row" class="bgBoltBlue" style="min-height:75px;">
+        <div class="section-heading bgBoltBlue" layout="row" layout-align="space-between center" flex="100">
+            <div class="title">Edit Article</div>
+            <div layout="row">
+                <a class="button bgBoltTeal" ng-click="updateUserArticle()" style="margin-right:10px;">Update</a>
+                <a class="button bgBoltRed" ng-click="cancel()">Close</a>
+            </div>
+        </div>
+    </div>
+    <md-dialog-content>
+        <div layout="column" layout-padding>
+            <md-input-container layout-wrap layout-padding>
+                <p class="caption-b">Edit Title</p>
+                <textarea class="title portfolio-edit" layout-wrap ng-model="userArticle.title"></textarea>
+            </md-input-container>
+            <div layout-padding>
+                <p class="caption-b">Selected Keywords (click to remove)</p>
+                <div>
+                    <div class="chip bgBoltBlue" ng-repeat="keyword in userArticle.keywords" ng-click="removeKeyword(keyword)" style="margin-bottom:5px;">{[{keyword}]}</div>
+                </div>
+            </div>
+            <div layout-padding>
+                <p class="caption-b">Please select the keywords that best represent this story.</p>
+                <div>
+                    <div class="chip bgBoltTeal" ng-repeat="keyword in remainingKeywords" ng-click="addKeyword(keyword)" style="margin-bottom:5px;">{[{keyword}]}</div>
+                </div>
+            </div>
+            <hr>
+            <md-input-container layout-padding>
+                <p class="caption-b">Imported Text</p>
+                <textarea class="writing-section portfolio" ng-model="userArticle.content"></textarea>
+            </md-input-container>
+        </div>
+    </md-dialog-content>
+</md-dialog>
