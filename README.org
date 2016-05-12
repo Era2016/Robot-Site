@@ -2,7 +2,7 @@
 
 
 * Website for Robot Competitions
-
+  
 ** Requirements and Running
 
 *** OS Prerequisites
@@ -18,16 +18,14 @@ For configuration purposes, the following table maps the 'robo' environment
  variables to their Django setting(It should be added to cloud in the future):
 
 
-
-   
 ** TODO Tools to be Added
-|---------+-------------------------------------------------+----------------|
-| Tools   | Description                                     | Status         |
-|---------+-------------------------------------------------+----------------|
-| Sentry  | For logging                                     | Not configured |
-| Travis  | Continuous Integration                          | Not Configured |
-| Auth0   | For auth, should check if still works under GFW | Not Configured |
-| NGINX   | For distribution and stuff                      | Not Configured |
-| allauth | Basic authentication framework                  |                |
-|---------+-------------------------------------------------+----------------|
+|---------+-------------------------------------------------+--------------|
+| Tools   | Description                                     | Status       |
+|---------+-------------------------------------------------+--------------|
+| Sentry  | For logging                                     | Configured   |
+| Travis  | Continuous Integration                          | Configured   |
+| Auth0   | For auth, should check if still works under GFW | Used Allauth |
+| NGINX   | For distribution and stuff                      | For Server   |
+| allauth | Basic authentication framework                  | Configured   |
+|---------+-------------------------------------------------+--------------|
 
