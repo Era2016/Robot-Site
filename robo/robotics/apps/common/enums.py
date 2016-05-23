@@ -26,8 +26,8 @@ class UserRole(Enum):
     BUSINESS = 1
     WRITER = 2
     labels = {
-        BUSINESS: 'Business',
-        WRITER: 'Writer'
+        BUSINESS: 'Organization',
+        WRITER: 'Person'
     }
 
 

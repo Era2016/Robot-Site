@@ -1,1 +1,1 @@
-Bolt Media
+Bolt, A platform for learning and competing with others on Robotics.

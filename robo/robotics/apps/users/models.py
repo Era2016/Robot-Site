@@ -55,7 +55,7 @@ class UserCode(TimeStampedModel):
     user = models.OneToOneField(User, primary_key=True)
     code = models.TextField(blank=True)
     def __str__(self):
-        
+        return self.user.username
 
 
 @python_2_unicode_compatible
