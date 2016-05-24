@@ -3,341 +3,472 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" ng-app="bolt" > <!--<![endif]-->
-<html ng-app="bolt">
-<head>
-  <base href="/app/">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title ng-bind="pageTitle"></title>
+    <html ng-app="bolt">
+        <head>
+            <base href="/app/">
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+            <title ng-bind="pageTitle"></title>
 
-    {% load staticfiles %}
+            {% load staticfiles %}
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="An application for writers, designed by writers. Connverse manages your notes, stories, and your workflow" content="">
-    <meta name="writers, freelance, editors, companies, brands, workflow, stories, edits, content management, cms, editorial system, wordpress" content="" >
+            <meta name="An application for writers, designed by writers. Connverse manages your notes, stories, and your workflow" content="">
+            <meta name="writers, freelance, editors, companies, brands, workflow, stories, edits, content management, cms, editorial system, wordpress" content="" >
+            <link rel="shortcut icon" href="{% static "assets/logo-favicon.png" %}" type="image/png">
 
-    <link rel="shortcut icon" href="{% static "assets/logo-favicon.png" %}" type="image/png">
+            <!-- font awesome from BootstrapCDN -->
+            <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <!-- font awesome from BootstrapCDN -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+            <!--style stuff for the new payment page.-->
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
+            <!--calendar style-->
 
-    <!-- compiled CSS -->
-<!--     <link rel="import" href="{% static "assets/polymer.html" %}"/>
- -->
-    <!-- compiled CSS -->
-    <% styles.forEach( function ( file ) { %>
-    <link rel="stylesheet" type="text/css" href="{% static "<%= file %>" %}"/>
-    <% }); %>
+            <link href="http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.css
+                        " rel="stylesheet">
+            <!-- compiled CSS -->
+            <!--     <link rel="import" href="{% static "assets/polymer.html" %}"/>
+               -->
+            <!-- compiled CSS -->
+            <% styles.forEach( function ( file ) { %>
+            <link rel="stylesheet" type="text/css" href="{% static "<%= file %>" %}"/>
+            <% }); %>
 
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <!-- compiled JavaScript -->
-    <% scripts.forEach( function ( file ) { %>
-    <script type="text/javascript" src="{% static "<%= file %>" %}"></script>
-    <% }); %>
+            <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+            <!--for ui calendat-->
 
-    <!-- Passes template data from Django to Angular -->
-    <script>
-          bolt.factory('AuthUser', function () {
-              var user = {id:'{{user.id|default:''}}',
-                          role:{{user.userrole.role|default:-1}} ,
-                          username:'{{user.username|default:''}}',
-                          is_authenticated: '{{user.is_authenticated}}'};
-              var service = {
-                    setUser: function(role) {user.role = role;return user;},
-                    getUser: function() {return user;}
-              };
-          return service;
-          });
-          //new WOW().init();
-    </script>
-    <!-- google analytics -->
-    <script>
-    //   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    //   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    //   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    //   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    //   ga('create', 'UA-65332447-1', 'auto');
-    //   ga('send', 'pageview');
-    </script>
-    <!-- end google analytics -->
-  </head>
-  <body class="app-body" ng-controller="AppController" ng-init="initialize({{ user.is_authenticated | lower }})" ng-cloak>
 
-<!--- side navigation has to come first -->
+            <!-- for braintree payment integration-->
+            <script src="https://js.braintreegateway.com/js/braintree-2.21.0.min.js"></script>
+            <!-- compiled JavaScript -->
+            <% scripts.forEach( function ( file ) { %>
+            <script type="text/javascript" src="{% static "<%= file %>" %}"></script>
+            <% }); %>
 
-  <md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-      <md-toolbar class="md-theme-light">
-        <h2 class="md-toolbar-tools">
-          <a class="nav-profile-img" style="margin-top:0!important;">
-            <div class="profile-img-container">
-              <img class="" ng-src="{[{ currentUser.picture }]}" alt="" style="height:30px;width:30px;"/>
+
+            <!--calendar -->
+            <script src='http://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js'></script>
+
+
+            <!-- Added here is the list for grids -->
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+            <script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
+
+
+            <!-- Angular Material Library -->
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
+
+            <link href="https://material.angularjs.org/1.0.5/docs.css" rel="stylesheet" />
+
+            <!--Google Material Design Lite-->
+            <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+            <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.amber-lime.min.css" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+            <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+
+
+
+            <!-- Passes template data from Django to Angular -->
+            <script>
+             bolt.factory('AuthUser', function () {
+                 var user = {id:'{{user.id|default:''}}',
+                             role:{{user.userrole.role|default:-1}} ,
+                             username:'{{user.username|default:''}}',
+                             is_authenticated: '{{user.is_authenticated}}'};
+                 var service = {
+                     setUser: function(role) {user.role = role;return user;},
+                     getUser: function() {return user;}
+                 };
+                 return service;
+             });
+             //new WOW().init();
+            </script>
+            <!-- google analytics -->
+            <script>
+             //   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+             //   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+             //   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+             //   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+             //   ga('create', 'UA-65332447-1', 'auto');
+             //   ga('send', 'pageview');
+            </script>
+            <!-- end google analytics -->
+
+            <!-- here I added some themes I just found on the internet!-->
+            <style>
+             .navbar .brand {
+                 border-right: none;
+                 color: #fff;
+             }
+             .navbar .navbar-inner {
+                 background-color: transparent;
+                 background-image: none;
+             }
+             .navbar .nav > li > a:focus, .navbar .nav > li > a:hover {
+                 background: none;
+             }
+             .navbar .nav > li > a {
+                 background-color: transparent;
+                 color: #fff;
+             }
+             .navbar .nav > .active > a,
+             .navbar .nav > .active > a:hover,
+             .navbar .nav > .active > a:focus {
+                 background-color: transparent;
+             }
+             .nav > li > a {
+                 background-color: transparent;
+                 background: none;
+             }
+             .navbar .nav > li > a {
+                 border: none;
+             }
+             .navbar-inner {
+                 border: none;
+             }
+             .page-id-12 .navbar .navbar-inner {
+                 box-shadow: none;
+             }
+             .navbar .nav > li.active > a, .navbar .nav > li.active > a:hover {
+                 background: none;
+                 border: none;
+                 box-shadow: none;
+             }
+            </style>
+            <!--style for demo-layout-transparent -->
+            <style>
+             .demo-layout-transparent {
+                 //    z-index: 0;
+                 position: relative;
+                 //top:-20px;
+                 background-color: #182d45;
+                 background-image: url("http://www.transparenttextures.com/patterns/batthern.png");
+                 //background: url("{% static "assets/img/bg/12.jpg" %}") center ;
+             }
+             .demo-layout-waterfall .mdl-layout__header-row .mdl-navigation__link:last-of-type  {
+                 padding-right: 0;
+             }
+             .demo-layout-transparent .mdl-layout__header,
+             .demo-layout-transparent .mdl-layout__drawer-button {
+                 background-color: rgba(17,34,51,0.70);
+                 color: white;
+             }
+             .demo-layout-transparent .mdl-layout__drawer {
+                 background: #fff;
+                 background-color: rgba(49, 104,122,0.55);
+             }
+             .demo-list-item {
+                 width: 300px;
+                 background-color: rgba(85,102,153, 0.40);
+             }
+             .md-list-item{
+                 background-color: rgba(85,102,153, 0.40);
+             }
+            </style>
+
+
+            <!--Here is the style for md-content adjusting the the new page-->
+            <!--page content of connverse-->
+            <style>
+             .page-content-con{
+                 position: relative;
+                 width: 75%;
+                 margin: 0 auto;
+                 top: 42px;
+             }
+             background: rgba(17,34,51, 0.55);
+             }
+             .transparent-elem{
+                 background: rgba(34, 51, 68, 0.55);
+             }
+             .transparent-small-elem{
+                 background: rgba(85,102,153, 0.40);
+             }
+             .list-text{
+                 text-align: left;
+             }
+            </style>
+
+
+        </head>
+        <!-- here I added some scripts, purely dirty code, nothing else-->
+
+
+
+
+
+
+
+        <body class="app-body" ng-controller="AppController" ng-init="initialize({{ user.is_authenticated | lower }})" ng-cloak>
+
+            {% if user.is_authenticated %}
+
+            <!--drawer has to come first?-->
+            <!--
+                 <div id="main-mdl-content" class="demo-layout-transparent mdl-layout mdl-js-layout">
+               -->
+            <div id="main-mdl-content" class="demo-layout-transparent mdl-layout mdl-js-layout ">
+
+
+
+                <!--end of the drawer stuff-->
+
+
+                <!--Here is the example for Google MDL-->
+                <!--hhhhhhhhhhhhgggggggggg-->
+
+
+                <header class="mdl-layout__header mdl-layout__header--transparent mdl-layout--fixed-header  mdl-layout__header--scroll">
+                    <div class="mdl-layout__header-row">
+                        <!-- Title -->
+                        <span class="mdl-layout-title" ui-sref="manage.grid">CoSpaceRobot</span>
+                        <!-- Add spacer, to align navigation to the right -->
+                        <div class="mdl-layout-spacer"></div>
+                        <!-- Navigation -->
+                        <nav class="mdl-navigation">
+
+                            <md-button ui-sref="manage.calendar" ui-sref-active="active">Calendar</md-button>
+                            <!--                 <md-button ui-sref="manage.payments">Payments</md-button>
+                               -->                <!-- <md-button ui-sref="manage.analytics">Analytics</md-button> -->
+                            <!-- <md-button ui-sref="orgs.list">Search Organizations</md-button> -->
+
+                            <md-button class="dashboard-icon"
+                                       aria-label="manage"
+                                       ui-sref="manage.dashboard"
+                                       ui-sref-active="active"
+                                       ng-show="globals.is_authenticated"
+                            > DASHBOARD</md-button>
+
+                            <md-button class=""
+                                       id="assignment-button"
+                            > ACHIEVEMENTS
+                            </md-button>
+
+                            <md-button class=""
+                                       id="profile-button"
+                            >PROFILE</md-button>
+                            <md-button class="profile-icon" aria-label="profile"
+                                       ui-sref="user.profile({id:currentUser.id,user:null})"
+                                       ui-sref-active="active"
+                                       ng-show="globals.is_authenticated"
+                            >Info</md-button>
+
+                            <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                                for="assignment-button" >
+                                <li class="mdl-menu__item" ng-if="!isOrg">
+                                    <md-button ui-sref="jobs.list" ng-if="!isOrg"ui-sref-active="active">Browse Stuff</md-button>
+
+                                </li>
+                                <li class="mdl-menu__item" ng-if="!isOrg">
+                                    <md-button ui-sref="applications.userlist" ui-sref-active="active">Softwares</md-button>
+                                </li>
+                                <li class="mdl-menu__item" ng-if="!isOrg">
+                                    <md-button ui-sref="assignments.list" ui-sref-active="active">My Competitions</md-button>
+                                </li>
+                                <!--
+                                     </ul>
+                                     <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="assignment-button" ng-if="isOrg"> -->
+                                <li class="mdl-menu__item" ng-if="isOrg">
+                                    <md-button ui-sref="jobs.new" ng-if="isOrg" ui-sref-active="active">New Job</md-button>
+                                </li>
+                                <li class="mdl-menu__item" ng-if="isOrg">
+                                    <md-button ui-sref="jobs.list" ng-if="isOrg" ui-sref-active="active">Posted Jobs</md-button>
+                                </li>
+                            </ul>
+
+
+                            <ul class="mdl-menu  mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                                for="profile-button" >
+                                <li class="mdl-menu__item"  ng-if="!isOrg">
+                                    <md-button ui-sref="user.profile({id:currentUser.id, user:null})" ui-sref-active="active">My Profile</md-button>
+                                </li>
+                                <li class="mdl-menu__item" ng-if="!isOrg">
+                                    <md-button ui-sref="user.list" ui-sref-active="active">Search Users</md-button>
+                                </li>
+                                <!--
+                                     </ul>
+                                     <ul class="mdl-menu  mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="profile-button" ng-if="isOrg==1">
+                                   -->
+                                <li class="mdl-menu__item" ng-if="isOrg">
+                                    <!--here I deleted     ng-show="currentOrg.id"-->
+                                    <md-button  ui-sref="org.create">New Organization</md-button></li>
+                                <li class="mdl-menu__item" ng-if="isOrg">
+                                    <md-button ng-show="currentOrg.id" ui-sref="org.profile({org:null,id:currentOrg.id})">Organization Profile</md-button></li>
+                                <li class="mdl-menu__item" ng-if="isOrg">
+                                    <md-button ui-sref="user.profile({user:null,id:currentUser.id})" ui-sref-active="active">Profile</md-button>
+                                </li>
+                                <li class="mdl-menu__item" ng-if="isOrg">
+                                    <md-button ui-sref="user.list" ui-sref-active="active">Search Writers</md-button>
+                                </li>
+                            </ul>
+
+
+
+
+                            <!--Place for notification-->
+                            <md-menu ng-controller="NotificationController" class="notification">
+                                <i class="fa fa-bell-o" ng-click="$mdOpenMenu(); markAllNotificationsAsRead()"><span ng-show="unread_count>0" class="notification-count">{[{unread_count}]}</span></i>
+                                <md-menu-content style="padding:0;">
+                                    <md-menu-item class="mdl-menu__item transparent-small-elem" ng-repeat="notification in notifications | limitTo:10">
+                                        <div class="" ng-click="viewNotification(notification)"><img ng-src="{[{notification.actor.picture || '//:0'}]}" class="icon-mini" style="margin-right:10px">{[{notification.summary}]}</div>
+                                    </md-menu-item>
+
+                                    <md-menu-item class="notification-item bgBoltGrey">
+                                        <strong ng-click="viewAllNotifications(notifications)">See All Notifications
+                                        </strong>
+                                        </<a href=""></a>></md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+
+                            <!--notification-->
+
+                        </nav>
+                    </div>
+
+                </header>
+
+                <div class="mdl-layout__drawer" >
+                    <span class="mdl-layout-title">
+                        <nav class="mdl-navigation">
+                            <!--- side-navigation has to come first start-side-nav -->
+                            <md-list-item class="md-1-line" flex>
+                                <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
+                                    <div ng-class="subMenuClass(['user'])"    layout-padding
+                                         layout="column"
+                                         layout-align="center center"
+                                         flex>
+                                        <p class="caption-white list-text">YOUR SETTINGS</p>
+                                    </div>
+                                </a>
+                                <md-divider></md-divider>
+                            </md-list-item>
+                    </span>
+
+                    <md-list-item class="md-1-line side-sub-nav" flex>
+                        <a ui-sref="user.notifications" ng-click="closeSideNav()" flex>
+                            <div ng-class="subMenuClass(['user'])"    layout-padding
+                                 layout="column"
+                                 layout-align="start center"
+                                 flex>
+                                <p class="caption-white list-text">Notifications</p>
+
+                            </div>
+                        </a>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+
+                    <md-list-item class="md-1-line" flex>
+                        <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
+                            <div ng-class="subMenuClass(['user'])"    layout-padding
+                                 layout="column"
+                                 layout-align="center center"
+                                 flex>
+                                <p class="caption-white list-text">ORG SETTINGS</p>
+                            </div>
+                        </a>
+                        <md-divider></md-divider>
+                    </md-list-item>
+
+                    <md-list-item class="md-1-line side-sub-nav" flex>
+                        <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
+                            <div ng-class="subMenuClass(['user'])"    layout-padding
+                                 layout="column"
+                                 layout-align="start center"
+                                 flex>
+                                <p class="caption-white list-text">Payments</p>
+                            </div>
+                        </a>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+
+                    <md-list-item class="md-1-line side-sub-nav" flex>
+                        <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
+                            <div ng-class="subMenuClass(['user'])"    layout-padding
+                                 layout="column"
+                                 layout-align="start center"
+                                 flex>
+                                <p class="caption-white list-text">Users and Teams</p>
+                            </div>
+                        </a>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+
+                    <md-list-item class="md-1-line side-sub-nav" flex>
+                        <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
+                            <div ng-class="subMenuClass(['user'])"    layout-padding
+                                 layout="column"
+                                 layout-align="start center"
+                                 flex>
+                                <p class="caption-white list-text">CMS Accounts</p>
+                            </div>
+                        </a>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+
+                    <md-list-item class="md-1-line side-sub-nav" flex>
+                        <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
+                            <div ng-class="subMenuClass(['user'])"    layout-padding
+                                 layout="column"
+                                 layout-align="start center"
+                                 flex>
+                                <p class="caption-white list-text">Social Accounts</p>
+                            </div>
+                        </a>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+
+                    <md-list-item class="md-1-line side-sub-nav" flex>
+                        <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
+                            <div ng-class="subMenuClass(['user'])"    layout-padding
+                                 layout="column"
+                                 layout-align="start center"
+                                 flex>
+                                <p class="caption-white list-text">Tasks and Workflows</p>
+                            </div>
+                        </a>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+
+                    <md-list-item class="md-1-line" flex>
+
+                        <a aria-label="logout" class="button" href="{% url 'account_logout' %}" flex layout-margin><strong>LOG OUT</strong>
+                        </a>
+                    </md-list-item>
+
+                    <div layout="column"
+                         layout-align="end center"
+                         flex>
+                        <p class="caption-a">Connverse v1.0</p>
+                        <p class="caption-a">Made with <i class="fa fa-heart"></i> in Singapore</p>
+                    </div>
+
+
+                    <!-- end-side-nav-->
+                    <!-- end side navigation -->
+                    <!-- End of the side menus-->
+
+                        </nav>
+                </div>
+
+                <div ui-view="main" ng-cloak>
+                </div>
+
             </div>
-          </a>
-        <p class="caption-white" style="padding:6px 20px 0 20px;">{{user|upper}}</p>
-        </h2>
-      </md-toolbar>
 
-      <md-content class="bgBoltGrey" layout="column" layout-padding flex>
-        <md-list>
-          <md-list-item class="md-1-line" flex>
-            <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
-              <div ng-class="subMenuClass(['user'])"    layout-padding
-                   layout="column"
-                   layout-align="center center"
-                   flex>
-                  <p class="caption-white">YOUR SETTINGS</p>
-              </div>
+
+            <!--end of Google MDL demo-->
+            <!--hhhhhhhhhhhhhhhhhhhhhh strange line for search-->
+            <!--Start header navigation-->
+
+            {% else %}
+
+            <h2>You are not logged in</h2>
+            <a href="http://128.199.170.45:8000/accounts/login/">
+                Login Now!
             </a>
-            <md-divider></md-divider>
-          </md-list-item>
-
-          <md-list-item class="md-1-line side-sub-nav" flex>
-            <a ui-sref="user.notifications" ng-click="closeSideNav()" flex>
-              <div ng-class="subMenuClass(['user'])"    layout-padding
-                   layout="column"
-                   layout-align="start center"
-                   flex>
-                  <p class="caption-white">Notifications</p>
-              </div>
-            </a>
-            <md-divider ng-if="!$last"></md-divider>
-          </md-list-item>
-
-
-          <md-list-item class="md-1-line" flex>
-            <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
-              <div ng-class="subMenuClass(['user'])"    layout-padding
-                   layout="column"
-                   layout-align="center center"
-                   flex>
-                  <p class="caption-white">ORGANIZATION SETTINGS</p>
-              </div>
-            </a>
-            <md-divider></md-divider>
-          </md-list-item>
-
-          <md-list-item class="md-1-line side-sub-nav" flex>
-            <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
-              <div ng-class="subMenuClass(['user'])"    layout-padding
-                   layout="column"
-                   layout-align="start center"
-                   flex>
-                  <p class="caption-white">Payments</p>
-              </div>
-            </a>
-            <md-divider ng-if="!$last"></md-divider>
-          </md-list-item>
-
-          <md-list-item class="md-1-line side-sub-nav" flex>
-            <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
-              <div ng-class="subMenuClass(['user'])"    layout-padding
-                   layout="column"
-                   layout-align="start center"
-                   flex>
-                  <p class="caption-white">Users and Teams</p>
-              </div>
-            </a>
-            <md-divider ng-if="!$last"></md-divider>
-          </md-list-item>
-
-          <md-list-item class="md-1-line side-sub-nav" flex>
-            <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
-              <div ng-class="subMenuClass(['user'])"    layout-padding
-                   layout="column"
-                   layout-align="start center"
-                   flex>
-                  <p class="caption-white">CMS Accounts</p>
-              </div>
-            </a>
-            <md-divider ng-if="!$last"></md-divider>
-          </md-list-item>
-
-          <md-list-item class="md-1-line side-sub-nav" flex>
-            <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
-              <div ng-class="subMenuClass(['user'])"    layout-padding
-                   layout="column"
-                   layout-align="start center"
-                   flex>
-                  <p class="caption-white">Social Accounts</p>
-              </div>
-            </a>
-            <md-divider ng-if="!$last"></md-divider>
-          </md-list-item>
-
-          <md-list-item class="md-1-line side-sub-nav" flex>
-            <a ui-sref="user.settings" ng-click="closeSideNav()" flex>
-              <div ng-class="subMenuClass(['user'])"    layout-padding
-                   layout="column"
-                   layout-align="start center"
-                   flex>
-                  <p class="caption-white">Tasks and Workflows</p>
-              </div>
-            </a>
-            <md-divider ng-if="!$last"></md-divider>
-          </md-list-item>
-
-          <md-list-item class="md-1-line" flex>
-
-           <a aria-label="logout" class="button" href="{% url 'account_logout' %}" flex layout-margin><strong>LOG OUT</strong>
-                  </a>
-            </md-list-item>
-
-        </md-list>
-
-        <div layout="column"
-                   layout-align="end center"
-                   flex>
-                  <p class="caption-a">CoRobo v1.0</p>
-                  <p class="caption-a">Made with <i class="fa fa-heart"></i> in Singapore</p>
-        </div>
-
-      </md-content>
-
-    </md-sidenav>
-
-<!-- end side navigation -->
-
-<md-content class="navigation">
-<!-- header snippet -->
-<md-toolbar class="app-nav" layout="row" layout-align="space-between" >
-  <span flex>
-      <md-button class="logo" aria-label="manage" ui-sref="manage">
-          <img src="{% static "assets/img/cool-logo.png" %}" >
-      </md-button>
-      <md-button class="dashboard-icon" aria-label="manage" ui-sref="manage" ui-sref-active="active" ng-show="globals.is_authenticated">DASHBOARD</md-button>
-      <md-button class="assignments-icon"
-      aria-label="jobs"
-      ui-sref="jobs"
-      ui-sref-active="active"
-      ng-show="globals.is_authenticated"
-      ng-class="{active: ('assignments'| includedByState), activeb: ('applications'| includedByState)}"
-      >ASSIGNMENTS
-      </md-button>
-      <md-button class="profile-icon" aria-label="profile"
-      ui-sref="user.profile({id:currentUser.id,user:null})"
-      ui-sref-active="active"
-      ng-show="globals.is_authenticated"
-      >PROFILE</md-button>
-  </span>
-  <span class="messages" ng-if="globals.is_authenticated">
-  <md-menu-bar>
-      <md-menu ng-controller="NotificationController" class="notification">
-      <i class="fa fa-bell-o" ng-click="$mdOpenMenu(); markAllNotificationsAsRead()"><span ng-show="unread_count>0" class="notification-count">{[{unread_count}]}</span></i>
-          <md-menu-content style="padding:0;">
-              <md-menu-item class="notification-item" ng-repeat="notification in notifications | limitTo:10">
-                <div class="" ng-click="viewNotification(notification)"><img ng-src="{[{notification.actor.picture || '//:0'}]}" class="icon-mini" style="margin-right:10px">{[{notification.summary}]}</div>
-              </md-menu-item>
-                  <md-menu-item class="notification-item bgBoltGrey">
-                  <strong ng-click="viewAllNotifications(notifications)">See All Notifications</strong></a></md-menu-item>
-          </md-menu-content>
-      </md-menu>
-  </md-menu-bar>
-  </span>
-
-  <span class="right">
-      {% if user.is_authenticated %}
-        <md-button aria-label="profile" href="">{[{currentOrg.name || currentUser.role.label|uppercase}]}</md-button>
-        <a class="nav-profile-img">
-          <div class="profile-img-container">
-            <img class="" ng-src="{[{ currentUser.picture || '//:0'}]}" alt="">
-          </div>
-        </a>
-        <md-button aria-label="sidemenu" class="bgBoltBlueAlt" href="" style="padding:1.2em 1.2em;min-width:4.5em;" ng-click="toggleRight()">
-          <i class="fa fa-bars " style="font-size:2.5rem;"></i>
-        </md-button>
-      {% else %}
-        <md-button aria-label="signup" class="" href="{% url 'account_signup' %}">SIGN UP</md-button>
-        <md-button aria-label="login" href="{% url 'account_login' %}">LOG IN</md-button>
-      {% endif %}
-  </span>
-</md-toolbar>
-<!-- header snippet -->
-  <!-- subheader snippet -->
-    <md-toolbar layout="row" class="app-sub-nav">
-            <span class="" ng-if="isOrg" ng-class="subMenuClass(['manage','orgs','home'])">
-                <md-button ui-sref="manage.dashboard" ui-sref-active="active">Dashboard</md-button>
-                <md-button ui-sref="manage.calendar" ui-sref-active="active">Calendar</md-button>
-<!--                 <md-button ui-sref="manage.payments">Payments</md-button>
- -->                <!-- <md-button ui-sref="manage.analytics">Analytics</md-button> -->
-                <!-- <md-button ui-sref="orgs.list">Search Organizations</md-button> -->
-            </span>
-            <span class="" ng-if="!isOrg" ng-class="subMenuClass(['manage','orgs','home'])">
-                <md-button ui-sref="manage.dashboard" ui-sref-active="active">Dashboard</md-button>
-                <md-button ui-sref="manage.calendar" ui-sref-active="active">Calendar</md-button>
-<!--                 <md-button ui-sref="manage.payments">Payments</md-button>
- -->                <!-- <md-button ui-sref="manage.analytics">Analytics</md-button> -->
-<!--                 <md-button ui-sref="orgs.new">Organization</md-button>
- -->            </span>
-           <!--  <span class="" ng-if="isOrg" ng-class="subMenuClass(['create','notes'])">
-                <md-button ui-sref="create.pitch" ui-sref-active="active">Pitch</md-butuserton>
-                <md-button ui-sref="notes" ui-sref-active="active">Note</md-button>
-            </span> -->
-            <!-- <span ng-class="subMenuClass('org','create', currentUser.role)"> -->
-<!--                 <md-button ui-sref="jobs.new">Job</md-button>
- --><!--                 <md-button ui-sref="create.workflow">Workflow</md-button>
-             </span>-->
-            <span class="" ng-if="!isOrg" ng-class="subMenuClass(['jobs','applications','assignments'])">
-                <md-button ui-sref="jobs.list" ui-sref-active="active">Browse Jobs</md-button>
-                <md-button ui-sref="applications.userlist" ui-sref-active="active">My Applications</md-button>
-                <md-button ui-sref="assignments.list" ui-sref-active="active">My Assignments</md-button>
-<!--            <md-button ui-sref="jobs.recs">Recommendations</md-button> -->
-            </span>
-            <span class="" ng-if="isOrg" ng-class="subMenuClass(['briefs','jobs','applications','assignments'])">
-                <md-button ui-sref="jobs.new" ui-sref-active="active">New Job</md-button>
-<!--                 <md-button ui-sref="briefs.new">New Assignment</md-button>
- -->                <md-button ui-sref="jobs.list" ui-sref-active="active">Posted Jobs</md-button>
-<!--                 <md-button ui-sref="jobs.new">New Job</md-button>
- --><!--                 <md-button ui-sref="jobs.pitches">View Applications</md-button>
- -->                <!-- <md-button ui-sref="jobs.pitches">View Pitches</md-button>
-                <md-button ui-sref="jobs.recs">View Recommendations</md-button> -->
-            </span>
-            <span class="" ng-if="!isOrg" ng-class="subMenuClass('user','jobs','applications','assignments')">
-                <md-button ui-sref="user.profile({id:currentUser.id, user:null})" ui-sref-active="active">My Profile</md-button>
-                <md-button ui-sref="org.list" ui-sref-active="active">Search Organisations</md-button>
-                <md-button ui-sref="user.list" ui-sref-active="active">Search Writers</md-button>
-            </span>
-            <span class="" ng-if="isOrg" ng-class="subMenuClass('user','jobs','applications','assignments')">
-
-                <md-button ng-hide="currentOrg.id" ui-sref="org.create">New Organisation</md-button>
-                <md-button ng-show="currentOrg.id" ui-sref="org.profile({org:null,id:currentOrg.id})">Organisation Profile</md-button>
-
-
-                <md-button ui-sref="user.profile({user:null,id:currentUser.id})" ui-sref-active="active">Profile</md-button>
-                <md-button ui-sref="user.list" ui-sref-active="active">Search Writers</md-button>
-                <!-- <md-button ui-sref="org.list" ui-sref-active="active">Search Organisations</md-button> -->
-            </span>
-          </div>
-        </div>
-      </div>
-    </md-toolbar>
-
-
-  <!-- subheader snippet -->
-</md-content>
-
-{% if user.is_authenticated %}
-<md-content class="msg-wrapper">
-
-<!-- messages block -->
-    {% if messages %}
-      {% for message in messages %}
-        <div class="alert message">
-         {{message}}
-           <a href="#" class="del-msg boltBlue">
-            <i class="u-pull-right fa fa-times-circle" style="padding:6px;"></i>
-           </a>
-        </div>
-      {% endfor %}
-    {% endif %}
-    <!-- messages block -->
-  <div ui-view="main" ng-cloak>
-  </div>
-
-  </md-content>
-  {% else %}
-    <h3 style="text-align:center;padding-top:20vh;">Writers live twice.</h3>
-          <h5 style="text-align:center;"> -Natalie Goldberg </h5>
-  {% endif %}
-  </body>
-</html>
+            {% endif %}
+        </body>
+    </html>

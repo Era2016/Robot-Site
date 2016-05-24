@@ -364,8 +364,8 @@ bolt.factory('Enum', function(Utils) {
             SPORT_FITNESS: { id:10, label: "Sport & Fitness"},
         }),
         UserRole: new Enum({
-            EMPLOYEE: {id:1, label:"Business"},
-            FREELANCER: {id:2 , label:"Writer"}
+            EMPLOYEE: {id:1, label:"Organization"},
+            FREELANCER: {id:2 , label:"Competitor"}
         }),
         OrganizationRole: new Enum({
             OWNER:{id:1, label:"Owner"},

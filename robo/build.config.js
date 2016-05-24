@@ -60,8 +60,8 @@ module.exports = {
 
   vendor_files: {
     js: [
-      'vendor/moment/min/moment.min.js',
-      'vendor/jquery/dist/jquery.min.js',
+        'vendor/jquery/dist/jquery.js',
+        'vendor/moment/min/moment.min.js',
       //'vendor/jquery/dist/jquery.min.js.map',
       'vendor/angular/angular.min.js',
       //'vendor/angular/angular.min.js.map',

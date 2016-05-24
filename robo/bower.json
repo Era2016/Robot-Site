@@ -59,5 +59,8 @@
     "angular": "1.4.7",
     "fullcalendar": "~2.4.0",
     "moment": "~2.10.6"
+  },
+  "devDependencies": {
+    "jquery": "^2.2.4"
   }
 }

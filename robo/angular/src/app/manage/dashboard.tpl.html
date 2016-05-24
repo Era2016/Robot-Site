@@ -1,184 +1,130 @@
-<md-content layout="row" class="bgBoltGrey-20" layout-wrap>
-    <div flex="10" flex-lg="100" flex-md="100" flex-sm="100"></div>
-    <div flex="80" flex-lg="100" flex-md="100" flex-sm="100" layout="column" class="bgBoltGrey-20" layout-wrap>
-        <div class="dashboard-metrics" layout="row" layout-padding layout-wrap>
-            <div layout="column" flex="10" flex-sm="50" flex-md="20" layout-padding>
-                <div class="dashboard-score" layout="column" layout-align="center center" layout-padding flex>
-                    <div class="score-number">{[{activeTasks.length}]}</div>
-                    <p class="caption-a">Active Tasks</p>
-                </div>
+<style>
+ .gridListdemoDynamicTiles md-icon {
+     width: 50%;
+     height: 30%; }
+ .gridListdemoDynamicTiles md-icon svg {
+     -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+     border-radius: 50%; }
+ .gridListdemoDynamicTiles .s64 {
+     font-size: 64px; }
+ .gridListdemoDynamicTiles .s32 {
+     font-size: 48px; }
+ .gridListdemoDynamicTiles md-icon.fa {
+     display: block;
+     padding-left: 0; }
+ .gridListdemoDynamicTiles md-icon.s32 span {
+     padding-left: 8px; }
+ .gridListdemoDynamicTiles md-grid-list {
+     margin: 8px; }
+ .gridListdemoDynamicTiles .gray {
+     background: #f5f5f5; }
+ .gridListdemoDynamicTiles .green {
+     background: #b9f6ca; }
+ .gridListdemoDynamicTiles .yellow {
+     background: #ffff8d; }
+ .gridListdemoDynamicTiles .blue {
+     background: #84ffff; }
+ .gridListdemoDynamicTiles .darkBlue {
+     background: #80d8ff; }
+ .gridListdemoDynamicTiles .deepBlue {
+     background: #448aff; }
+ .gridListdemoDynamicTiles .purple {
+     background: #b388ff; }
+ .gridListdemoDynamicTiles .lightPurple {
+     background: #8c9eff; }
+ .gridListdemoDynamicTiles .red {
+     background: #ff8a80; }
+ .gridListdemoDynamicTiles .pink {
+     background: #ff80ab; }
+ .gridListdemoDynamicTiles md-grid-tile {
+     transition: all 300ms ease-out 50ms; }
+ .gridListdemoDynamicTiles md-grid-tile md-icon {
+     padding-bottom: 32px; }
+ .gridListdemoDynamicTiles md-grid-tile md-grid-tile-footer {
+     background: rgba(0, 0, 0, 0.68);
+     height: 36px; }
+ .gridListdemoDynamicTiles md-grid-tile-footer figcaption {
+     width: 100%; }
+ .gridListdemoDynamicTiles md-grid-tile-footer figcaption h3 {
+     margin: 0;
+     font-weight: 700;
+     width: 100%;
+     text-align: center; }
+</style>
+
+
+
+<style>
+ .grid-content {
+     z-index:1;
+ }
+ .mdl-grid {
+     padding: 0!important;
+ }
+ .mdl-cell {
+     background: #bdbdbd;
+     padding: 30px 0;
+     text-align: center;
+     color: #424242;
+     font-weight: bold;
+ }
+ .demo-card-wide.mdl-card {
+     margin: 30px auto 0;
+     background: rgba(255,255,255,0.75);
+     width: 512px;
+ }
+ .demo-card-wide > .mdl-card__title {
+     color: #fff;
+     height: 176px;
+     background: url('../assets/img/welcome_card.jpg') center / cover;
+ }
+ .demo-card-wide > .mdl-card__menu {
+     color: #fff;
+ }
+ <!-- content grid style here -->
+ .content-grid {
+     max-width: 960px;
+ }
+</style>
+
+
+<div ng-controller="gridListDemoCtrl as vm" flex="" ng-cloak="" class="gridListdemoDynamicTiles" ng-app="bolt.manage">
+    <md-grid-list md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="4:3" md-gutter="8px" md-gutter-gt-sm="4px">
+
+        <md-grid-tile ng-repeat="tile in vm.tiles" md-rowspan="{{tile.span.row}}" md-colspan="{{tile.span.col}}" md-colspan-sm="1" ng-class="tile.background">
+            <md-icon md-svg-icon="{{tile.icon}}"></md-icon>
+            <md-grid-tile-footer><h3>dummy</h3></md-grid-tile-footer>
+        </md-grid-tile>
+    </md-grid-list>
+</div>
+<!-- here is something kkkkkkkk -->
+
+
+<!--for the test of cards -->
+<div class="content-grid mdl-grid page-content-con">
+    <div class="mdl-cell">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Welcome</h2>
             </div>
-            <div layout="column" flex="10" flex-sm="50" flex-md="20" layout-padding>
-                <div class="dashboard-score" layout="column" layout-align="center center" layout-padding flex>
-                    <div class="score-number">{[{inactiveTasks.length}]}</div>
-                    <p class="caption-a">Upcoming Tasks</p>
-                </div>
+            <div class="mdl-card__supporting-text">
+                Here is some cards that you can either put recommendations inside or something else.
             </div>
-            <div layout="column" flex="10" flex-sm="50" flex-md="20" layout-padding>
-                <div class="dashboard-score" layout="column" layout-align="center center" layout-padding flex>
-                    <div class="score-number">{[{finishedTasks.length}]}</div>
-                    <p class="caption-a">Completed Tasks</p>
-                </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    Another Title!!!!!!
+                </a>
             </div>
-            <!-- <div layout="column" flex="10" flex-sm="50" flex-md="20" layout-padding>
-                <div class="dashboard-score" layout="column" layout-align="center center" layout-padding flex>
-                    <div class="score-number">21</div>
-                    <p class="caption-a">Pitches</p>
-                </div>
-            </div>
-            <div layout="column" flex="10" flex-sm="50" flex-md="20" layout-padding>
-                <div class="dashboard-score" layout="column" layout-align="center center" layout-padding flex>
-                    <div class="score-number">3</div>
-                    <p class="caption-a">Open Job Briefs</p>
-                </div>
-            </div> -->
-            <div class="dashboard-team-performance" layout="column" flex="25" flex-md="50" flex-sm="100" layout-align="start end" layout-wrap layout-padding>
-                <p class="caption-a">{[{isOrg ? 'Organization Progress' : 'Total Progress'}]} </p>
-                <!-- First Bar -->
-                <div class="dashboard-meter-row" layout="row">
-                    <div class="dashboard-meter-label" flex="50" layout="row" layout-align="end center">
-                        <p class="caption-a" style="padding-right:10px;">Assigned</p>
-                        <div class="title boltTeal">{[{dashboard.org.assigned}]}</div>
-                    </div>
-                    <div class="dashboard-meter" flex="50" layout="row" layout-align="end center">
-                        <div class="dashboard-bar org" style="width:{[{100.0*dashboard.org.assigned / dashboard.org.assignedGoal}]}%" layout-fill>&nbsp;</div>
-                    </div>
-                </div>
-                <!-- Second Bar -->
-                <div class="dashboard-meter-row" layout="row">
-                    <div class="dashboard-meter-label" flex="50" layout="row" layout-align="end center">
-                        <p class="caption-a" style="padding-right:10px;">Completed</p>
-                        <div class="title boltTeal">{[{dashboard.org.completed}]}</div>
-                    </div>
-                    <div class="dashboard-meter" flex="50" layout="row" layout-align="end center">
-                        <div class="dashboard-bar org" style="width:{[{100.0*dashboard.org.completed / dashboard.org.completedGoal}]}%" layout-fill>&nbsp;</div>
-                    </div>
-                </div>
-                <!-- Third Bar -->
-                <div class="dashboard-meter-row" layout="row">
-                    <div class="dashboard-meter-label" flex="50" layout="row" layout-align="end center">
-                        <p class="caption-a" style="padding-right:10px;">{[{isOrg ? 'Spent' : 'Earned'}]}</p>
-                        <div class="title boltTeal">{[{dashboard.org.spent | currency: "$" :0}]}</div>
-                    </div>
-                    <div class="dashboard-meter" flex="50" layout="row" layout-align="end center">
-                        <div class="dashboard-bar org" style="width:{[{100.0*dashboard.org.spent / dashboard.org.spentGoal}]}%" layout-fill>&nbsp;</div>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-individual-performance" layout="column" flex="25" flex-md="50" flex-sm="100" layout-padding layout-wrap>
-                <p class="caption-a">{[{isOrg ? 'Your Progress' : 'Monthly Progress'}]}</p>
-                <!-- First Bar -->
-                <div class="dashboard-meter-row" layout="row">
-                    <div class="dashboard-meter" flex="50" layout="row" layout-align="start center">
-                        <div class="dashboard-bar individual" style="width:{[{100.0*dashboard.user.assigned / dashboard.user.assignedGoal}]}%" layout-fill>&nbsp;</div>
-                    </div>
-                    <div class="dashboard-meter-label" flex="50" layout="row" layout-align="start center">
-                        <div class="title boltBlue">{[{dashboard.user.assigned}]}</div>
-                        <p class="caption-a" style="padding-left:10px;">Assigned</p>
-                    </div>
-                </div>
-                <!-- Second Bar -->
-                <div class="dashboard-meter-row" layout="row">
-                    <div class="dashboard-meter" flex="50" layout="row" layout-align="start center">
-                        <div class="dashboard-bar individual" style="width:{[{100.0*dashboard.user.completed / dashboard.user.completedGoal}]}%" layout-fill>&nbsp;</div>
-                    </div>
-                    <div class="dashboard-meter-label" flex="50" layout="row" layout-align="start center">
-                        <div class="title boltBlue">{[{dashboard.user.completed}]}</div>
-                        <p class="caption-a" style="padding-left:10px;">Completed</p>
-                    </div>
-                </div>
-                <!-- Third Bar -->
-                <div class="dashboard-meter-row" layout="row">
-                    <div class="dashboard-meter" flex="50" layout="row" layout-align="start center">
-                        <div class="dashboard-bar individual" style="width:{[{100.0*dashboard.user.spent / dashboard.user.spentGoal}]}%" layout-fill>&nbsp;</div>
-                    </div>
-                    <div class="dashboard-meter-label" flex="50" layout="row" layout-align="start center">
-                        <div class="title boltBlue">{[{dashboard.user.spent| currency: "$" :0}]}</div>
-                        <p class="caption-a" style="padding-left:10px;">{[{isOrg ? 'Spent' : 'Earned'}]}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="" ng-show="isOrg" layout="row" layout-padding layout-align="center center">
-          <button ng-click="payTest()" style="margin-right:10px;">Payment Test</button>
-            <button ng-click="loadOrgTasks()" style="margin-right:10px;">Organization</button>
-            <button ng-click="loadTasks()">User</button>
-        </div>
-        <div class="dashboard-tasks" layout="row" layout-padding layout-wrap>
-            <div class="tasks-overdue" flex="25" flex-md="50" flex-sm="100" layout-padding>
-                <p class="caption-a">Overdue</p>
-                <hr class="overdue">
-                <div ng-repeat="task in activeTasks" ng-if="task.deadline <= globals.day">
-                    <div class="dashboard-task" layout="row" layout-align="center center" ng-click="viewAssignment(task.taskBrief,task.taskBrief.id)">
-                        <div class="dashboard-task-image">
-                            <img class="icon" ng-src="{[{task.assignee.picture || '//:0'}]}">
-                        </div>
-                        <div class="dashboard-task-text" layout="column" layout-align="center start" flex>
-                            <!-- {[{task.status.label}]} -->
-                            <p class="caption-a">{[{task.taskBrief.title}]} </p>
-                            <div class="title">{[{task.type.label}]}</div>
-                            <p class="caption-b">Due <span am-time-ago="task.deadline"></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tasks-due-soon" flex="25" flex-md="50" flex-sm="100" layout-padding>
-                <p class="caption-a">Due Soon</p>
-                <hr class="due-soon">
-                <div ng-repeat="task in activeTasks" ng-if="task.deadline >= globals.day">
-                    <div class="dashboard-task" layout="row" layout-align="center center" ng-click="viewAssignment(task.taskBrief,task.taskBrief.id)">
-                        <div class="dashboard-task-image">
-                            <img class="icon" ng-src="{[{task.assignee.picture|| '//:0'}]}"> </div>
-                        <div class="dashboard-task-text" layout="column" layout-align="center start" flex>
-                            <!-- {[{task.status.label}]} -->
-                            <p class="caption-a">{[{task.taskBrief.title}]} </p>
-                            <div class="title">{[{task.type.label}]}</div>
-                            <p class="caption-b">Due <span am-time-ago="task.deadline"></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tasks-upcoming" flex="25" flex-md="50" flex-sm="100" layout-padding>
-                <p class="caption-a">Upcoming</p>
-                <hr class="upcoming">
-                <div ng-repeat="task in inactiveTasks">
-                    <div class="dashboard-task" layout="row" layout-align="center center" ng-click="viewAssignment(task.taskBrief,task.taskBrief.id)">
-                        <div class="dashboard-task-image">
-                            <img class="icon" ng-src="{[{task.assignee.picture|| '//:0'}]}">
-                        </div>
-                        <div class="dashboard-task-text" layout="column" layout-align="center start" flex>
-                            <!-- {[{task.status.label}]} -->
-                            <p class="caption-a">{[{task.taskBrief.title}]} </p>
-                            <div class="title">{[{task.type.label}]}</div>
-                            <p class="caption-b">Due <span am-time-ago="task.deadline"></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tasks-completed" flex="25" flex-md="50" flex-sm="100" layout-padding>
-                <p class="caption-a">Completed</p>
-                <hr class="completed">
-                <div ng-repeat="task in finishedTasks">
-                    <div class="dashboard-task" layout="row" layout-align="center center" ng-click="viewAssignment(task.taskBrief,task.taskBrief.id)">
-                        <div class="dashboard-task-image">
-                            <img class="icon" ng-src="{[{task.assignee.picture|| '//:0'}]}">
-                        </div>
-                        <div class="dashboard-task-text" layout="column" layout-align="center start" flex>
-                            <!-- {[{task.status.label}]} -->
-                            <p class="caption-a">{[{task.taskBrief.title}]} </p>
-                            <div class="title">{[{task.type.label}]}</div>
-                            <p class="caption-b">Completed <span am-time-ago="task.modified"></span></p>
-                        </div>
-                    </div>
-                </div>
+            <div class="mdl-card__menu">
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons">share</i>
+                </button>
             </div>
         </div>
-    </div>
-    <!--     <div flex="20" flex-sm="100" flex-md="100" layout="column" layout-padding>
-        <md-button class="md-raised bgBoltOrange" ng-click="showMsg('This is my message','warning')">Warning Message</md-button>
-        <md-button class="md-raised bgBoltRed" ng-click="showMsg('This is my message','error')">Error Message</md-button>
-        <md-button class="md-raised bgBoltGreen" ng-click="showMsg('This is my message','success')">Success Message</md-button>
-        <md-button class="md-raised bgBoltBlue" ng-click="showMsg('This is my message','normal')">Normal Message</md-button>
-    </div> -->
-    <div flex="10" flex-md="100" flex-sm="100"></div>
-</md-content>
+    </div> <!--end for content cell-->
+
+
+</div> <!--End for content grid div-->
+
+
