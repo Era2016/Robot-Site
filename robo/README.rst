@@ -86,8 +86,10 @@ To create a **normal user account**, just go to Sign Up and fill out the form. O
 
 To create an **superuser account**, use this command::
 
+   #+BEGIN_SRC shell
     $ python manage.py createsuperuser
-
+   #+END_SRC
+    
 For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
 
 Test coverage

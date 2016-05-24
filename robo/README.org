@@ -19,19 +19,27 @@ You can change database to MySQL if you like, in the configure files.
 
 First make sure to create and activate a virtualenv, then open a terminal at the project root and install the requirements for local development:
 
+   #+BEGIN_SRC shell
     $ pip install -r requirements/local.txt
+   #+END_SRC
 
 Create a local PostgreSQL database::
 
+   #+BEGIN_SRC shell
     $ createdb bolt
+   #+END_SRC
 
 Run ``migrate`` on your new database::
 
+   #+BEGIN_SRC shell
     $ python manage.py migrate
+   #+END_SRC
 
 You can now run the ``runserver_plus`` command::
 
+   #+BEGIN_SRC shell
     $ python manage.py runserver_plus
+   #+END_SRC
 
 Open up your browser to http://127.0.0.1:8000/ to see the site running locally.
 
