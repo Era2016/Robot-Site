@@ -43,6 +43,56 @@ You can now run the ``runserver_plus`` command::
 
 Open up your browser to http://127.0.0.1:8000/ to see the site running locally.
 
+***  Test Coverage
+
+To run the tests, check your test coverage, and generate an HTML coverage report::
+
+   #+BEGIN_SRC shell
+    $ coverage run manage.py test
+    $ coverage html
+    $ open htmlcov/index.html
+   #+END_SRC
+
+*** Live reloading and Sass CSS compilation
+If you'd like to take advantage of live reloading and Sass / Compass CSS compilation you can do so with a little bit of prep work.
+
+Make sure that nodejs_ is installed. Then in the project root run::
+
+   #+BEGIN_SRC shell
+    $ npm install
+   #+END_SRC
+
+.. _nodejs: http://nodejs.org/download/
+
+If you don't already have it, install `compass` (doesn't hurt if you run this command twice)::
+
+   #+BEGIN_SRC shell
+    gem install compass
+   #+END_SRC
+
+Now you just need::
+
+   #+BEGIN_SRC shell
+    $ grunt serve
+   #+END_SRC
+
+The base app will now run as it would with the usual ``manage.py runserver`` but with live reloading and Sass compilation enabled.
+
+To get live reloading to work you'll probably need to install an [[http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-][appropriate browser extension]].
+
+*** Sentry
+Sentry is an error logging aggregator service. You can sign up for a free account at http://getsentry.com or download and host it yourself.
+The system is setup with reasonable defaults, including 404 logging and integration with the WSGI application.
+
+You must set the DSN url in production.
+
+*If you want to simplify the process of development, you do not need to download sentry.* 
+
+It's time to write the code!!!
+
+*** Deployment
+
+Will come back later.
 
 
 *** OS Prerequisites
