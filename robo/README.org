@@ -1,12 +1,45 @@
 
 
 
-* Website for Robot Competitions
+* CoSpaceRobot
+Innovation, learning and competition. Introducing students to robotics.
 
 ** Requirements and Running
+
+This project relies extensively on environment settings which **will not work with Apache/mod_wsgi setups**. It has been deployed successfully with both Gunicorn/Nginx and even uWSGI/Nginx.
+
+*** Basics
+The steps below will get you up and running with a local development environment. We assume you have the following installed:
+
+- pip
+- virtualenv
+- PostgreSQL
+
+You can change database to MySQL if you like, in the configure files.
+
+First make sure to create and activate a virtualenv, then open a terminal at the project root and install the requirements for local development:
+
+    $ pip install -r requirements/local.txt
+
+Create a local PostgreSQL database::
+
+    $ createdb bolt
+
+Run ``migrate`` on your new database::
+
+    $ python manage.py migrate
+
+You can now run the ``runserver_plus`` command::
+
+    $ python manage.py runserver_plus
+
+Open up your browser to http://127.0.0.1:8000/ to see the site running locally.
+
+
 
 *** OS Prerequisites
 I'll come back and manage the doc later.
 *** Development
+
 
 ** Contains

@@ -27,5 +27,9 @@ For configuration purposes, the following table maps the 'robo' environment
 | Auth0   | For auth, should check if still works under GFW | Used Allauth |
 | NGINX   | For distribution and stuff                      | For Server   |
 | allauth | Basic authentication framework                  | Configured   |
+| Docker  | Cloud container for project                     | Configured   |
 |---------+-------------------------------------------------+--------------|
+
+** Project
+The project is in the robo folder. 
 
