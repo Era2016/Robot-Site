@@ -241,14 +241,14 @@ var taskConfig = {
       },
       staticLess: {
           options: {
-              paths: 'bolt/static/less',
+              paths: 'robotics/static/less',
               sourceMap: true,
-              sourceMapFilename: 'bolt/static/css/site.css.map',
-              sourceMapURL: 'bolt/static/css/site.css.map',
+              sourceMapFilename: 'robotics/static/css/site.css.map',
+              sourceMapURL: 'robotics/static/css/site.css.map',
               compress: true
           },
           files: {
-              "bolt/static/css/site.css": ["bolt/static/less/*.less", "!bolt/static/less/_*.less"]
+              "robotics/static/css/site.css": ["robotics/static/less/*.less", "!robotics/static/less/_*.less"]
           }
       }
     },
@@ -500,7 +500,7 @@ var taskConfig = {
        * If any of the static less or django template files are changed, we update as well.
        */
       staticLess: {
-        files: [ 'bolt/static/less/**/*.less', 'bolt/templates/**/*.html' ],
+        files: [ 'robotics/static/less/**/*.less', 'robotics/templates/**/*.html' ],
         tasks: [ 'less:staticLess' ]
       },
 
@@ -638,13 +638,13 @@ grunt.initConfig( grunt.util._.extend( taskConfig, userConfig ) );
 
   grunt.registerTask( 'compile', ['less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js','imagemin', 'uglify', 'index:compile']);
   grunt.registerTask( 'prod', ['bgShell:runDjango','delta']);
-  grunt.registerTask( 'bolt', [ 'build', 'compile' ] );
+  grunt.registerTask( 'robotics', [ 'build', 'compile' ] );
 
 
 
   grunt.registerTask("default", "Prints usage", function () {
       grunt.log.writeln("");
-      grunt.log.writeln("Grunt Tasks for Bolt");
+      grunt.log.writeln("Grunt Tasks for CoSpaceRobot");
       grunt.log.writeln("----------------------------------------------");
       grunt.log.writeln("");
       grunt.log.writeln("* run 'grunt --help' to get an overview of all commands.");
