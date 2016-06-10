@@ -7,9 +7,6 @@ from core import fields as core_fields
 from common import fields as common_fields
 from common import enums
 from .models import UserProfile
-# users app should not really know about articles app
-from articles.serializers import PublicationSerializer
-
 
 # Custom user model
 User = get_user_model()
@@ -38,7 +35,6 @@ class UserSerializer(core_serializers.DynamicFieldsModelSerializer):
     keywords = core_fields.ListField(
         child=common_fields.KeywordField(), read_only=True
     )
-    publications = PublicationSerializer(many=True, read_only=True)
     rating = serializers.SerializerMethodField()
     rating_count = serializers.SerializerMethodField()
 
@@ -46,7 +42,7 @@ class UserSerializer(core_serializers.DynamicFieldsModelSerializer):
         model = User
         fields = ('id', 'username', 'first_name', 'last_name',
                   'email', 'website', 'gender', 'picture',
-                  'description', 'keywords', 'publications',
+                  'description', 'keywords',
                   'rating', 'rating_count')
         read_only_fields = ('id', 'username')
 

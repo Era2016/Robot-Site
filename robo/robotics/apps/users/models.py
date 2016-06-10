@@ -9,7 +9,7 @@ from core.models import TimeStampedModel
 from common.models import Keyword
 from common import enums
 # users app should not really know about articles app
-from articles.models import Publication
+# from articles.models import Publication
 
 
 @python_2_unicode_compatible
@@ -22,11 +22,6 @@ class User(AbstractUser):
         return (Keyword.objects.filter(articles__user=self)
                                .annotate(keyword_count=Count('id'))
                                .order_by('-keyword_count'))[:10]
-
-    def publications(self):
-        return (Publication.objects.filter(articles__user=self)
-                                   .annotate(Count('id'))
-                                   .order_by('-id__count'))
 
     def __str__(self):
         return self.username

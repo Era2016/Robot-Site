@@ -63,16 +63,16 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
-    'newspaper',  # customization of https://github.com/codelucas/newspaper
+    #'newspaper',  # customization of https://github.com/codelucas/newspaper
     'core',
     'common',
     'users',
     'comments',
     'orgs',
-    'tasks',
-    'articles',
-    'jobs',
-    'ratings',
+    #'tasks',
+    #'articles',
+    #'jobs',
+    #'ratings',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
