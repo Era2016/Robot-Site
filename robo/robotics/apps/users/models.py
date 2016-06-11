@@ -49,6 +49,7 @@ class UserProfile(TimeStampedModel):
 class UserCode(TimeStampedModel):
     user = models.OneToOneField(User, primary_key=True)
     code = models.TextField(blank=True)
+    level = models.TextField(blank=True, default='1')
     def __str__(self):
         return self.user.username
 
@@ -57,7 +58,6 @@ class UserCode(TimeStampedModel):
 class UserRole(TimeStampedModel):
     user = models.OneToOneField(User, primary_key=True)
     role = models.PositiveSmallIntegerField(choices=enums.UserRole.choices())
-
     def __str__(self):
         return self.user.username
 
@@ -67,3 +67,4 @@ class UserRole(TimeStampedModel):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
+        UserCode.objects.create(user=instance)

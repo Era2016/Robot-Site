@@ -387,7 +387,7 @@ bolt.factory('User', function(restmod, Enum) {
         orgs: { hasMany: 'Organization' },
         jobs: { hasMany: 'Job' },
         applications: { hasMany: 'Application' },
-        articles: { hasMany: 'ImportedArticle' },
+        //articles: { hasMany: 'ImportedArticle' },
         portfolios: { hasMany: 'Portfolio' },
         tasks: { hasMany: 'Task'},
         notifications: { hasMany: 'Notification' },

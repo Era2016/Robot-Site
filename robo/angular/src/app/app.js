@@ -15,6 +15,7 @@ var bolt = angular.module('bolt', [
         'bolt.user',
         'bolt.org',
         'bolt.briefs',
+        'bolt.level',
         'bolt.jobs',
         'bolt.manage',
         'bolt.create',

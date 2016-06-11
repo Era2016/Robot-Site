@@ -10,7 +10,6 @@ angular.module('bolt.user', [
 
     // go to profile as default
     //$urlRouterProvider.when('/user', '/user/profile');
-
     $stateProvider
         .state('user', {
             url: '/user',
