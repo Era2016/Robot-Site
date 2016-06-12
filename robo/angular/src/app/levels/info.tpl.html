@@ -3,25 +3,56 @@
  .demo-card-square.mdl-card {
      width: 320px;
      height: 320px;
+     margin-left:auto;
+     margin-right:auto;
  }
  .demo-card-square > .mdl-card__title {
      color: #fff;
      background:
-     
+
+ }
+ .card-container{
+
  }
 </style>
 
-<div class="demo-card-square mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__title mdl-card--expand">
-        <h2 class="mdl-card__title-text">Update</h2>
+<div class="card-container">
+    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-card--expand">
+            <h2 class="mdl-card__title-text">Update</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            This is an example of level 1 download redirection
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="http://www.cospacerobot.org/download/cospace-rescue-download#how-to-start">
+                Download
+            </a>
+        </div>
     </div>
-    <div class="mdl-card__supporting-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Aenan convallis.
+
+
+    <div class="demo-card-square mdl-card mdl-shadow--2dp" ng-show="level==2">
+        <div class="mdl-card__title mdl-card--expand">
+            <h2 class="mdl-card__title-text">Update</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            This is an example of level 2 download redirection
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="http://www.cospacerobot.org/download/cospace-rescue-download#installation">
+                Download
+            </a>
+        </div>
     </div>
-    <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            View Updates
-        </a>
+</div>
+
+<div>
+    <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" type="text" id="sample1">
+        <label class="mdl-textfield__label" for="sample1">Text...</label>
     </div>
+    <button class="mdl-button mdl-js-button mdl-button--raised" ng-click="checkLevel()">
+        Submit Code
+    </button>
 </div>

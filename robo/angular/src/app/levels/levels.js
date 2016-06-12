@@ -40,4 +40,8 @@ angular.module('bolt.level',[
     $scope.isOrg = 0;
     $scope.level = 1;
     console.log("something is happening");
+
+    $scope.checkLevel = function(){
+        $scope.level = 2;
+    }
 })
