@@ -288,20 +288,9 @@
                                 <li class="mdl-menu__item" ng-if="!isOrg">
                                     <md-button ui-sref="user.list" ui-sref-active="active">Search Users</md-button>
                                 </li>
-                                <!--
-                                     </ul>
-                                     <ul class="mdl-menu  mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="profile-button" ng-if="isOrg==1">
-                                   -->
+
                                 <li class="mdl-menu__item" ng-if="isOrg">
-                                    <!--here I deleted     ng-show="currentOrg.id"-->
-                                    <md-button  ui-sref="org.create">New Organization</md-button></li>
-                                <li class="mdl-menu__item" ng-if="isOrg">
-                                    <md-button ng-show="currentOrg.id" ui-sref="org.profile({org:null,id:currentOrg.id})">Organization Profile</md-button></li>
-                                <li class="mdl-menu__item" ng-if="isOrg">
-                                    <md-button ui-sref="user.profile({user:null,id:currentUser.id})" ui-sref-active="active">Profile</md-button>
-                                </li>
-                                <li class="mdl-menu__item" ng-if="isOrg">
-                                    <md-button ui-sref="user.list" ui-sref-active="active">Search Writers</md-button>
+                                    <md-button  ui-sref="org.create">New Organization</md-button>
                                 </li>
                             </ul>
 

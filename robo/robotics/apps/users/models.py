@@ -18,11 +18,6 @@ class User(AbstractUser):
     def name(self):
         return (self.first_name + ' ' + self.last_name) or self.username
 
-    def keywords(self):
-        return (Keyword.objects.filter(articles__user=self)
-                               .annotate(keyword_count=Count('id'))
-                               .order_by('-keyword_count'))[:10]
-
     def __str__(self):
         return self.username
 

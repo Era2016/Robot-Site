@@ -93,15 +93,9 @@ angular.module('bolt.manage', [
 
     $scope.globals = GlobalService;
     $scope.Enum = Enum;
-    $scope.tasks = {};
     $scope.eventSources = [{
         events: []
     }];
-    $scope.activeTasks = [];
-    $scope.inactiveTasks = [];
-    $scope.finishedTasks = [];
-
-    // temp dashboard variables
 
     $scope.dashboard = {
         org: {
@@ -129,14 +123,6 @@ angular.module('bolt.manage', [
     // No access to the generated HTML, need to use jQuery/jqLite
     // to hide that style
 
-    // if($scope.currentUser.role == 'writer') {
-    //   $log.log('writer!');
-    //   angular.element($('.fc-orgButton-button').css('display','none'));
-    //   angular.element($('.fc-userButton-button').css('display','none'));
-    // }
-
-
-
 
     $scope.renderEvent = function(event, element, view) {
         element.find('.fc-time').after("<br/>");
@@ -160,138 +146,13 @@ angular.module('bolt.manage', [
     $scope.loadOrgTasks = function() {
         // Removes the events without having to reinitialize
         // or refresh the calendar or dashboard
-        $scope.inactiveTasks.splice(0, $scope.inactiveTasks.length);
-        $scope.activeTasks.splice(0, $scope.activeTasks.length);
-        $scope.finishedTasks.splice(0, $scope.finishedTasks.length);
-
-        // Removes the event sources when switching types
-        $scope.eventSources[0].events.splice(0, $scope.eventSources[0].events.length);
-
-        if ($scope.currentOrg) {
-            $scope.tasks = $scope.currentOrg.tasks.$refresh().$then(function() {
-
-                $scope.inactiveTasks.splice(0, $scope.inactiveTasks.length);
-                $scope.activeTasks.splice(0, $scope.inactiveTasks.length);
-                $scope.finishedTasks.splice(0, $scope.inactiveTasks.length);
-
-                var len = $scope.tasks.length;
-                for (var i = 0; i < len; i++) {
-
-                    if (!$scope.tasks[i].assignee){
-                      $scope.tasks[i].assignee = {picture:''};
-                      $scope.tasks[i].assignee.picture = 'http://lorempixel.com/50/50/people/2';
-                    }
-
-                    // Divides the tasks fo the dashboard view
-                    if ($scope.tasks[i].status.id == 1) {
-                        // inactive
-                        $scope.inactiveTasks.push($scope.tasks[i]);
-                    } else if ($scope.tasks[i].status.id == 2) {
-                        // active
-                        $scope.activeTasks.push($scope.tasks[i]);
-                    } else if ($scope.tasks[i].status.id == 3) {
-                        // finished
-                        $scope.finishedTasks.push($scope.tasks[i]);
-                    }
-
-                    // Pushes the tasks into the predefined calendar event structure
-                    var task = $scope.tasks[i];
-                    var taskDate = (task.status.id == 3
-                                    ? task.modified
-                                    : task.deadline || '2015-10-01');
-                    $scope.eventSources[0].events.push({
-                        title: $scope.tasks[i].taskBrief.title,
-                        start: taskDate,
-                        //allDay: true,
-                        status: $scope.tasks[i].status.label,
-                        taskCount: $scope.tasks[i].taskBrief.taskCount,
-                        finishedTaskCount: $scope.tasks[i].taskBrief.finishedTaskCount,
-                        taskId: $scope.tasks[i].id,
-                        briefId: $scope.tasks[i].taskBrief.id,
-                        task: $scope.tasks[i],
-                        stick: true,
-                        editable: task.status.id != 3,
-                    });
-                }
-            }).$then(function() {
-                // For troublshoot purposes
-                //$log.log($scope.eventSources[0]);
-            });
-
-        }
+        // I am keeping this in case any of you guys want to use it.
     };
 
-    // Fetches any Tasks
-    $scope.loadTasks = function() {
-
-        // Removes the events without having to reinitialize
-        // or refresh the calendar or dashboard
-        $scope.inactiveTasks.splice(0, $scope.inactiveTasks.length);
-        $scope.activeTasks.splice(0, $scope.activeTasks.length);
-        $scope.finishedTasks.splice(0, $scope.finishedTasks.length);
-
-        // Removes the eventsources object when switching from Org to User
-        $scope.eventSources[0].events.splice(0, $scope.eventSources[0].events.length);
-
-        // Iterates through the task object and inputs it into the eventSources object
-        // as well as splits up the tasks into task type for presentation simplicity
-        $scope.tasks = $scope.currentUser.tasks.$refresh().$then(function() {
-            var len = $scope.tasks.length;
-            for (var i = 0; i < len; i++) {
-
-                if (!$scope.tasks[i].assignee){
-                  $scope.tasks[i].assignee = {picture:''};
-                  $scope.tasks[i].assignee.picture = $scope.currentUser.picture;
-                }
-
-                // Divides the tasks fo the dashboard view
-                if ($scope.tasks[i].status.id == 1) {
-                    // inactive
-                    $scope.inactiveTasks.push($scope.tasks[i]);
-                } else if ($scope.tasks[i].status.id == 2) {
-                    // active
-                    $scope.activeTasks.push($scope.tasks[i]);
-                } else if ($scope.tasks[i].status.id == 3) {
-                    // finished
-                    $scope.finishedTasks.push($scope.tasks[i]);
-                }
-
-                // Pushes the task object elements into the event object
-                var task = $scope.tasks[i];
-                    var taskDate = (task.status.id == 3
-                                    ? task.modified
-                                    : task.deadline || '2015-10-01');
-                $scope.eventSources[0].events.push({
-                    title: $scope.tasks[i].taskBrief.title,
-                    start: taskDate,
-                    //allDay: true,
-                    status: $scope.tasks[i].status.label,
-                    taskCount: $scope.tasks[i].taskBrief.taskCount,
-                    finishedTaskCount: $scope.tasks[i].taskBrief.finishedTaskCount,
-                    taskId: $scope.tasks[i].id,
-                    briefId: $scope.tasks[i].taskBrief.id,
-                    task: $scope.tasks[i],
-                    stick: true,
-                    editable: task.status.id != 3
-                });
-            }
-        }).$then(function() {
-            // for troubleshooting
-            //$log.log($scope.eventSources);
-        });
+    $scope.loadNotifications = function(){
+        // you can modify this function
     };
 
-
-                // if($scope.tasks[i].assignee) {
-                //   User.$find(id).$then(function() {
-                //   $scope.tasks[i].userPicture =  this.picture;
-                //   });
-
-                // } else {
-                //   return 'http://lorempixel.com/50/50/people/2';
-                // }
-
-    // initializes the currentOrg and error objects
 
     $scope.showMsg = function(message, type) {
         Message.showToast(message, type);
@@ -313,7 +174,7 @@ angular.module('bolt.manage', [
                 userButton: {
                     text: 'User',
                     click: function() {
-                        $scope.loadTasks();
+                        $scope.loadNotifications();
                     }
                 }
             },
@@ -337,12 +198,13 @@ angular.module('bolt.manage', [
       $state.go('assignments.edit', {brief:brief,id:id});
     };
 
+    // modify later 
     switch ($state.current.name) {
         case 'manage.dashboard':
-            $scope.loadTasks();
+            //$scope.loadTasks();
             break;
         case 'manage.calendar':
-            $scope.loadTasks();
+            //$scope.loadTasks();
             break;
 
 
@@ -351,13 +213,10 @@ angular.module('bolt.manage', [
 
 })
 
-
-
-
 ///////// grid controller
 
 
-    .controller('GridController', function ManageController($scope, $document, $location, $http, $log,$state, $stateParams, moment, GlobalService, Social,
+.controller('GridController', function ManageController($scope, $document, $location, $http, $log,$state, $stateParams, moment, GlobalService, Social,
  AuthUser, Enum, Organization, Brief, Message, User, Mixin) {
 
         /*

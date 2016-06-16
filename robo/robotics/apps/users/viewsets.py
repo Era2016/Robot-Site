@@ -34,9 +34,7 @@ class UserViewSet(mixins.ListModelMixin,
         queryset = self.queryset
         if self.action == 'list':
             queryset = queryset.filter(userrole__role=enums.UserRole.WRITER)
-        return (queryset.prefetch_related('userprofile', 'articles__keywords')
-                        .annotate(_rating=Avg('taskassignees__task__ratings__overall_rating'))
-                        .annotate(_rating__count=Count('taskassignees__task__ratings')))
+        return (queryset.prefetch_related('userprofile'))
 
     def get_serializer(self, *args, **kwargs):
         if self.action == 'list':

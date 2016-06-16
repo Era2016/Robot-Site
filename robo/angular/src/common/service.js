@@ -388,8 +388,8 @@ bolt.factory('User', function(restmod, Enum) {
         jobs: { hasMany: 'Job' },
         applications: { hasMany: 'Application' },
         //articles: { hasMany: 'ImportedArticle' },
-        portfolios: { hasMany: 'Portfolio' },
-        tasks: { hasMany: 'Task'},
+        //portfolios: { hasMany: 'Portfolio' },
+        //tasks: { hasMany: 'Task'},
         notifications: { hasMany: 'Notification' },
         organizationUser:{belongsTo:'OrganizationUser'},
         gender: {
@@ -519,43 +519,6 @@ bolt.factory('Organization', function(restmod, Mixin, Utils) {
                                      );
 });
 
-bolt.factory('Task', function(restmod, Mixin, Enum, Utils) {
-    return restmod.model().mix(Mixin.RestModelTimestampMixin,
-                               Mixin.RestModelBackgroundSaveMixin,
-                               {
-                                   status: {
-                                       decode: Enum.TaskStatus.getEnum,
-                                       encode: Enum.TaskStatus.getId,
-                                   },
-                                   type: {
-                                       decode: Enum.TaskType.getEnum,
-                                       encode: Enum.TaskType.getId
-                                   },
-                                   deadline: {
-                                       decode: Utils.decodeRestAPIDate,
-                                       encode: Utils.encodeRestAPIDate
-                                   },
-                                   contentType: {
-                                       decode: Enum.WritingContentType.getEnum,
-                                       encode: Enum.WritingContentType.getId
-                                   },
-                                   goal: {
-                                       decode: Enum.WritingGoal.getEnum,
-                                       encode: Enum.WritingGoal.getId
-                                   },
-                                   style: {
-                                       decode: Enum.WritingStyle.getEnum,
-                                       encode: Enum.WritingStyle.getId
-                                   },
-                                   pointOfView: {
-                                       decode: Enum.WritingPointOfView.getEnum,
-                                       encode: Enum.WritingPointOfView.getId
-                                   },
-                                   jobs: { hasMany: 'Job' },
-                                   assignee: { hasOne: 'User' }
-                               }
-                              );
-});
 
 bolt.factory('Brief', function(restmod,  Mixin, Utils, Enum){
     return restmod.model('/briefs')
@@ -571,18 +534,6 @@ bolt.factory('Brief', function(restmod,  Mixin, Utils, Enum){
                      decode: Enum.Category.getEnums,
                      encode: Enum.Category.getIds
                  },
-
-                 tasks: {
-                     hasMany: 'Task'
-                 },
-                 /*
-                   comments: {
-                   hasMany: 'Comment'
-                   },
-                   */
-                   article: {
-                   hasOne: 'Article'
-                   },
 
                  $extend: {
                      Record: {
