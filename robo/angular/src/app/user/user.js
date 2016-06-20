@@ -80,14 +80,15 @@ angular.module('bolt.user', [
                 },
             },
             params: {
-                user: null
+                user: null,
+                id: null
             }
         });
 })
 
 .controller('UserController', function UserController($scope, $location,
     $http, $log, $state, $stateParams, GlobalService, Social, AuthUser, $mdDialog,
-    Enum, User, Portfolio, Mixin, Utils, Message, ImportedArticle) {
+    Enum, User, Portfolio, Mixin, Utils, Message) {
 
     angular.extend($scope, Mixin.RestErrorMixin);
 
@@ -112,7 +113,7 @@ angular.module('bolt.user', [
     $scope.Enum = Enum;
 
     $scope.observeRestErrorEvents(User);
-    $scope.observeRestErrorEvents(ImportedArticle);
+    //$scope.observeRestErrorEvents(ImportedArticle);
     $scope.rating = {
         current:5,
         max : 3};
@@ -139,44 +140,19 @@ angular.module('bolt.user', [
 
     $scope.loadUserProfile = function(user, userId) {
         if (!(user instanceof User)) {
-          if (userId == $scope.currentUser.id)
-            user = $scope.currentUser.$refresh();
-          else
-            user = User.$find(userId);
+            if (userId == $scope.currentUser.id){
+                user = $scope.currentUser.$refresh();
+            }
+            else{
+                user = User.$find(userId);
+            }
         }
         else
           user.$refresh();
         $scope.userProfile = user;
         $scope.userProfilePicture = null;
-
-        $scope.userArticles = user.articles.$refresh().$then(function(d) {
-            var len = $scope.userArticles.length;
-            $.each($scope.userArticles, function(i, article) {
-                Social.twitter($scope.userArticles[i].url).then(function(ret){
-                    if (ret.hasOwnProperty('count') && ret.count) {
-                        article.twitterCount = ret.count;
-                        $scope.twitterCount += ret.count;
-                    }
-                });
-                Social.facebook($scope.userArticles[i].url).then(function(ret){
-                    if (ret.hasOwnProperty('shares') && ret.shares) {
-                        article.facebookCount = ret.shares;
-                        $scope.facebookCount += ret.shares;
-                    }
-                });
-            });
-        });
     };
 
-    $scope.loadMoreUserArticles = function(next) {
-        if(next) {
-            $scope.scroll.busy = true;
-            var currentPage = $scope.userArticles.$metadata.page;
-            $scope.userArticles.$fetch({page:currentPage+1}).$then(function(){
-                $scope.scroll.busy = false;
-            });
-        }
-    };
 
     $scope.backToUserList = function() {
         $state.go('user.list');
@@ -255,7 +231,7 @@ angular.module('bolt.user', [
 
 .controller('NotificationController', function NotificationController($scope, $location,
     $http, $interval, $log, $state, $stateParams, GlobalService, Social, AuthUser, $mdDialog,
-    Enum, User, Portfolio, Mixin, Utils, Message, ImportedArticle) {
+    Enum, User, Portfolio, Mixin, Utils, Message) {
 
     $scope.notifications = [];
     $scope.unread_count = 0;

@@ -378,20 +378,16 @@ bolt.factory('Enum', function(Utils) {
     };
 });
 
-bolt.factory('ImportedArticle', function(restmod, Enum) {
-    return restmod.model();
-});
-
 bolt.factory('User', function(restmod, Enum) {
     return restmod.model('/users').mix({
         orgs: { hasMany: 'Organization' },
-        jobs: { hasMany: 'Job' },
-        applications: { hasMany: 'Application' },
+        //jobs: { hasMany: 'Job' },
+        //applications: { hasMany: 'Application' },
         //articles: { hasMany: 'ImportedArticle' },
         //portfolios: { hasMany: 'Portfolio' },
         //tasks: { hasMany: 'Task'},
         notifications: { hasMany: 'Notification' },
-        organizationUser:{belongsTo:'OrganizationUser'},
+        //organizationUser:{belongsTo:'OrganizationUser'},
         gender: {
             decode: Enum.UserGender.getEnum,
             encode: Enum.UserGender.getId
@@ -472,190 +468,52 @@ bolt.factory('Notification', function(restmod, Utils) {
 
 bolt.factory('Organization', function(restmod, Mixin, Utils) {
     return restmod.model('/orgs').mix(Mixin.RestModelTimestampMixin,
-                                      {
-                                          tasks: { hasMany: 'Task'},
-                                          organizationUser:{belongsTo:'OrganizationUser'},
-                                          $extend: {
-                                              Record: {
-                                                  $setProfilePicture: function(picture) {
-                                                      return this.$action(function() {
-                                                          var url = this.$url() + '/set-picture';
-                                                          var request = {
-                                                              method: 'POST',
-                                                              url: url,
-                                                              headers: {'Content-Type': undefined}
-                                                          };
-                                                          request.transformRequest = [function(data) {
-                                                              var formData = new FormData();
-                                                              formData.append('picture', picture, picture.fileName || picture.name);
-                                                              return formData;
-                                                          }];
+        {
+            tasks: { hasMany: 'Task'},
+            organizationUser:{belongsTo:'OrganizationUser'},
+            $extend: {
+                Record: {
+                    $setProfilePicture: function(picture) {
+                        return this.$action(function() {
+                            var url = this.$url() + '/set-picture';
+                            var request = {
+                                method: 'POST',
+                                url: url,
+                                headers: {'Content-Type': undefined}
+                            };
+                            request.transformRequest = [function(data) {
+                                var formData = new FormData();
+                                formData.append('picture', picture, picture.fileName || picture.name);
+                                return formData;
+                            }];
+                            
+                            this.$send(request).$then(function() {
+                                this.picture = this.$response.data.picture;
+                            });
+                        });
+                    },
+                    $getEmployee: function() {
+                        return this.$action(function() {
+                            var url = this.$url() +'/employee';
+                            var request = {
+                                method: 'GET',
+                                url: url,
+                                headers: {'Content-Type': undefined}
+                            };
+                            this.$send(request).$then(function() {
+                                //console.log(this.$response.data);
+                                //return  this.$response.data;
+                                return  this.$response.data;
+                            });
+                        });
+                    }
+                }
+            }
 
-                                                          this.$send(request).$then(function() {
-                                                              this.picture = this.$response.data.picture;
-                                                          });
-                                                      });
-                                                  },
-                                                  $getEmployee: function() {
-                                                      return this.$action(function() {
-                                                          var url = this.$url() +'/employee';
-                                                          var request = {
-                                                              method: 'GET',
-                                                              url: url,
-                                                              headers: {'Content-Type': undefined}
-                                                          };
-                                                          this.$send(request).$then(function() {
-                                                              //console.log(this.$response.data);
-                                                              //return  this.$response.data;
-                                                              return  this.$response.data;
-                                                          });
-                                                      });
-                                                  }
-                                              }
-                                          }
-
-                                      }
-
-                                     );
+        }
+ );
 });
 
-
-bolt.factory('Brief', function(restmod,  Mixin, Utils, Enum){
-    return restmod.model('/briefs')
-        .mix({})
-        .mix(Mixin.RestModelTimestampMixin,
-             Mixin.RestModelBackgroundSaveMixin,
-             {
-                 deadline: {
-                     decode: Utils.decodeRestAPIDate,
-                     encode: Utils.encodeRestAPIDate
-                 },
-                 categories: {
-                     decode: Enum.Category.getEnums,
-                     encode: Enum.Category.getIds
-                 },
-
-                 $extend: {
-                     Record: {
-                         $save: function() {
-                             var ret = this.$super();
-                             if (this.published && !this.$isBackgroundSave())
-                                 this.$error(function() {
-                                     this.published = false;
-                                 });
-                             return ret;
-                         },
-                         // added
-                         $setProfilePicture: function(picture) {
-                             return this.$action(function() {
-                                 var url = this.$url() + '/set-picture';
-                                 var request = {
-                                     method: 'POST',
-                                     url: url,
-                                     headers: {'Content-Type': undefined}
-                                 };
-                                 request.transformRequest = [function(data) {
-                                     var formData = new FormData();
-                                     formData.append('picture', picture, picture.fileName || picture.name);
-                                     return formData;
-                                 }];
-
-                                 this.$send(request).$then(function() {
-                                     console.log(this.$response.data.picture);
-                                     this.picture = this.$response.data.picture;
-                                 });
-                             });
-                         },
-
-
-                         // added
-                     }
-                 }
-             }
-            );
-});
-
-bolt.factory('Comment', function(restmod, Utils, Mixin) {
-    return restmod.model().mix(Mixin.RestModelTimestampMixin,
-                               {
-                                   created: {
-                                       decode: Utils.decodeRestAPIDateTime,
-                                   },
-                                   modified: {
-                                       decode: Utils.decodeRestAPIDateTime,
-                                   },
-                                   brief: {
-                                       belongsTo: 'Brief'
-                                   }
-                               });
-});
-
-
-bolt.factory('Article', function(restmod, Enum, Mixin, Utils) {
-    return restmod.model('/articles').mix(Mixin.RestModelTimestampMixin,
-                                          Mixin.RestModelBackgroundSaveMixin,
-                                          {
-                                              // removed this for saving articles (they are a part of a brief and noe its own /)
-                                              //return restmod.model('/articles').mix(Mixin.RestModelTimestampMixin, {
-                                              status: {
-                                                  decode: Enum.ArticleStatus.getEnum,
-                                                  encode: Enum.ArticleStatus.getId
-                                              },
-
-                                          });
-});
-
-bolt.factory('Job', function(restmod, Mixin, Utils, Enum) {
-    return restmod.model('/jobs').mix(Mixin.RestModelBackgroundSaveMixin, {
-        closingDate: {
-            decode: Utils.decodeRestAPIDate,
-            encode: Utils.encodeRestAPIDate
-        },
-        deadline: {
-            decode: Utils.decodeRestAPIDate,
-            encode: Utils.encodeRestAPIDate
-        },
-        contentType: {
-            decode: Enum.WritingContentType.getEnum,
-            encode: Enum.WritingContentType.getId
-        },
-        goal: {
-            decode: Enum.WritingGoal.getEnum,
-            encode: Enum.WritingGoal.getId
-        },
-        style: {
-            decode: Enum.WritingStyle.getEnum,
-            encode: Enum.WritingStyle.getId
-        },
-        canView:{
-            decode: Enum.CanView.getEnum,
-            encode: Enum.CanView.getId
-        },
-        pointOfView: {
-            decode: Enum.WritingPointOfView.getEnum,
-            encode: Enum.WritingPointOfView.getId
-        },
-        categories: {
-            decode: Enum.Category.getEnums,
-            encode: Enum.Category.getIds
-        },
-
-        applications: { hasMany:'Application' },
-        task: { belongsTo: 'Task' },
-
-
-    });
-});
-
-bolt.factory('Application', function(restmod, Enum, Mixin, Utils) {
-    return restmod.model().mix(Mixin.RestModelTimestampMixin, {
-        status: {
-            decode: Enum.ApplicationStatus.getEnum,
-            encode: Enum.ApplicationStatus.getId
-        },
-        job: {belongsTo: 'Job'}
-    });
-});
 
 bolt.factory('Portfolio', function(restmod, Mixin, Utils) {
     return restmod.model('/portfolios').mix(Mixin.RestModelTimestampMixin);

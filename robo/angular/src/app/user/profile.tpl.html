@@ -94,42 +94,6 @@
             </div>
         <!-- end Profile Heading -->
 
-        <!-- Portfolio Section -->
-        <div layout="row" layout-wrap layout-align="center center" style="align-items:stretch;" infinite-scroll='loadMoreUserArticles(userArticles.$metadata.next)' infinite-scroll-disabled="scroll.busy" infinite-scroll-distance='1'>
-            <div flex="33" flex-md="50" flex-sm="100" layout="column" layout-padding ng-repeat="userArticle in userArticles">
-                <div layout="row" flex>
-                    <div class="portfolio-article" layout="column">
-                        <!-- Portfolio Img -->
-                        <div class="portfolio-img">
-                            <img class="portfolio-publication" ng-src="{[{userArticle.publication.image || '//:0'}]}">
-                            <a class="portfolio-title" ng-href="{[{userArticle.url}]}"><span>{[{userArticle.title}]} </span></a>
-                            <img class="" ng-src="{[{ userArticle.image || '/static/assets/img/portfolio-blank.png'}]}" width="100%" alt="Article Image" />
-                        </div>
-                        <!-- Portfolio Keywords -->
-                        <div class="" layout="row" layout-padding layout-wrap>
-                            <div class="chip bgBoltBlue" style="margin-bottom:5px;" ng-repeat="keyword in userArticle.keywords | limitTo:4">{[{keyword}]}</div>
-                        </div>
-                        <!-- Portfolio Text -->
-                        <div class="portfolio-text" layout="column" flex>
-                            <p ng-hide="!userArticle.content">{[{userArticle.content | limitTo: 200}]}{[{userArticle.content.length > 20 ? '...' : ''}]} <a ng-href="{[{userArticle.url}]}"><i class="fa fa-external-link-square"></i></a></p>
-                        </div>
-                        <!-- Portfolio Buttons -->
-                        <div class="" layout="row">
-                            <div class="section-button bgBoltBlue" layout="row" layout-align="center center" flex><i class="fa fa-facebook social"></i>{[{userArticle.facebookCount}]}
-                            </div>
-                            <div class="section-button bgBoltBlue" layout="row" layout-align="center center" flex><i class="fa fa-twitter social"></i>{[{userArticle.twitterCount}]}
-                            </div>
-                            <a class="section-button bgBoltBlue" layout="row" layout-align="center center" flex ng-show="userArticle.user == currentUser.id" ng-click="deleteUserArticle(userArticle,$index)">
-                            Delete</a>
-                            <a class="section-button bgBoltBlue" layout="row" layout-align="center center" flex ng-show="userArticle.user == currentUser.id" ng-click="editUserArticle($event,userArticle)">
-                            Edit
-                        </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Portfolio Section -->
         <div class="section-button bgBoltLightBlue" layout="row" layout-align="center center" flex style="margin-top:10px;" ng-show="scroll.busy">Loading...</div>
     </div>
     <div flex="10" flex-lg="100" flex-md="100" flex-sm="100"></div>

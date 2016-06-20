@@ -283,7 +283,7 @@
                             <ul class="mdl-menu  mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
                                 for="profile-button" >
                                 <li class="mdl-menu__item"  ng-if="!isOrg">
-                                    <md-button ui-sref="user.profile({id:currentUser.id, user:null})" ui-sref-active="active">My Profile</md-button>
+                                    <md-button ui-sref="user.profile({user:null, id:currentUser.id})" ui-sref-active="active">My Profile</md-button>
                                 </li>
                                 <li class="mdl-menu__item" ng-if="!isOrg">
                                     <md-button ui-sref="user.list" ui-sref-active="active">Search Users</md-button>
