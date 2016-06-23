@@ -1,0 +1,101 @@
+/	django.views.generic.base.TemplateView	index	
+/400/	django.views.defaults.bad_request		
+/403/	django.views.defaults.permission_denied		
+/404/	django.views.defaults.page_not_found		
+/500/	django.views.defaults.server_error		
+/__debug__/render_panel/	debug_toolbar.views.render_panel	djdt:render_panel	
+/__debug__/sql_explain/	debug_toolbar.panels.sql.views.sql_explain	djdt:sql_explain	
+/__debug__/sql_profile/	debug_toolbar.panels.sql.views.sql_profile	djdt:sql_profile	
+/__debug__/sql_select/	debug_toolbar.panels.sql.views.sql_select	djdt:sql_select	
+/__debug__/template_source/	debug_toolbar.panels.templates.views.template_source	djdt:template_source	
+/accounts/confirm-email/	allauth.account.views.EmailVerificationSentView	account_email_verification_sent	
+/accounts/confirm-email/<key>/	allauth.account.views.ConfirmEmailView	account_confirm_email	
+/accounts/email/	allauth.account.views.EmailView	account_email	login_required
+/accounts/inactive/	allauth.account.views.AccountInactiveView	account_inactive	
+/accounts/login/	allauth.account.views.LoginView	account_login	
+/accounts/logout/	allauth.account.views.LogoutView	account_logout	
+/accounts/password/change/	allauth.account.views.PasswordChangeView	account_change_password	login_required
+/accounts/password/reset/	allauth.account.views.PasswordResetView	account_reset_password	
+/accounts/password/reset/done/	allauth.account.views.PasswordResetDoneView	account_reset_password_done	
+/accounts/password/reset/key/<uidb36>-<key>/	allauth.account.views.PasswordResetFromKeyView	account_reset_password_from_key	
+/accounts/password/reset/key/done/	allauth.account.views.PasswordResetFromKeyDoneView	account_reset_password_from_key_done	
+/accounts/password/set/	allauth.account.views.PasswordSetView	account_set_password	login_required
+/accounts/signup/	allauth.account.views.SignupView	account_signup	
+/accounts/social/connections/	allauth.socialaccount.views.ConnectionsView	socialaccount_connections	login_required
+/accounts/social/login/cancelled/	allauth.socialaccount.views.LoginCancelledView	socialaccount_login_cancelled	
+/accounts/social/login/error/	allauth.socialaccount.views.LoginErrorView	socialaccount_login_error	
+/accounts/social/signup/	allauth.socialaccount.views.SignupView	socialaccount_signup	
+/api/v1/accounts/login.<format>/	rest_auth.views.LoginView	api:rest_login	
+/api/v1/accounts/login/	rest_auth.views.LoginView	api:rest_login	
+/api/v1/accounts/logout.<format>/	rest_auth.views.LogoutView	api:rest_logout	
+/api/v1/accounts/logout/	rest_auth.views.LogoutView	api:rest_logout	
+/api/v1/accounts/password/change.<format>/	rest_auth.views.PasswordChangeView	api:rest_password_change	
+/api/v1/accounts/password/change/	rest_auth.views.PasswordChangeView	api:rest_password_change	
+/api/v1/accounts/password/reset.<format>/	rest_auth.views.PasswordResetView	api:rest_password_reset	
+/api/v1/accounts/password/reset/	rest_auth.views.PasswordResetView	api:rest_password_reset	
+/api/v1/accounts/password/reset/confirm.<format>/	rest_auth.views.PasswordResetConfirmView	api:rest_password_reset_confirm	
+/api/v1/accounts/password/reset/confirm/	rest_auth.views.PasswordResetConfirmView	api:rest_password_reset_confirm	
+/api/v1/accounts/registration/	rest_auth.registration.views.RegisterView	api:rest_register	
+/api/v1/accounts/registration/.<format>/	rest_auth.registration.views.RegisterView	api:rest_register	
+/api/v1/accounts/registration/account-confirm-email/<key>.<format>/	django.views.generic.base.TemplateView	api:account_confirm_email	
+/api/v1/accounts/registration/account-confirm-email/<key>/	django.views.generic.base.TemplateView	api:account_confirm_email	
+/api/v1/accounts/registration/verify-email.<format>/	rest_auth.registration.views.VerifyEmailView	api:rest_verify_email	
+/api/v1/accounts/registration/verify-email/	rest_auth.registration.views.VerifyEmailView	api:rest_verify_email	
+/api/v1/accounts/user.<format>/	rest_auth.views.UserDetailsView	api:rest_user_details	
+/api/v1/accounts/user/	rest_auth.views.UserDetailsView	api:rest_user_details	
+/api/v1/briefs.<format>/	tasks.viewsets.TaskBriefViewSet	api:briefs-list	
+/api/v1/briefs/	tasks.viewsets.TaskBriefViewSet	api:briefs-list	
+/api/v1/briefs/<pk>.<format>/	tasks.viewsets.TaskBriefViewSet	api:briefs-detail	
+/api/v1/briefs/<pk>/	tasks.viewsets.TaskBriefViewSet	api:briefs-detail	
+/api/v1/categories.<format>/	common.viewsets.CategoryViewSet	api:category-list	
+/api/v1/categories/	common.viewsets.CategoryViewSet	api:category-list	
+/api/v1/jobs.<format>/	jobs.viewsets.JobViewSet	api:jobs-list	
+/api/v1/jobs/	jobs.viewsets.JobViewSet	api:jobs-list	
+/api/v1/jobs/<job_pk>/applications.<format>/	jobs.viewsets.JobApplicationViewSet	api:applications-list	
+/api/v1/jobs/<job_pk>/applications/	jobs.viewsets.JobApplicationViewSet	api:applications-list	
+/api/v1/jobs/<job_pk>/applications/<pk>.<format>/	jobs.viewsets.JobApplicationViewSet	api:applications-detail	
+/api/v1/jobs/<job_pk>/applications/<pk>/	jobs.viewsets.JobApplicationViewSet	api:applications-detail	
+/api/v1/jobs/<pk>.<format>/	jobs.viewsets.JobViewSet	api:jobs-detail	
+/api/v1/jobs/<pk>/	jobs.viewsets.JobViewSet	api:jobs-detail	
+/api/v1/orgs.<format>/	orgs.viewsets.OrganizationViewSet	api:organization-list	
+/api/v1/orgs/	orgs.viewsets.OrganizationViewSet	api:organization-list	
+/api/v1/orgs/<org_pk>/briefs.<format>/	tasks.viewsets.OrganizationTaskBriefViewSet	api:briefs-list	
+/api/v1/orgs/<org_pk>/briefs/	tasks.viewsets.OrganizationTaskBriefViewSet	api:briefs-list	
+/api/v1/orgs/<org_pk>/tasks.<format>/	tasks.viewsets.OrganizationTaskViewSet	api:tasks-list	
+/api/v1/orgs/<org_pk>/tasks/	tasks.viewsets.OrganizationTaskViewSet	api:tasks-list	
+/api/v1/orgs/<pk>.<format>/	orgs.viewsets.OrganizationViewSet	api:organization-detail	
+/api/v1/orgs/<pk>/	orgs.viewsets.OrganizationViewSet	api:organization-detail	
+/api/v1/orgs/<pk>/employee.<format>/	orgs.viewsets.OrganizationViewSet	api:organization-employee	
+/api/v1/orgs/<pk>/employee/	orgs.viewsets.OrganizationViewSet	api:organization-employee	
+/api/v1/orgs/<pk>/set-picture.<format>/	orgs.viewsets.OrganizationViewSet	api:organization-set-picture	
+/api/v1/orgs/<pk>/set-picture/	orgs.viewsets.OrganizationViewSet	api:organization-set-picture	
+/api/v1/orguser.<format>/	orgs.viewsets.OrganizationUserViewSet	api:orguser-list	
+/api/v1/orguser/	orgs.viewsets.OrganizationUserViewSet	api:orguser-list	
+/api/v1/orguser/<pk>.<format>/	orgs.viewsets.OrganizationUserViewSet	api:orguser-detail	
+/api/v1/orguser/<pk>/	orgs.viewsets.OrganizationUserViewSet	api:orguser-detail	
+/api/v1/users.<format>/	users.viewsets.UserViewSet	api:user-list	
+/api/v1/users/	users.viewsets.UserViewSet	api:user-list	
+/api/v1/users/<pk>.<format>/	users.viewsets.UserViewSet	api:user-detail	
+/api/v1/users/<pk>/	users.viewsets.UserViewSet	api:user-detail	
+/api/v1/users/<pk>/set-picture.<format>/	users.viewsets.UserViewSet	api:user-set-picture	
+/api/v1/users/<pk>/set-picture/	users.viewsets.UserViewSet	api:user-set-picture	
+/api/v1/users/<user_pk>/applications.<format>/	jobs.viewsets.UserApplicationViewSet	api:applications-list	
+/api/v1/users/<user_pk>/applications/	jobs.viewsets.UserApplicationViewSet	api:applications-list	
+/api/v1/users/<user_pk>/briefs.<format>/	tasks.viewsets.UserTaskBriefViewSet	api:briefs-list	
+/api/v1/users/<user_pk>/briefs/	tasks.viewsets.UserTaskBriefViewSet	api:briefs-list	
+/api/v1/users/<user_pk>/jobs.<format>/	jobs.viewsets.UserJobViewSet	api:jobs-list	
+/api/v1/users/<user_pk>/jobs/	jobs.viewsets.UserJobViewSet	api:jobs-list	
+/api/v1/users/<user_pk>/notifications.<format>/	users.viewsets.UserNotificationViewSet	api:notifications-list	
+/api/v1/users/<user_pk>/notifications/	users.viewsets.UserNotificationViewSet	api:notifications-list	
+/api/v1/users/<user_pk>/notifications/mark-read.<format>/	users.viewsets.UserNotificationViewSet	api:notifications-mark-read	
+/api/v1/users/<user_pk>/notifications/mark-read/	users.viewsets.UserNotificationViewSet	api:notifications-mark-read	
+/api/v1/users/<user_pk>/orgs.<format>/	orgs.viewsets.UserOrganizationViewSet	api:organizations-list	
+/api/v1/users/<user_pk>/orgs/	orgs.viewsets.UserOrganizationViewSet	api:organizations-list	
+/api/v1/users/<user_pk>/ratings.<format>/	ratings.viewsets.UserRatingViewSet	api:ratings-list	
+/api/v1/users/<user_pk>/ratings/	ratings.viewsets.UserRatingViewSet	api:ratings-list	
+/api/v1/users/<user_pk>/tasks.<format>/	tasks.viewsets.UserTaskViewSet	api:tasks-list	
+/api/v1/users/<user_pk>/tasks/	tasks.viewsets.UserTaskViewSet	api:tasks-list	
+/app/	django.views.generic.base.TemplateView	ng-index	login_required
+/invitations/accept-invite/<key>/	invitations.views.AcceptInvite	invitations:accept-invite	
+/invitations/send-invite/	invitations.views.SendInvite	invitations:send-invite	
+/media/<path>	django.views.static.serve		

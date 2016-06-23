@@ -7,10 +7,6 @@ from rest_framework_nested import routers
 from common import viewsets as common_viewsets
 from users import viewsets as user_viewsets
 from orgs import viewsets as org_viewsets
-from tasks import viewsets as task_viewsets
-from jobs import viewsets as job_viewsets
-
-from ratings import viewsets as rating_viewsets
 
 
 # Endpoints for REST APIs
@@ -19,9 +15,6 @@ router.register(r'users', user_viewsets.UserViewSet)
 router.register(r'categories', common_viewsets.CategoryViewSet)
 router.register(r'orgs', org_viewsets.OrganizationViewSet)
 router.register(r'orguser', org_viewsets.OrganizationUserViewSet, base_name = 'orguser')
-router.register(r'briefs', task_viewsets.TaskBriefViewSet, base_name='briefs')
-router.register(r'jobs', job_viewsets.JobViewSet, base_name='jobs')
-
 
 user_nested_router = routers.NestedSimpleRouter(
     router, r'users', lookup='user'
@@ -34,52 +27,17 @@ user_nested_router.register(
     r'orgs', org_viewsets.UserOrganizationViewSet,
     base_name='organizations'
 )
-user_nested_router.register(
-    r'jobs', job_viewsets.UserJobViewSet, base_name='jobs'
-)
-user_nested_router.register(
-    r'applications', job_viewsets.UserApplicationViewSet,
-    base_name='applications'
-)
-user_nested_router.register(
-    r'briefs', task_viewsets.UserTaskBriefViewSet,
-    base_name='briefs'
-)
-user_nested_router.register(
-    r'tasks', task_viewsets.UserTaskViewSet,
-    base_name='tasks'
-)
 
-user_nested_router.register(
-    r'ratings', rating_viewsets.UserRatingViewSet,
-    base_name='ratings'
-)
 
 organization_nested_router = routers.NestedSimpleRouter(
     router, r'orgs', lookup='org'
 )
-organization_nested_router.register(
-    r'briefs', task_viewsets.OrganizationTaskBriefViewSet,
-    base_name='briefs'
-)
-organization_nested_router.register(
-    r'tasks', task_viewsets.OrganizationTaskViewSet,
-    base_name='tasks'
-)
-
-
-job_nested_router = routers.NestedSimpleRouter(router, r'jobs', lookup='job')
-job_nested_router.register(
-    r'applications', job_viewsets.JobApplicationViewSet, base_name='applications'
-)
-
 
 urlpatterns = format_suffix_patterns([
     #url('^payments/', include('payments.urls')),
     url(r'^', include(router.urls)),
     url(r'^', include(user_nested_router.urls)),
     url(r'^', include(organization_nested_router.urls)),
-    url(r'^', include(job_nested_router.urls)),
 ])
 
 

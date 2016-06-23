@@ -42,79 +42,7 @@ angular.module( 'bolt.notes', [
     $scope.errors = {};
     $scope.Enum = Enum;
 
-    // Note.mix({
-    //     $hooks: {
-    //         'before-request': function() {
-    //             $scope.errors = {};
-    //         },
-    //         'after-request-error': function() {
-    //             $scope.errors = this.$response.data;
-    //         },
-
-    //     }
-    // });
-
-// loads the organizations that a particular user is connected to create a job
-
-    // swal({
-    //    title: "New Note",
-    //    text: "Title:",
-    //    type: "input",
-    //    inputPlaceholder: "Title of the Note",
-    //    text: "Contents",
-    //    type: "input",
-    //    inputPlaceholder: "Please Type Your Contents here"  
-    //    showCancelButton: true,   
-    //    closeOnConfirm: false,   
-    //    animation: "slide-from-top"  
-       
-    //  }, 
-    //   function(inputValue){   
-    //     if (inputValue === false) return false;  
-    //     if (inputValue === "") {  
-    //        swal.showInputError("You need to write something!"); 
-    //            return false 
-    //              } 
-    //        swal("Nice!", "You wrote: " + inputValue, "success"); 
-    //      });
-
-    // $scope.newNoteSwtAlrt = function(){
-    //      swal.withForm({
-    //         title: "New Note",
-    //         text: 'A note for your reminder',
-    //         showCancelButton: true,
-    //         confirmButtonText: 'Submit',
-    //         closeOnConfirm: true,
-    //         formFields: [
-    //             { id: 'Title', placeholder:'Please add Title here' },
-    //             { id: 'Contents', placeholder:'Please add your Contents here' }
-    //       ]
-    //   }, function(isConfirm) {
-    //       // do whatever you want with the form data
-    //       console.log(this.swalForm); // { name: 'user name', nickname: 'what the user sends' }
-    //       });
-     //   title: "New Note",
-     //   type: "input",
-     //   inputPlaceholder: "Title of the Note",
-     //   type: "input",
-     //   inputPlaceholder: "Please Type Your Contents here", 
-     //   showCancelButton: true,   
-     //   closeOnConfirm: false,   
-     //   animation: "slide-from-top"  
-       
-     // }, 
-     //  function(inputValue){   
-     //    if (inputValue === false) return false;  
-     //    if (inputValue === "") {  
-     //       swal.showInputError("You need to write something!"); 
-     //           return false 
-     //             } 
-     //       swal("Nice!", "You wrote: " + inputValue, "success"); 
-     //     });
-
-      // };
-
-      $scope.newNoteMaterial = function(ev) {
+    $scope.newNoteMaterial = function(ev) {
         
        
         $mdDialog.show({
@@ -133,21 +61,20 @@ angular.module( 'bolt.notes', [
       });
     };
 
-      $scope.hide = function() {
+    $scope.hide = function() {
         $mdDialog.hide();
-      };
-      $scope.cancel = function() {
+    };
+    $scope.cancel = function() {
         $mdDialog.cancel();
-      };
-     
-      $scope.saveNote = function(currentNote) {
+    };
+    
+    $scope.saveNote = function(currentNote) {
          
-        //  $log.log('storage notes', $scope.$storage.noteId);
-          $scope.$storage.noteId += 1;
-          $scope.currentNote = { id:$scope.$storage.noteId ,title:$scope.currentNote.title, content:$scope.currentNote.content};
-          $scope.$storage.notes.push($scope.currentNote);
-          $mdDialog.hide();
-      };
+        $scope.$storage.noteId += 1;
+        $scope.currentNote = { id:$scope.$storage.noteId ,title:$scope.currentNote.title, content:$scope.currentNote.content};
+        $scope.$storage.notes.push($scope.currentNote);
+        $mdDialog.hide();
+    };
 
     
 
@@ -164,24 +91,6 @@ angular.module( 'bolt.notes', [
 
     $scope.deleteNote = function(noteid) {
 
-    //   SweetAlert.swal({
-    //    title: "Are you sure?",
-    //    text: "Your will not be able to recover this note!",
-    //    type: "warning",
-    //    showCancelButton: true,
-    //    confirmButtonColor: "#DD6B55",
-    //    confirmButtonText: "Delete",
-    //    cancelButtonText: "Cancel",
-    //    closeOnConfirm: false,
-    //    closeOnCancel: true }, 
-    // function(isConfirm){ 
-    //    if (isConfirm) {
-    //     // $log.log($scope.$storage.notes); 
-    //     // $log.log(noteid);
-    //       $log.log($scope.$storage.notes.splice(1, 1));   
-    //       SweetAlert.swal("Deleted!", "Your note has been deleted.", "success");
-    //       } 
-    //    });
       };
 
     // $scope.saveNote = function() {

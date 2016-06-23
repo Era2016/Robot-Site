@@ -67,12 +67,7 @@ LOCAL_APPS = (
     'core',
     'common',
     'users',
-    'comments',
     'orgs',
-    #'tasks',
-    #'articles',
-    #'jobs',
-    #'ratings',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

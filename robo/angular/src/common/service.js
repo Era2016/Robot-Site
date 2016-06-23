@@ -534,3 +534,12 @@ bolt.factory('OrganizationUser', function(restmod, Mixin, Enum, Utils) {
 
     });
 });
+
+bolt.factory('UserLevel', function(restmod, Mixin, Enum, Utils) {
+    return restmod.model('/userlevel').mix(Mixin.RestModelTimestampMixin, {
+        //user: {hasOne:'User', key:'user'},
+        //organization: {hasOne:'Organization', key:'organization'},
+        user: 0,
+        level: 0,
+    });
+});

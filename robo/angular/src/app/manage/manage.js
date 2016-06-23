@@ -86,7 +86,7 @@ angular.module('bolt.manage', [
  */
 .controller('ManageController', function ManageController($scope, $document, $location, $http,
     $log, $state, $stateParams, moment, GlobalService, Social,
-    AuthUser, Enum, Organization, Brief, Message, User, Mixin) {
+    AuthUser, Enum, Organization, Message, User, Mixin) {
 
     // Sets the service GlobalServive object to an object in the $scope
     // so it is accessible by the view.
@@ -217,7 +217,7 @@ angular.module('bolt.manage', [
 
 
 .controller('GridController', function ManageController($scope, $document, $location, $http, $log,$state, $stateParams, moment, GlobalService, Social,
- AuthUser, Enum, Organization, Brief, Message, User, Mixin) {
+ AuthUser, Enum, Organization, Message, User, Mixin) {
 
         /*
           Grid is about recommendation

@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('tasks', '0005_auto_20151010_1022'),
+        ('users', '0003_usercode'),
     ]
 
     operations = [
-        migrations.RenameField(
-            model_name='writingtaskmeta',
-            old_name='type',
-            new_name='content_type',
+        migrations.AddField(
+            model_name='usercode',
+            name='level',
+            field=models.TextField(default=b'1', blank=True),
         ),
     ]
