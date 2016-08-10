@@ -97,6 +97,8 @@ angular.module('bolt.manage', [
         events: []
     }];
 
+    $scope.test = 0;
+    
     $scope.dashboard = {
         org: {
             assigned: 29,

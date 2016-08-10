@@ -86,7 +86,14 @@ class UserViewSet(mixins.ListModelMixin,
     @detail_route(methods=['post'], url_path='codes')
     def update_code(self, request, *arg, **kwargs):
         user = self.get_object()
-        user.usercode.code = "121"
+        user.usercode.code = request.data["code"]
+        user.usercode.save()
+        return Response("success")
+
+    @detail_route(methods=['post'], url_path='level')
+    def update_code(self, request, *arg, **kwargs):
+        user = self.get_object()
+        user.usercode.level = request.data["level"]
         user.usercode.save()
         return Response("success")
 
