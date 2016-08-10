@@ -24,10 +24,10 @@ class NotificationVerb(object):
 
 class UserRole(Enum):
     BUSINESS = 1
-    WRITER = 2
+    PERSON = 2
     labels = {
         BUSINESS: 'Organization',
-        WRITER: 'Person'
+        PERSON: 'Person'
     }
 
 

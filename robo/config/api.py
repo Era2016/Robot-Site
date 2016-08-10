@@ -24,6 +24,10 @@ user_nested_router.register(
     base_name='notifications'
 )
 user_nested_router.register(
+    r'code', user_viewsets.UserCodeViewSet,
+    base_name='code'
+)
+user_nested_router.register(
     r'orgs', org_viewsets.UserOrganizationViewSet,
     base_name='organizations'
 )

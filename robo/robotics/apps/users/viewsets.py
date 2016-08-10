@@ -33,7 +33,7 @@ class UserViewSet(mixins.ListModelMixin,
     def get_queryset(self):
         queryset = self.queryset
         if self.action == 'list':
-            queryset = queryset.filter(userrole__role=enums.UserRole.WRITER)
+            queryset = queryset.filter(userrole__role=enums.UserRole.PERSON)
         return (queryset.prefetch_related('userprofile'))
 
     def get_serializer(self, *args, **kwargs):
@@ -83,7 +83,33 @@ class UserViewSet(mixins.ListModelMixin,
         picture_serializer.save()
         return Response(picture_serializer.data)
 
+    @detail_route(methods=['post'], url_path='codes')
+    def update_code(self, request, *arg, **kwargs):
+        user = self.get_object()
+        user.usercode.code = "121"
+        user.usercode.save()
+        return Response("success")
 
+
+class UserCodeViewSet(mixins.ListModelMixin,
+                      mixins.RetrieveModelMixin,
+                      mixins.UpdateModelMixin,
+                      GenericViewSet):
+    queryset = User.objects.filter(
+        is_staff=False, is_superuser=False
+    )
+    serializer_class = user_serializers.UserCodeSerializer
+
+    def get_queryset(self):
+        queryset = self.queryset
+        if self.action == 'list':
+            queryset = queryset.filter(userrole__role=enums.UserRole.PERSON)
+        return Response(queryset.prefetch_related('usercode'))
+    
+    def update(self, request, *args, **kwargs):
+        return Response({'status':'success'})
+
+    
 class UserSubViewSetMixin(object):
     user_permission_exempt_actions = None
 

@@ -43,7 +43,7 @@ class UserProfile(TimeStampedModel):
 @python_2_unicode_compatible
 class UserCode(TimeStampedModel):
     user = models.OneToOneField(User, primary_key=True)
-    code = models.TextField(blank=True)
+    code = models.TextField(blank=True, default='0')
     level = models.TextField(blank=True, default='1')
     def __str__(self):
         return self.user.username
@@ -95,7 +95,7 @@ class UserInformation(TimeStampedModel):
     submit_time = models.DateTimeField(blank=True)
     expiry_date = models.DateTimeField(blank=True)
     def __str__(self):
-        return self.user.username
+        return self.name
 
     
 

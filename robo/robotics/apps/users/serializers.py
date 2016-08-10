@@ -6,7 +6,7 @@ from core import serializers as core_serializers
 from core import fields as core_fields
 from common import fields as common_fields
 from common import enums
-from .models import UserProfile
+from .models import UserProfile, UserCode
 
 # Custom user model
 User = get_user_model()
@@ -18,6 +18,12 @@ class UserProfileSerializer(core_serializers.ModelSerializer):
         fields = ('gender', 'description', 'picture', 'website')
         read_only_fields = ('picture',)
 
+
+class UserCodeSerializer(core_serializers.ModelSerializer):
+    class Meta:
+        model = UserCode
+        fields = ('code', 'level')
+        
 
 class UserSerializer(core_serializers.DynamicFieldsModelSerializer):
     gender = serializers.CharField(

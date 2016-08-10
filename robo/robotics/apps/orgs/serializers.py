@@ -40,7 +40,7 @@ class OrganizationUserSerializer(core_serializers.ModelSerializer):
 
     @transaction.atomic
     def create(self, validated_data):
-        # when you are using organization user to create a link, it's always gonna be an emploee.
+        # when you are using organization user to create a link, it's always gonna be an employee.
         owner = validated_data.pop('owner') # just in case that you will need to use owner some time.
         organization_user = super(OrganizationUserSerializer, self).create(validated_data)
         return organization_user
