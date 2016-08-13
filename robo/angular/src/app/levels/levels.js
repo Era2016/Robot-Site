@@ -30,6 +30,16 @@ angular.module('bolt.level',[
                 },
             }
         })
+        .state('level.competition', {
+            url: '/competition',
+            views: {
+                'level': {
+                    templateUrl: 'levels/competition.tpl.html',
+                    controller: 'LevelController',
+                },
+            }
+        })
+    ;
 })        
 
 .controller('LevelController', function LevelController($scope, $location,
